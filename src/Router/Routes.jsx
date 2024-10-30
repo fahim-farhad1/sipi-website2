@@ -7,6 +7,7 @@ import External from "../Pages/External/External";
 import Administration from "../Pages/Administration/Administration";
 import AboutUs from "../Pages/AboutUs/AboutUs";
 import ContactUs from "../Pages/ContactUs/ContactUs";
+import Admission from "../Pages/Admission/Admission";
 
 const router = createBrowserRouter([
   {
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
         path: "/contact",
         element: <ContactUs />,
       },
+      {
+        path: '/admission',
+        element: <Admission />
+      }
     ],
   },
 ]);
