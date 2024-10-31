@@ -12,13 +12,13 @@ const Navbar = () => {
   const [open, isOpen] = useState(false);
   const navLink = (
     <>
-      <NavLink>Home</NavLink>
-      <NavLink>Departments</NavLink>
-      <NavLink>Academic</NavLink>
-      <NavLink>Administration</NavLink>
-      <NavLink>Blogs</NavLink>
-      <NavLink>About</NavLink>
-      <NavLink>Contact</NavLink>
+      <NavLink to={'/'}>Home</NavLink>
+      <NavLink to={'/departments'}>Departments</NavLink>
+      <NavLink to={'/academic'}>Academic</NavLink>
+      <NavLink to={'/administration'}>Administration</NavLink>
+      <NavLink to={'/'}>Blogs</NavLink>
+      <NavLink to={'/about'}>About</NavLink>
+      <NavLink to={'/contact'}>Contact</NavLink>
     </>
   );
   return (
@@ -73,7 +73,7 @@ const Navbar = () => {
           />
         )}
         {/* sidebar nav  */}
-        <div className={`md:hidden flex flex-col space-y-2 absolute text-black top-[112px]  h-full bg-white w-6/12 pl-4 py-2 ${open ? 'right-0' : '-right-[400px]'} duration-500`}>
+        <div className={`md:hidden flex flex-col space-y-2 absolute text-black top-[112px] h-full bg-white w-6/12 pl-4 py-2 ${open ? 'right-0' : '-right-[400px]'} duration-500`}>
         {navLink}
         </div>
         {/* sidebar nav end  */}
