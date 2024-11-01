@@ -4,7 +4,7 @@ import Footer from "../Shared/Footer/Footer"
 
 const MainLayout = () => {
   return (
-    <div>
+    <div className="overflow-hidden">
       <Navbar />
       <Outlet />
       <Footer />
