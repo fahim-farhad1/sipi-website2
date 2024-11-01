@@ -55,7 +55,7 @@ export default function BannerSection() {
             ></div>
 
             {/* Overlay */}
-            <div className="absolute inset-0 bg-madBlack bg-opacity-70"></div>
+            <div className="absolute inset-0 bg-madBlack bg-opacity-60"></div>
 
             {/* Content */}
             <div className="absolute inset-0 flex flex-col  justify-center  text-white px-6 lg:px-12">
