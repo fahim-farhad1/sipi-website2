@@ -25,7 +25,7 @@ const OurCources = () => {
       
     return (
         <div className='my-5'>
-            <LeftTitle badge="Our Cources" title="Graduate Programs"/>
+            <LeftTitle badge="Our Cources" title="BTEB Affiliated Courses"/>
 
             <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
             {courses.map(course => (
