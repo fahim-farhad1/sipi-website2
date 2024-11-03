@@ -22,9 +22,9 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="w-full bg-white ">
+    <div className="w-full ">
       {/* top navbar  */}
-      <div className="bg-orange-700 h-12 md:h-10 flex items-center">
+      <div className="bg-primary h-12 md:h-10 flex items-center">
         <div className="mx-auto w-full flex items-center justify-between">
           <div className="flex items-center md:h-10 px-5">
             <div className="flex">
@@ -54,7 +54,7 @@ const Navbar = () => {
                 <FaYoutube />
               </Link>
             </div>
-            <span className="bg-green-900 h-10 w-6/12 -right-4 top-0 absolute -skew-x-[36deg]"></span>
+            <span className="bg-secondary h-10 w-6/12 -right-5 top-0 absolute -skew-x-[36deg]"></span>
           </div>
         </div>
       </div>
@@ -98,7 +98,7 @@ const Navbar = () => {
             </button>
           </div>
         </div>
-        <button className="bg-orange-700 py-5 px-3 text-white hover:bg-green-700 duration-500 hidden md:block">
+        <button className="bg-primary py-5 px-3 text-white hover:bg-secondary duration-500 hidden md:block">
           ADMISSION OPEN
         </button>
       </div>

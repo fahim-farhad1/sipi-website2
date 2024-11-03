@@ -39,8 +39,6 @@ export default function BannerSection() {
         slidesToScroll: 1,
       };
 
-
-
   return (
     <div className='my-3'>
      <Slider {...settings}>
@@ -48,7 +46,7 @@ export default function BannerSection() {
           <div key={banner.id} className="relative">
             {/* Background Image */}
             <div
-              className="w-full h-[500px] lg:h-[600px] bg-cover bg-center"
+              className="w-full h-[400px] md:h-[400px] lg:h-[600px] bg-cover bg-center"
               style={{
                 backgroundImage: `url(${banner.image})`,
               }}
@@ -59,11 +57,11 @@ export default function BannerSection() {
 
             {/* Content */}
             <div className="absolute inset-0 flex flex-col  justify-center  text-white px-6 lg:px-12">
-              <div className='w-[70%]'>
-              <p className='text-[25px] font-semibold'>Welcome To -</p>
-              <p className='text-[35px] font-semibold text-primary'>shyamoli ideal polytechnic institute</p>
-              <h2 className="text-[32px] lg:text-5xl font-bold mb-4">{banner.heading}</h2>
-              <p className="text-[28px] lg:text-xl mb-6">{banner.description}</p>
+              <div className='w-[95%] md:w-[80%]'>
+              <p className='text-[18px] md:text-[35px] font-semibold'>Welcome To --</p>
+              <p className='text-[22px] md:text-[45px] font-bold text-primary'>shyamoli ideal polytechnic institute</p>
+              <p className="text-[16px] md:text-[30px] font-semibold mb-4">{banner.heading}</p>
+              <p className="text-[14px] md:text-xl mb-6">{banner.description}</p>
               <div className="flex gap-4">
                 <button className="bg-primary text-white py-2 px-6 rounded hover:bg-blue-600 transition">
                   Discover More

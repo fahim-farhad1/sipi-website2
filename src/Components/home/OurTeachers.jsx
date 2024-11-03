@@ -44,8 +44,6 @@ const teachers = [
     },
   ];
 
-  
-
 export default function OurTeachers() {  
         const settings = {
           dots: true,
@@ -61,7 +59,7 @@ export default function OurTeachers() {
         };
   return (
     <div className='mt-[60px]'>
-        <MiddleSectionTitle badge="our teachers" title="Get every single answer here."/>
+        <MiddleSectionTitle badge="TEACHERS" title="Meet Our Teachers"/>
 
         {/* slider */}
                 <Slider {...settings}>
