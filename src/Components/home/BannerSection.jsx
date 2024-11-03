@@ -58,7 +58,7 @@ export default function BannerSection() {
             {/* Content */}
             <div className="absolute inset-0 flex flex-col  justify-center  text-white px-6 lg:px-12">
               <div className='w-[95%] md:w-[80%]'>
-              <p className='text-[18px] md:text-[35px] font-semibold'>Welcome To --</p>
+              <p className='text-[18px] md:text-[35px] font-semibold'>Welcome To <span className='text-primary'>-----</span></p>
               <p className='text-[22px] md:text-[45px] font-bold text-primary'>shyamoli ideal polytechnic institute</p>
               <p className="text-[16px] md:text-[30px] font-semibold mb-4">{banner.heading}</p>
               <p className="text-[14px] md:text-xl mb-6">{banner.description}</p>
