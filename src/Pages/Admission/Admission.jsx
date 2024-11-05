@@ -1,10 +1,11 @@
-
+import React from "react";
 const Admission = () => {
   return (
     <div>
-      <p>This is Admission Page</p>
+      
+      
     </div>
-  )
-}
+  );
+};
 
-export default Admission
+export default Admission;
