@@ -12,13 +12,25 @@ const Navbar = () => {
   const [open, isOpen] = useState(false);
   const navLink = (
     <>
-      <NavLink to={'/'}>Home</NavLink>
-      <NavLink to={'/departments'}>Departments</NavLink>
-      <NavLink to={'/academic'}>Academic</NavLink>
-      <NavLink to={'/administration'}>Administration</NavLink>
-      <NavLink to={'/'}>Blogs</NavLink>
-      <NavLink to={'/about'}>About</NavLink>
-      <NavLink to={'/contact'}>Contact</NavLink>
+      <NavLink to={"/"}>Home</NavLink>
+      <NavLink to={"/departments"}>Departments</NavLink>
+      <li>
+        <details>
+          <summary>Parent</summary>
+          <ul className="p-2">
+            <li>
+              <NavLink to={"/academic"}>Submenu 1 </NavLink>
+            </li>
+            <li>
+              <a>Submenu 2</a>
+            </li>
+          </ul>
+        </details>
+      </li> 
+      <NavLink to={"/administration"}>Administration</NavLink>
+      <NavLink to={"/"}>Blogs</NavLink>
+      <NavLink to={"/about"}>About</NavLink>
+      <NavLink to={"/contact"}>Contact</NavLink>
     </>
   );
   return (
@@ -54,7 +66,7 @@ const Navbar = () => {
                 <FaYoutube />
               </Link>
             </div>
-            <span className="bg-secondary h-10 w-6/12 -right-5 top-0 absolute -skew-x-[36deg]"></span>
+            <span className="bg-secondary h-10 w-6/12 -right-0 top-0 absolute -z-1 left-side-skew"></span>
           </div>
         </div>
       </div>
@@ -73,8 +85,12 @@ const Navbar = () => {
           />
         )}
         {/* sidebar nav  */}
-        <div className={`md:hidden flex flex-col space-y-2 absolute text-black top-[112px] h-full bg-white w-6/12 pl-4 py-2 ${open ? 'right-0' : '-right-[400px]'} duration-500`}>
-        {navLink}
+        <div
+          className={`md:hidden flex flex-col space-y-2 absolute text-black top-[112px] h-full bg-white w-6/12 pl-4 py-2 ${
+            open ? "right-0" : "-right-[400px]"
+          } duration-500`}
+        >
+          {navLink}
         </div>
         {/* sidebar nav end  */}
         <div className="hidden md:block">
