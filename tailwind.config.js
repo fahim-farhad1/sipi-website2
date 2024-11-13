@@ -15,6 +15,7 @@ export default {
       'gray-dark': '#273444',
       'gray': '#6D7486',
       'gray-light': '#d3dce6',
+      "footer":"#20263e",
     },
     extend: {},
   },

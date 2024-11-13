@@ -1,7 +1,7 @@
 import AboutUsSection from "../../Components/home/AboutUsSection"
 import BannerSection from "../../Components/home/BannerSection"
 import CampusSecton from "../../Components/home/CampusSecton"
-import OurCources from "../../Components/home/CourcesSction"
+import DepartmentSection from "../../Components/home/DepartmentSection"
 import OurTeachers from "../../Components/home/OurTeachers"
 
 const Home = () => {
@@ -11,7 +11,7 @@ const Home = () => {
       <AboutUsSection/>
       <div className="w-[90%] xl:w-[1224px] mx-auto overflow-hidden">
       <CampusSecton/>
-      <OurCources/>
+      <DepartmentSection/>
       <OurTeachers/>
       </div>
     </div>

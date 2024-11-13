@@ -23,7 +23,7 @@ export default function AboutUsSection() {
           <p className="text-lg text-gray-700 mb-6">
           Welcome to Shyamoli Ideal Polytechnic Institute. With a heartfelt desire to promoting our ideals into the fields of education and research, Shyamoli Ideal Polytechnic Institute is poised to become an instant celebrity in the field of engineering education. Built with the vision of producing the engineering graduates of the new millennium with the dexterity and maturity the nation requires – this endeavor heralds our continued commitment to the people of Bangladesh. It is our expectation that Shyamoli Ideal Polytechnic Institute will bring a new era in the field of diploma engineering education. It will provide the nation and the global economy with a fresh and continuous combination of highly skilled diploma graduates ready and willing to meet and exceed all professional opportunities in all fields of involvement. As we continue to progress to meet the challenges and goals of today, we will maintain our vigil for the challenges of tomorrow. Through this journey Insha-Allah our will and commitment to our cause will remain steadfast.
           </p>
-          <button className="bg-blue-500 text-white py-3 px-6 rounded-lg hover:bg-blue-600 transition">
+          <button className="bg-primary text-white py-3 px-6 rounded-lg hover:bg-white hover:text-primary transition">
             Learn More
           </button>
         </div>
