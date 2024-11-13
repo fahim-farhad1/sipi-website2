@@ -70,9 +70,9 @@ export default function OurTeachers() {
                                 <div className="bg-white  overflow-hidden">
                               
                                 <div className="p-4">
-                                <div className='w-96 h-[380px] px-4 md:px-8 py-4  rounded-xl border-gray/10 border hover:shadow-xl relative'>
+                                <div className='w-96 h-[380px] px-4 md:px-8 py-4 bg-primary/10  rounded-xl border-gray/10 border hover:shadow-xl relative'>
                                 <div className='flex justify-between'>
-                                    <img className='w-[100px] h-[100px]' src={teacher?.image} alt="" />
+                                    <img className='w-[100px] h-[100px] rounded-full' src={teacher?.image} alt="" />
                                     <img className='w-[70px] h-[70px] rounded-md mt-4 shadow-lg border-gray/10 border' src={teacher?.qr} alt="" />
                                 </div>
                                 <div className='my-5'>

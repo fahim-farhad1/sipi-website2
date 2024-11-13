@@ -24,7 +24,7 @@ const OurCources = () => {
       ];
       
     return (
-        <div className='my-5'>
+        <div className='py-5'>
             <LeftTitle badge="Our Cources" title="Graduate Programs"/>
 
             <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
