@@ -26,9 +26,10 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/departments",
+        path: "/departments/computer",
         element: <Departments />,
       },
+
       {
         path: "/academic",
         element: <Academic />,

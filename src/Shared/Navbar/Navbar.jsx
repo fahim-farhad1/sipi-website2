@@ -15,7 +15,6 @@ const navLinks = [
   { name: "Home", path: "/" },
   {
     name: "Departments",
-    path: "/department",
     subLinks: [
       { name: "Computer", path: "/departments/computer" },
       { name: "Architecture", path: "/departments/architecture" },
@@ -46,8 +45,8 @@ const navLinks = [
 ];
 
 const Navbar = () => {
+  const [open, isOpen] = useState(false);
   const [activeAccordion, setActiveAccordion] = useState(null);
-  const [open, setOpen] = useState(false);
 
   const toggleAccordion = (index) => {
     setActiveAccordion(activeAccordion === index ? null : index);
@@ -88,7 +87,7 @@ const Navbar = () => {
                 <FaYoutube />
               </Link>
             </div>
-            <span className="bg-green-900 h-10 w-6/12 -right-4 top-0 absolute -skew-x-[36deg]"></span>
+            <span className="bg-secondary h-10 w-6/12 -right-0 top-0 absolute -z-1 left-side-skew"></span>
           </div>
         </div>
       </div>
@@ -108,46 +107,36 @@ const Navbar = () => {
           />
         )}
 
-        {/* Mobile sidebar nav */}
+        {/* sidebar nav */}
         <div
-          className={`md:hidden flex flex-col space-y-2 absolute text-black top-[112px] bg-white h-[2000px] w-8/12 pl-4 py-2 ${
+          className={`md:hidden flex flex-col space-y-2 absolute text-black top-[112px] h-full bg-white w-6/12 pl-4 py-2 ${
             open ? "right-0" : "-right-[400px]"
-          } duration-500 space-y-5 border border-gray-200 px-2 pt-5 font-semibold`}
+          } duration-500 space-y-5 border border-gray-200 px-2 pt-5`}
         >
           {navLinks.map((link, index) =>
             link.subLinks ? (
-              <div key={link.name}>
-                {/* Toggleable Accordion Header */}
+              <div key={link.name} className="">
                 <div
                   onClick={() => toggleAccordion(index)}
-                  className="flex items-center cursor-pointer justify-between"
+                  className="flex items-center hover:text-blue-500 cursor-pointer justify-between "
                 >
-                  <NavLink
-                    to={link.path}
-                    className="hover:text-blue-500 font-semibold"
-                  >
-                    {link.name}
-                  </NavLink>
-                  <button className="ml-2">
+                  <span>{link.name}</span>
+                  <span className="ml-2">
                     {activeAccordion === index ? (
                       <FaChevronLeft className="h-4 w-4 text-gray-600" />
                     ) : (
                       <FaChevronRight className="h-4 w-4 text-gray-600" />
                     )}
-                  </button>
+                  </span>
                 </div>
-
-                {/* Dropdown Content */}
                 {activeAccordion === index && (
-                  <div className="pl-6 mt-2 space-y-2">
+                  <div className="pl-4 space-y-2 mt-3">
                     {link.subLinks.map((subLink) => (
-                      <div key={subLink.name}>
-                        <NavLink
-                          to={subLink.path}
-                          className="block py-1 text-gray-700 hover:text-blue-500"
-                        >
-                          {subLink.name}
-                        </NavLink>
+                      <div
+                        key={subLink.name}
+                        className="py-1 hover:text-blue-500"
+                      >
+                        <NavLink to={subLink.path}>{subLink.name}</NavLink>
                       </div>
                     ))}
                   </div>
@@ -157,7 +146,7 @@ const Navbar = () => {
               <NavLink
                 key={link.name}
                 to={link.path}
-                className="block mb-2 hover:text-blue-500 font-semibold"
+                className="hover:text-blue-500"
               >
                 {link.name}
               </NavLink>
