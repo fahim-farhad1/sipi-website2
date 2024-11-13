@@ -1,8 +1,9 @@
+import DepartmentBanner from "../../Components/Banners/DepartmentBanner"
 
 const Departments = () => {
   return (
     <div>
-      <p>Departments</p>
+      <DepartmentBanner />
     </div>
   )
 }

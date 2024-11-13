@@ -14,7 +14,7 @@ import { FaChevronRight } from "react-icons/fa";
 const navLinks = [
   { name: "Home", path: "/" },
   {
-    name: "Departments",
+    name: "Departments", path: '/departments',
     subLinks: [
       { name: "Computer", path: "/departments/computer" },
       { name: "Architecture", path: "/departments/architecture" },
@@ -37,38 +37,16 @@ const navLinks = [
 
 const Navbar = () => {
   const [open, isOpen] = useState(false);
-<<<<<<< HEAD
   const navLink = (
     <>
       <NavLink to={"/"}>Home</NavLink>
       <NavLink to={"/departments"}>Departments</NavLink>
-      <li>
-        <details>
-          <summary>Parent</summary>
-          <ul className="p-2">
-            <li>
-              <NavLink to={"/academic"}>Submenu 1 </NavLink>
-            </li>
-            <li>
-              <a>Submenu 2</a>
-            </li>
-          </ul>
-        </details>
-      </li> 
       <NavLink to={"/administration"}>Administration</NavLink>
       <NavLink to={"/"}>Blogs</NavLink>
       <NavLink to={"/about"}>About</NavLink>
       <NavLink to={"/contact"}>Contact</NavLink>
     </>
   );
-=======
-  const [activeAccordion, setActiveAccordion] = useState(null);
-
-  const toggleAccordion = (index) => {
-    setActiveAccordion(activeAccordion === index ? null : index);
-  };
-
->>>>>>> f5fd00c014e880be625391d634cd81f2123d9ab6
   return (
     <div className="w-full bg-white fixed z-10 border border-gray-200">
       {/* top navbar */}
@@ -110,11 +88,7 @@ const Navbar = () => {
                 <FaYoutube />
               </Link>
             </div>
-<<<<<<< HEAD
             <span className="bg-secondary h-10 w-6/12 -right-0 top-0 absolute -z-1 left-side-skew"></span>
-=======
-            <span className="bg-green-900 h-10 w-6/12 -right-4 top-0 absolute -skew-x-[36deg]"></span>
->>>>>>> f5fd00c014e880be625391d634cd81f2123d9ab6
           </div>
         </div>
       </div>
@@ -133,7 +107,6 @@ const Navbar = () => {
             className="h-6 w-6 md:hidden text-black"
           />
         )}
-<<<<<<< HEAD
         {/* sidebar nav  */}
         <div
           className={`md:hidden flex flex-col space-y-2 absolute text-black top-[112px] h-full bg-white w-6/12 pl-4 py-2 ${
@@ -141,54 +114,6 @@ const Navbar = () => {
           } duration-500`}
         >
           {navLink}
-=======
-
-        {/* sidebar nav */}
-        <div
-          className={`md:hidden flex flex-col space-y-2 absolute text-black top-[112px] bg-white h-[2000px] w-8/12 pl-4 py-2 ${
-            open ? "right-0" : "-right-[400px]"
-          } duration-500 space-y-5 border border-gray-200 px-2 pt-5`}
-        >
-          {navLinks.map((link, index) =>
-            link.subLinks ? (
-              <div key={link.name} className="">
-                <div
-                  onClick={() => toggleAccordion(index)}
-                  className="flex items-center hover:text-blue-500 cursor-pointer justify-between "
-                >
-                  <span>{link.name}</span>
-                  <span className="ml-2">
-                    {activeAccordion === index ? (
-                      <FaChevronLeft className="h-4 w-4 text-gray-600" />
-                    ) : (
-                      <FaChevronRight className="h-4 w-4 text-gray-600" />
-                    )}
-                  </span>
-                </div>
-                {activeAccordion === index && (
-                  <div className="pl-4 space-y-2 mt-3">
-                    {link.subLinks.map((subLink) => (
-                      <div
-                        key={subLink.name}
-                        className="py-1 hover:text-blue-500"
-                      >
-                        <NavLink to={subLink.path}>{subLink.name}</NavLink>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ) : (
-              <NavLink
-                key={link.name}
-                to={link.path}
-                className="hover:text-blue-500"
-              >
-                {link.name}
-              </NavLink>
-            )
-          )}
->>>>>>> f5fd00c014e880be625391d634cd81f2123d9ab6
         </div>
 
         {/* sidebar nav end Mobile */}
