@@ -1,9 +1,10 @@
 import React from 'react'
-import img from '../../assets/Departments/3a851467-0dc7-473e-ac85-f9200185fbf9.jpeg'
+import img from '../../assets/Departments/Computer/Department-of-Computer-Science.jpg'
 const DepartmentBanner = () => {
   return (
-    <div className="">
-      <img src={img} alt="" />
+    <div> 
+      <img className='w-full h-96 opacity-60 bg-green-600' src={img} alt="" />
+      <p className='text-5xl text-center -mt-52 text-black'>Computer</p>
     </div>
   )
 }

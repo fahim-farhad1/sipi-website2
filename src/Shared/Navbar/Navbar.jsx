@@ -88,7 +88,7 @@ const Navbar = () => {
                 <FaYoutube />
               </Link>
             </div>
-            <span className="bg-secondary h-10 w-6/12 -right-0 top-0 absolute -z-1 left-side-skew"></span>
+            <span className="bg-green-600 h-10 w-6/12 -right-0 top-0 absolute -z-1 left-side-skew"></span>
           </div>
         </div>
       </div>
@@ -125,7 +125,7 @@ const Navbar = () => {
                   <div
                     tabIndex={0}
                     role="button"
-                    className="hover:text-blue-500"
+                    className="hover:text-green-500"
                   >
                     {link.name}
                   </div>
@@ -134,10 +134,10 @@ const Navbar = () => {
                     className="dropdown-content menu bg-white z-[1] w-52 p-2 shadow"
                   >
                     {link.subLinks.map((subLink) => (
-                      <li key={subLink.name} className="hover:text-blue-500">
+                      <li key={subLink.name} className="hover:text-green-500">
                         <NavLink
                           to={subLink.path}
-                          className="hover:text-blue-500"
+                          className="hover:text-green-500"
                         >
                           {subLink.name}
                         </NavLink>
@@ -149,7 +149,7 @@ const Navbar = () => {
                 <NavLink
                   key={link.name}
                   to={link.path}
-                  className="hover:text-blue-500"
+                  className="hover:text-green-500"
                 >
                   {link.name}
                 </NavLink>
