@@ -8,8 +8,36 @@ import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/Logo/sipi.png";
 import { useState } from "react";
 import { MdClose } from "react-icons/md";
+import { FaChevronLeft } from "react-icons/fa";
+import { FaChevronRight } from "react-icons/fa";
+
+const navLinks = [
+  { name: "Home", path: "/" },
+  {
+    name: "Departments",
+    subLinks: [
+      { name: "Computer", path: "/departments/computer" },
+      { name: "Architecture", path: "/departments/architecture" },
+      { name: "Civil", path: "/departments/civil" },
+    ],
+  },
+  {
+    name: "Academic",
+    subLinks: [
+      { name: "Admissions", path: "/academic/admissions" },
+      { name: "Programs", path: "/academic/programs" },
+      { name: "Research", path: "/academic/research" },
+    ],
+  },
+  { name: "Administration", path: "/administration" },
+  { name: "Blogs", path: "/blogs" },
+  { name: "About", path: "/about" },
+  { name: "Contact", path: "/contact" },
+];
+
 const Navbar = () => {
   const [open, isOpen] = useState(false);
+<<<<<<< HEAD
   const navLink = (
     <>
       <NavLink to={"/"}>Home</NavLink>
@@ -33,21 +61,37 @@ const Navbar = () => {
       <NavLink to={"/contact"}>Contact</NavLink>
     </>
   );
+=======
+  const [activeAccordion, setActiveAccordion] = useState(null);
+
+  const toggleAccordion = (index) => {
+    setActiveAccordion(activeAccordion === index ? null : index);
+  };
+
+>>>>>>> f5fd00c014e880be625391d634cd81f2123d9ab6
   return (
-    <div className="w-full ">
-      {/* top navbar  */}
-      <div className="bg-primary h-12 md:h-10 flex items-center">
+    <div className="w-full bg-white fixed z-10 border border-gray-200">
+      {/* top navbar */}
+      <div className="bg-orange-700 h-12 md:h-10 flex items-center">
         <div className="mx-auto w-full flex items-center justify-between">
-          <div className="flex items-center md:h-10 px-5">
-            <div className="flex">
-              <IoMdCall className="h-6 w-6 mt-[2px] text-white" />
-              <p className="text-white"> +8801712634870</p>
+          <div className="flex items-center md:h-10 px-1 md:px-5">
+            <div className="flex items-center gap-3 text-sm">
+              {/* Clickable phone number */}
+              <IoMdCall className="h-6 w-6 text-white" />
+              <a href="tel:+8801712634870" className="text-white">
+                +8801712634870
+              </a>
             </div>
-            {/* divider  */}
+
+            {/* divider */}
             <RxDividerVertical className=" h-12 w-8 md:h-16 md:w-10 text-white" />
-            <div className="flex items-center gap-1">
+
+            <div className="flex items-center gap-3 text-sm">
+              {/* Clickable email */}
               <TfiEmail className="w-5 h-5 text-white" />
-              <p className="text-white">info@sipi.edu.bd</p>
+              <a href="mailto:info@sipi.edu.bd" className="text-white">
+                info@sipi.edu.bd
+              </a>
             </div>
           </div>
 
@@ -56,7 +100,7 @@ const Navbar = () => {
               <Link to="https://www.facebook.com/">
                 <FaFacebookF />
               </Link>
-              <Link to="https://www.instragramcom">
+              <Link to="https://www.instagram.com">
                 <IoLogoInstagram />
               </Link>
               <Link to="https://www.x.com">
@@ -66,24 +110,30 @@ const Navbar = () => {
                 <FaYoutube />
               </Link>
             </div>
+<<<<<<< HEAD
             <span className="bg-secondary h-10 w-6/12 -right-0 top-0 absolute -z-1 left-side-skew"></span>
+=======
+            <span className="bg-green-900 h-10 w-6/12 -right-4 top-0 absolute -skew-x-[36deg]"></span>
+>>>>>>> f5fd00c014e880be625391d634cd81f2123d9ab6
           </div>
         </div>
       </div>
-      {/* main navbar  */}
-      <div className="mx-10 h-16  flex items-center justify-between">
-        <img className="h-14 w-14" src={logo} alt="SIPI LOGO" />
+
+      {/* main navbar */}
+      <div className="mx-2 md:mx-10 h-16 flex items-center justify-between">
+        <img className="h-16 w-16" src={logo} alt="SIPI LOGO" />
         {open ? (
           <MdClose
             onClick={() => isOpen(!open)}
-            className="md:hidden h-8 w-8"
+            className="md:hidden text-black h-8 w-8"
           />
         ) : (
           <FaListUl
             onClick={() => isOpen(!open)}
-            className="h-6 w-6 md:hidden"
+            className="h-6 w-6 md:hidden text-black"
           />
         )}
+<<<<<<< HEAD
         {/* sidebar nav  */}
         <div
           className={`md:hidden flex flex-col space-y-2 absolute text-black top-[112px] h-full bg-white w-6/12 pl-4 py-2 ${
@@ -91,11 +141,95 @@ const Navbar = () => {
           } duration-500`}
         >
           {navLink}
+=======
+
+        {/* sidebar nav */}
+        <div
+          className={`md:hidden flex flex-col space-y-2 absolute text-black top-[112px] bg-white h-[2000px] w-8/12 pl-4 py-2 ${
+            open ? "right-0" : "-right-[400px]"
+          } duration-500 space-y-5 border border-gray-200 px-2 pt-5`}
+        >
+          {navLinks.map((link, index) =>
+            link.subLinks ? (
+              <div key={link.name} className="">
+                <div
+                  onClick={() => toggleAccordion(index)}
+                  className="flex items-center hover:text-blue-500 cursor-pointer justify-between "
+                >
+                  <span>{link.name}</span>
+                  <span className="ml-2">
+                    {activeAccordion === index ? (
+                      <FaChevronLeft className="h-4 w-4 text-gray-600" />
+                    ) : (
+                      <FaChevronRight className="h-4 w-4 text-gray-600" />
+                    )}
+                  </span>
+                </div>
+                {activeAccordion === index && (
+                  <div className="pl-4 space-y-2 mt-3">
+                    {link.subLinks.map((subLink) => (
+                      <div
+                        key={subLink.name}
+                        className="py-1 hover:text-blue-500"
+                      >
+                        <NavLink to={subLink.path}>{subLink.name}</NavLink>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ) : (
+              <NavLink
+                key={link.name}
+                to={link.path}
+                className="hover:text-blue-500"
+              >
+                {link.name}
+              </NavLink>
+            )
+          )}
+>>>>>>> f5fd00c014e880be625391d634cd81f2123d9ab6
         </div>
-        {/* sidebar nav end  */}
+
+        {/* sidebar nav end Mobile */}
         <div className="hidden md:block">
           <div className="flex gap-5 font-semibold text-black items-center">
-            {navLink}
+            {navLinks.map((link) =>
+              link.subLinks ? (
+                <div className="dropdown dropdown-hover" key={link.name}>
+                  <div
+                    tabIndex={0}
+                    role="button"
+                    className="hover:text-blue-500"
+                  >
+                    {link.name}
+                  </div>
+                  <ul
+                    tabIndex={0}
+                    className="dropdown-content menu bg-white z-[1] w-52 p-2 shadow"
+                  >
+                    {link.subLinks.map((subLink) => (
+                      <li key={subLink.name} className="hover:text-blue-500">
+                        <NavLink
+                          to={subLink.path}
+                          className="hover:text-blue-500"
+                        >
+                          {subLink.name}
+                        </NavLink>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : (
+                <NavLink
+                  key={link.name}
+                  to={link.path}
+                  className="hover:text-blue-500"
+                >
+                  {link.name}
+                </NavLink>
+              )
+            )}
             <button className="btn btn-ghost btn-circle">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -114,7 +248,7 @@ const Navbar = () => {
             </button>
           </div>
         </div>
-        <button className="bg-primary py-5 px-3 text-white hover:bg-secondary duration-500 hidden md:block">
+        <button className="bg-orange-700 py-3 px-3 text-white hover:bg-green-700 duration-500 hidden md:block">
           ADMISSION OPEN
         </button>
       </div>
