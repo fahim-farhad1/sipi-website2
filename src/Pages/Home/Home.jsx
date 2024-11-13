@@ -8,10 +8,10 @@ const Home = () => {
   return (
     <div className="">
       <BannerSection/>
-      <AboutUsSection/>
       <div className="w-[90%] xl:w-[1224px] mx-auto overflow-hidden">
-      <CampusSecton/>
       <DepartmentSection/>
+      <AboutUsSection/>
+      <CampusSecton/>
       <OurTeachers/>
       </div>
     </div>
