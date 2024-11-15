@@ -1,7 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../Layouts/MainLayout";
 import Home from "../Pages/Home/Home";
-import Departments from "../Pages/Departments/Departments";
 import Academic from "../Pages/Academic/Academic";
 import External from "../Pages/External/External";
 import Administration from "../Pages/Administration/Administration";
@@ -27,8 +26,8 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/departments/computer",
-        element: <Framework></Framework>,
+        path: "/departments/:department",
+        element: <Framework />,
       },
 
       {

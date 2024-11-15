@@ -3,9 +3,11 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../Shared/Loader/Loader";
+import { useParams } from "react-router-dom";
 
 const Banner = () => {
   const axiosPublic = useAxiosPublic();
+  const departmentName = useParams();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
 
@@ -18,7 +20,7 @@ const Banner = () => {
     queryKey: ["DepartmentData"],
     queryFn: () =>
       axiosPublic
-        .get(`/Department?departmentName=Computer`)
+        .get(`/Department?departmentName=${departmentName.department}`)
         .then((res) => res.data),
   });
 
@@ -30,7 +32,9 @@ const Banner = () => {
   } = useQuery({
     queryKey: ["RoutineData"],
     queryFn: () =>
-      axiosPublic.get(`/Routine?department=Computer`).then((res) => res.data),
+      axiosPublic
+        .get(`/Routine?department=${departmentName.department}`)
+        .then((res) => res.data),
   });
 
   // Fetching Tuition-FeeData
@@ -42,7 +46,7 @@ const Banner = () => {
     queryKey: ["TuitionFeeData"],
     queryFn: () =>
       axiosPublic
-        .get(`/Tuition-Fee?department=Computer`)
+        .get(`/Tuition-Fee?department=${departmentName.department}`)
         .then((res) => res.data),
   });
 
