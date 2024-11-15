@@ -8,6 +8,7 @@ import Administration from "../Pages/Administration/Administration";
 import AboutUs from "../Pages/AboutUs/AboutUs";
 import ContactUs from "../Pages/ContactUs/ContactUs";
 import Admission from "../Pages/Admission/Admission";
+import Framework from "../Pages/Departments/Framework/Framework";
 
 const router = createBrowserRouter([
   {
@@ -27,7 +28,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/departments/computer",
-        element: <Departments />,
+        element: <Framework></Framework>,
       },
 
       {
@@ -51,9 +52,9 @@ const router = createBrowserRouter([
         element: <ContactUs />,
       },
       {
-        path: '/admission',
-        element: <Admission />
-      }
+        path: "/admission",
+        element: <Admission />,
+      },
     ],
   },
 ]);
