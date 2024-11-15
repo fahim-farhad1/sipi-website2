@@ -6,7 +6,7 @@ const AcademicComp = () => {
   return (
     <div>
       {/* Top Part */}
-      <div className="flex flex-col md:flex-row items-center gap-5">
+      <div className="flex flex-col md:flex-row items-center gap-5 w-full">
         <p className="text-[128px] font-semibold">12+</p>
         <p className="text-3xl md:text-5xl font-semibold text-center md:text-left">
           BTEB Affiliated Courses

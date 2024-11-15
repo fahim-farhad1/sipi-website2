@@ -27,11 +27,14 @@ const Academic = () => {
 
   return (
     <div className="mt-[105px] text-black">
-      <div className="flex flex-col md:flex-row max-w-[1200px] mx-auto">
+      <div className="flex flex-col md:flex-row max-w-[1200px] mx-auto gap-10">
         {/* Buttons */}
-        <div className="md:w-2/5 space-y-2 mt-20 text-center md:text-left mx-5">
+        <div
+          className="w-full md:w-1/3 space-y-2 mt-20 text-center md:text-left fixed top-28 left-60"
+         
+        >
           <button
-            className={`font-semibold text-2xl p-5 w-full md:w-4/5 text-left md:text-left ${
+            className={`font-semibold text-2xl p-5 w-full md:w-[400px] text-left md:text-left ${
               activeTab === "academic"
                 ? "bg-[#002147] text-white"
                 : "bg-[#F2F8F1] hover:bg-[#002147] hover:text-white"
@@ -41,7 +44,7 @@ const Academic = () => {
             Academic
           </button>
           <button
-            className={`font-semibold text-2xl p-5 w-full md:w-4/5 text-left md:text-left ${
+            className={`font-semibold text-2xl p-5 w-full md:w-[400px] text-left md:text-left ${
               activeTab === "notices"
                 ? "bg-[#002147] text-white"
                 : "bg-[#F2F8F1] hover:bg-[#002147] hover:text-white"
@@ -51,7 +54,7 @@ const Academic = () => {
             All Notices
           </button>
           <button
-            className={`font-semibold text-2xl p-5 w-full md:w-4/5 text-left md:text-left ${
+            className={`font-semibold text-2xl p-5 w-full md:w-[400px] text-left md:text-left ${
               activeTab === "routines"
                 ? "bg-[#002147] text-white"
                 : "bg-[#F2F8F1] hover:bg-[#002147] hover:text-white"
@@ -61,7 +64,7 @@ const Academic = () => {
             All Routines
           </button>
           <button
-            className={`font-semibold text-2xl p-5 w-full md:w-4/5 text-left md:text-left ${
+            className={`font-semibold text-2xl p-5 w-full md:w-[400px] text-left md:text-left ${
               activeTab === "results"
                 ? "bg-[#002147] text-white"
                 : "bg-[#F2F8F1] hover:bg-[#002147] hover:text-white"
@@ -73,7 +76,7 @@ const Academic = () => {
         </div>
 
         {/* Content */}
-        <div className="md:w-3/5 mt-20">
+        <div className="w-full md:w-2/3 mt-20 ml-[350px]">
           {activeTab === "academic" && <AcademicComp />}
           {activeTab === "notices" && <AllNotices />}
           {activeTab === "routines" && <AllRoutines />}
@@ -82,7 +85,7 @@ const Academic = () => {
               src="https://btebresultszone.com/results"
               width="100%"
               height="500px"
-              frameborder="0"
+              frameBorder="0"
             ></iframe>
           )}
         </div>
