@@ -1,5 +1,7 @@
 import React from 'react'
 import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css'; // Import slick-carousel CSS
+import 'slick-carousel/slick/slick-theme.css'; // Import slick-carousel theme CSS
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import MiddleSectionTitle from '../ReuseableTitle/MiddleSectionTitle';
@@ -48,7 +50,7 @@ export default function GuestTestimonialSection() {
       <MiddleSectionTitle badge="Testimonial" title="Guest Testimonials" />
       <Slider {...settings}>
         {testimonials.map((testimonial) => (
-          <div key={testimonial.id} className="px-4">
+          <div key={testimonial.id} className="px-4 py-5">
             <div className="bg-white rounded-lg shadow-lg p-6 text-center hover:shadow-xl transition">
               {/* Guest Image */}
               <div className="w-24 h-24 mx-auto rounded-full overflow-hidden mb-4">
