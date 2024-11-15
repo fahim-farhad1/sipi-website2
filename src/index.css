@@ -3,10 +3,10 @@
 @tailwind utilities;
 
 
-/* body{
+body{
     font-family: "Jost", sans-serif;
     font-optical-sizing: auto;
-} */
+}
 
 .left-side-skew{
     clip-path: polygon(5% 0, 100% 0, 100% 100%, 0% 100%);

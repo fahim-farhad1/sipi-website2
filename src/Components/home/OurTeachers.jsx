@@ -8,7 +8,18 @@ import TeacherCard from './TeacherCard';
 
 
 
-export default function OurTeachers() {  
+  
+
+export default function OurTeachers() {
+  const [teachers,setTeachers] =useState([]);
+
+  useEffect(()=>{
+    fetch("https://sipi-server.vercel.app/Teachers")
+    .then(res=>res.json())
+    .then(data=>setTeachers(data))
+  },[])
+  console.log(teachers)
+
         const settings = {
           autoplay: true, // Auto scroll through slides
           autoplaySpeed: 1000, // Time in ms between slides
@@ -27,7 +38,7 @@ export default function OurTeachers() {
         };
   return (
     <div className='mt-[60px]'>
-        <MiddleSectionTitle badge="TEACHERS" title="Meet Our Teachers"/>
+        <MiddleSectionTitle badge="our teachers" title="Get every single answer here."/>
 
         {/* slider */}
                 <Slider {...settings}>
