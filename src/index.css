@@ -8,6 +8,4 @@ body{
     font-optical-sizing: auto;
 }
 
-.left-side-skew{
-    clip-path: polygon(5% 0, 100% 0, 100% 100%, 0% 100%);
-}
+.slick-prev::before, .slick-next::before { color: #ff7350 !important; }
