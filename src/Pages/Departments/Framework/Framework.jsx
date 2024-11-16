@@ -174,7 +174,7 @@ const Banner = () => {
       {/* Content */}
       <div className="relative max-w-screen-xl mx-auto flex flex-col md:flex-row mt-10 gap-10 px-4 sm:px-6">
         {/* Left Part */}
-        <div className="w-full md:w-2/3 text-black md:px-10">
+        <div className="w-full md:w-[600px] text-black md:px-10">
           {/* Name */}
           <h2
             id="department-name"

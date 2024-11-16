@@ -30,7 +30,7 @@ const Academic = () => {
       <div className="flex flex-col md:flex-row max-w-[1200px] mx-auto gap-10">
         {/* Buttons */}
         <div
-          className="w-full md:w-1/3 space-y-2 mt-20 text-center md:text-left fixed top-28 left-60"
+          className="w-full md:w-[250px] space-y-2 mt-20 text-center md:text-left fixed top-28 left-60"
          
         >
           <button
@@ -76,7 +76,7 @@ const Academic = () => {
         </div>
 
         {/* Content */}
-        <div className="w-full md:w-2/3 mt-20 ml-[350px]">
+        <div className="w-full md:w-2/3 mt-20 ml-[500px]">
           {activeTab === "academic" && <AcademicComp />}
           {activeTab === "notices" && <AllNotices />}
           {activeTab === "routines" && <AllRoutines />}

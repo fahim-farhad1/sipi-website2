@@ -13,8 +13,8 @@ const Home = () => {
     <div className="">
       <BannerSection/>
       <div className="w-[90%] xl:w-[1224px] mx-auto overflow-hidden">
-      <DepartmentSection/>
       <AboutUsSection/>
+      <DepartmentSection/>
       <CampusSecton/>
       <OurTeachers/>
       <EventSection/>
