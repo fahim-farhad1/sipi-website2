@@ -17,10 +17,10 @@ const navLinks = [
     name: "Departments",
     path: "/department",
     subLinks: [
-      { name: "Computer", path: "/departments/computer" },
-      { name: "Architecture", path: "/departments/architecture" },
-      { name: "Civil", path: "/departments/civil" },
-      { name: "Graphics", path: "/departments/Graphics" },
+      { name: "Computer", path: "/departments/Computer" },
+      { name: "Architecture", path: "/departments/Architecture" },
+      { name: "Civil", path: "/Departments/civil" },
+      { name: "Graphics", path: "/Departments/Graphics" },
     ],
   },
   {
