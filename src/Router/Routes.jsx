@@ -9,6 +9,9 @@ import Admission from "../Pages/Admission/Admission";
 import Framework from "../Pages/Departments/Framework/Framework";
 import Teacher from "../Pages/Administration/Teacher/Teacher";
 import Management from "../Pages/Administration/Management/Management";
+import DashboardLayout from "../Layouts/DashboardLayout";
+import ManageTeachers from "../Dashboard_Pages/ManageTeachers/ManageTeachers";
+import ManageManagement from "../Dashboard_Pages/ManageManagement/ManageManagement";
 
 const router = createBrowserRouter([
   {
@@ -58,6 +61,20 @@ const router = createBrowserRouter([
       {
         path: "/admission",
         element: <Admission />,
+      },
+    ],
+  },
+  {
+    path: "/Dashboard",
+    element: <DashboardLayout></DashboardLayout>,
+    children: [
+      {
+        path: "ManageTeachers",
+        element: <ManageTeachers></ManageTeachers>,
+      },
+      {
+        path: "ManageManagement",
+        element: <ManageManagement></ManageManagement>,
       },
     ],
   },
