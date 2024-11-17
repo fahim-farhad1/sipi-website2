@@ -135,7 +135,7 @@ const UpdateTeacher = ({ TeacherData, refetch }) => {
     try {
       // Sending PUT request to update teacher data by ID
       const response = await axiosPublic.put(
-        `/Teachers/${TeacherData._id}`, // Assuming TeacherData._id contains the teacher's ID
+        `/Teachers/${TeacherData._id}`,
         data
       );
 
