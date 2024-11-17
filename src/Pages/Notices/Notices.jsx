@@ -27,6 +27,15 @@ const Notices = () => {
     }
   };
 
+  // Function to get a preview of the first 20-50 words of the content
+  const getContentPreview = (content, wordLimit = 50) => {
+    const words = content.split(" ");
+    if (words.length <= wordLimit) {
+      return content;
+    }
+    return words.slice(0, wordLimit).join(" ") + "..."; // Return preview followed by "..."
+  };
+
   // If data is successfully fetched, render the notices
   return (
     <div className="container mx-auto px-4 mt-32 max-w-[1200px] text-black">
@@ -53,6 +62,12 @@ const Notices = () => {
               </p>
             </div>
 
+            {/* Preview of the notice content */}
+            <p className="text-gray-700">
+              {getContentPreview(notice.details.content, 30)}
+            </p>
+
+            {/* Read more link */}
             <a
               onClick={() => handleReadMoreClick(notice)} // Handle the click event
               className="text-green-500 hover:underline"

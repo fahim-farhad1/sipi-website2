@@ -2,12 +2,12 @@ import React from "react";
 
 const Results = () => {
   return (
-    <div className="max-w-[1200px]">
+    <div className="max-w-[1200px] mx-auto">
       <iframe
         src="https://btebresultszone.com/results"
         width="100%"
-        height="500px"
-        frameBorder="0"
+        
+        className="h-screen"
       ></iframe>
     </div>
   );

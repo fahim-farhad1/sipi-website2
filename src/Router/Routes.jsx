@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Route } from "react-router-dom";
 import MainLayout from "../Layouts/MainLayout";
 import Home from "../Pages/Home/Home";
 import Academic from "../Pages/Academic/Academic";
@@ -13,6 +13,8 @@ import DashboardLayout from "../Layouts/DashboardLayout";
 import ManageTeachers from "../Dashboard_Pages/ManageTeachers/ManageTeachers";
 import ManageManagement from "../Dashboard_Pages/ManageManagement/ManageManagement";
 import Notices from "../Pages/Notices/Notices";
+import Routines from "../Pages/Routines/Routines";
+import Results from "../Pages/Results/Results";
 
 const router = createBrowserRouter([
   {
@@ -34,14 +36,21 @@ const router = createBrowserRouter([
         path: "/departments/:department",
         element: <Framework />,
       },
-
       {
-        path: "/academic",
+        path: "/Academic",
         element: <Academic />,
       },
       {
         path: "/Notices",
         element: <Notices />,
+      },
+      {
+        path: "/Routines",
+        element: <Routines />,
+      },
+      {
+        path: "/Results",
+        element: <Results />,
       },
       {
         path: "/external",

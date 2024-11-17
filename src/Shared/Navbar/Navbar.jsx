@@ -8,14 +8,12 @@ import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/Logo/sipi.png";
 import { useState } from "react";
 import { MdClose } from "react-icons/md";
-import { FaChevronLeft } from "react-icons/fa";
-import { FaChevronRight } from "react-icons/fa";
+import { FaChevronUp, FaChevronDown } from "react-icons/fa";
 
 const navLinks = [
   { name: "Home", path: "/" },
   {
     name: "Departments",
-    path: "/department",
     subLinks: [
       { name: "Computer", path: "/departments/Computer" },
       { name: "Architecture", path: "/departments/Architecture" },
@@ -25,7 +23,12 @@ const navLinks = [
   },
   {
     name: "Academic",
-    path: "/Academic",
+    subLinks: [
+      { name: "Academic", path: "/Academic" },
+      { name: "Notices", path: "/Notices" },
+      { name: "Routines", path: "/Routines" },
+      { name: "Results", path: "/Results" },
+    ],
   },
   {
     name: "Administration",
@@ -40,16 +43,16 @@ const navLinks = [
 ];
 
 const Navbar = () => {
-  const [activeAccordion, setActiveAccordion] = useState(null);
+  const [activeDropdown, setActiveDropdown] = useState(null);
   const [open, setOpen] = useState(false);
 
-  const toggleAccordion = (index) => {
-    setActiveAccordion(activeAccordion === index ? null : index);
+  const toggleDropdown = (index) => {
+    setActiveDropdown(activeDropdown === index ? null : index);
   };
 
   return (
     <div className="w-full bg-white fixed z-10 border border-gray-200">
-      {/* top navbar */}
+      {/* Top navbar */}
       <div className="bg-orange-700 h-12 md:h-10 flex items-center">
         <div className="mx-auto w-full flex items-center justify-between">
           <div className="flex items-center md:h-10 px-1 md:px-5">
@@ -87,7 +90,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* main navbar */}
+      {/* Main navbar */}
       <div className="mx-2 md:mx-10 h-16 flex items-center justify-between">
         <img className="h-16 w-16" src={logo} alt="SIPI LOGO" />
         {open ? (
@@ -111,28 +114,18 @@ const Navbar = () => {
           {navLinks.map((link, index) =>
             link.subLinks ? (
               <div key={link.name}>
-                {/* Toggleable Accordion Header */}
                 <div
-                  onClick={() => toggleAccordion(index)}
+                  onClick={() => toggleDropdown(index)}
                   className="flex items-center cursor-pointer justify-between"
                 >
-                  <NavLink
-                    to={link.path}
-                    className="hover:text-blue-500 font-semibold"
-                  >
-                    {link.name}
-                  </NavLink>
-                  <button className="ml-2">
-                    {activeAccordion === index ? (
-                      <FaChevronLeft className="h-4 w-4 text-gray-600" />
-                    ) : (
-                      <FaChevronRight className="h-4 w-4 text-gray-600" />
-                    )}
-                  </button>
+                  <span className="font-semibold">{link.name}</span>
+                  {activeDropdown === index ? (
+                    <FaChevronUp className="h-4 w-4 text-gray-600" />
+                  ) : (
+                    <FaChevronDown className="h-4 w-4 text-gray-600" />
+                  )}
                 </div>
-
-                {/* Dropdown Content */}
-                {activeAccordion === index && (
+                {activeDropdown === index && (
                   <div className="pl-6 mt-2 space-y-2">
                     {link.subLinks.map((subLink) => (
                       <div key={subLink.name}>
@@ -161,26 +154,34 @@ const Navbar = () => {
 
         {/* Desktop view */}
         <div className="hidden md:flex gap-5 font-semibold text-black items-center">
-          {navLinks.map((link) =>
+          {navLinks.map((link, index) =>
             link.subLinks ? (
-              <div key={link.name} className="relative group">
-                <NavLink className="hover:text-blue-500" to={link.path || null}>
-                  {link.name}
-                </NavLink>
-
-                {/* Dropdown menu only shows on hover */}
-                <ul className="absolute hidden group-hover:block bg-white z-[1] w-52 p-2 shadow">
-                  {link.subLinks.map((subLink) => (
-                    <li key={subLink.name} className="w-full">
-                      <NavLink
-                        to={subLink.path}
-                        className="block w-full px-4 py-2 hover:text-blue-500 hover:bg-gray-100"
-                      >
-                        {subLink.name}
-                      </NavLink>
-                    </li>
-                  ))}
-                </ul>
+              <div key={link.name} className="relative">
+                <div
+                  onClick={() => toggleDropdown(index)}
+                  className="flex items-center cursor-pointer hover:text-blue-500"
+                >
+                  <span className="">{link.name}</span>
+                  {activeDropdown === index ? (
+                    <FaChevronUp className="ml-2 h-4 w-4 " />
+                  ) : (
+                    <FaChevronDown className="ml-2 h-4 w-4 " />
+                  )}
+                </div>
+                {activeDropdown === index && (
+                  <ul className="absolute bg-white z-[1] w-52 p-2 shadow mt-2">
+                    {link.subLinks.map((subLink) => (
+                      <li key={subLink.name} className="w-full">
+                        <NavLink
+                          to={subLink.path}
+                          className="block w-full px-4 py-2 hover:text-blue-500 hover:bg-gray-100"
+                        >
+                          {subLink.name}
+                        </NavLink>
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </div>
             ) : (
               <NavLink
@@ -192,23 +193,6 @@ const Navbar = () => {
               </NavLink>
             )
           )}
-
-          {/* <button className="btn btn-ghost btn-circle">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5 text-black"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-              />
-            </svg>
-          </button> */}
         </div>
 
         <button className="bg-orange-700 py-3 px-3 text-white hover:bg-green-700 duration-500 hidden md:block">
