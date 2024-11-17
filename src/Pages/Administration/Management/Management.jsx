@@ -83,7 +83,7 @@ const Management = () => {
       {/* Modal */}
       {selectedManagement && (
         <div className="fixed inset-0 bg-black text-black bg-opacity-50 flex justify-center items-center">
-          <div className="bg-white rounded-lg max-w-[800px] p-5">
+          <div className="bg-white h-[700px] overflow-auto rounded-lg max-w-[800px] p-5">
             <img
               src={selectedManagement.image || Default}
               alt={selectedManagement.name}
