@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 
 const Banner = () => {
   const axiosPublic = useAxiosPublic();
-  const departmentName = useParams();
+  const { department } = useParams(); // Destructure department directly from useParams
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
 
@@ -17,11 +17,12 @@ const Banner = () => {
     isLoading: DepartmentDataIsLoading,
     error: DepartmentDataError,
   } = useQuery({
-    queryKey: ["DepartmentData"],
+    queryKey: ["DepartmentData", department],
     queryFn: () =>
       axiosPublic
-        .get(`/Department?departmentName=${departmentName.department}`)
+        .get(`/Department?departmentName=${department}`)
         .then((res) => res.data),
+    enabled: !!department,
   });
 
   // Fetching RoutineData
@@ -30,11 +31,12 @@ const Banner = () => {
     isLoading: RoutineDataIsLoading,
     error: RoutineDataError,
   } = useQuery({
-    queryKey: ["RoutineData"],
+    queryKey: ["RoutineData", department],
     queryFn: () =>
       axiosPublic
-        .get(`/Routine?department=${departmentName.department}`)
+        .get(`/Routine?department=${department}`)
         .then((res) => res.data),
+    enabled: !!department,
   });
 
   // Fetching Tuition-FeeData
@@ -43,39 +45,38 @@ const Banner = () => {
     isLoading: TuitionFeeDataIsLoading,
     error: TuitionFeeDataError,
   } = useQuery({
-    queryKey: ["TuitionFeeData"],
+    queryKey: ["TuitionFeeData", department],
     queryFn: () =>
       axiosPublic
-        .get(`/Tuition-Fee?department=${departmentName.department}`)
+        .get(`/Tuition-Fee?department=${department}`)
         .then((res) => res.data),
+    enabled: !!department,
   });
 
-  // Access the banners (if any) and other content
-  const banners = Department?.banner_images || [];
+  // Error handling
+  if (
+    DepartmentDataIsLoading ||
+    RoutineDataIsLoading ||
+    TuitionFeeDataIsLoading
+  ) {
+    return <Loader />;
+  }
 
-  const handlePrevious = () => {
-    if (!isAnimating) {
-      setIsAnimating(true);
-      setTimeout(() => {
-        setCurrentIndex((prevIndex) =>
-          prevIndex === 0 ? banners.length - 1 : prevIndex - 1
-        );
-        setIsAnimating(false);
-      }, 500);
-    }
-  };
-
-  const handleNext = () => {
-    if (!isAnimating) {
-      setIsAnimating(true);
-      setTimeout(() => {
-        setCurrentIndex((prevIndex) =>
-          prevIndex === banners.length - 1 ? 0 : prevIndex + 1
-        );
-        setIsAnimating(false);
-      }, 500);
-    }
-  };
+  if (DepartmentDataError || RoutineDataError || TuitionFeeDataError) {
+    return (
+      <div className="h-screen flex flex-col justify-center items-center bg-gradient-to-br from-blue-300 to-white">
+        <p className="text-center text-red-500 font-bold text-3xl mb-8">
+          Something went wrong. Please reload the page.
+        </p>
+        <button
+          className="px-6 py-3 bg-blue-500 text-white font-bold rounded-lg hover:bg-blue-400 transition duration-300"
+          onClick={() => window.location.reload()}
+        >
+          Reload
+        </button>
+      </div>
+    );
+  }
 
   const generateGrid = (schedule) => {
     const daysOfWeek = [
@@ -114,30 +115,32 @@ const Banner = () => {
     return { timeSlots, grid };
   };
 
-  // Error state
-  if (
-    DepartmentDataIsLoading ||
-    RoutineDataIsLoading ||
-    TuitionFeeDataIsLoading
-  ) {
-    return <Loader />;
-  }
+  // Access the banners (if any) and other content
+  const banners = Department?.banner_images || [];
 
-  if (DepartmentDataError || RoutineDataError || TuitionFeeDataError) {
-    return (
-      <div className="h-screen flex flex-col justify-center items-center bg-gradient-to-br from-blue-300 to-white">
-        <p className="text-center text-red-500 font-bold text-3xl mb-8">
-          Something went wrong. Please reload the page.
-        </p>
-        <button
-          className="px-6 py-3 bg-blue-500 text-white font-bold rounded-lg hover:bg-blue-400 transition duration-300"
-          onClick={() => window.location.reload()}
-        >
-          Reload
-        </button>
-      </div>
-    );
-  }
+  const handlePrevious = () => {
+    if (!isAnimating) {
+      setIsAnimating(true);
+      setTimeout(() => {
+        setCurrentIndex((prevIndex) =>
+          prevIndex === 0 ? banners.length - 1 : prevIndex - 1
+        );
+        setIsAnimating(false);
+      }, 500);
+    }
+  };
+
+  const handleNext = () => {
+    if (!isAnimating) {
+      setIsAnimating(true);
+      setTimeout(() => {
+        setCurrentIndex((prevIndex) =>
+          prevIndex === banners.length - 1 ? 0 : prevIndex + 1
+        );
+        setIsAnimating(false);
+      }, 500);
+    }
+  };
 
   return (
     <div className="mt-[100px]">
@@ -172,7 +175,7 @@ const Banner = () => {
       </div>
 
       {/* Content */}
-      <div className="relative max-w-screen-xl mx-auto flex flex-col md:flex-row mt-10 gap-10 px-4 sm:px-6">
+      <div className="relative max-w-[1200px] mx-auto flex flex-col md:flex-row mt-10 gap-10 px-4 sm:px-6">
         {/* Left Part */}
         <div className="w-full md:w-[600px] text-black md:px-10">
           {/* Name */}

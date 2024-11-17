@@ -19,18 +19,13 @@ const navLinks = [
     subLinks: [
       { name: "Computer", path: "/departments/Computer" },
       { name: "Architecture", path: "/departments/Architecture" },
-      { name: "Civil", path: "/Departments/civil" },
+      { name: "Civil", path: "/Departments/Civil" },
       { name: "Graphics", path: "/Departments/Graphics" },
     ],
   },
   {
     name: "Academic",
     path: "/Academic",
-    subLinks: [
-      { name: "Admissions", path: "/academic/admissions" },
-      { name: "Programs", path: "/academic/programs" },
-      { name: "Research", path: "/academic/research" },
-    ],
   },
   {
     name: "Administration",
@@ -169,7 +164,7 @@ const Navbar = () => {
           {navLinks.map((link) =>
             link.subLinks ? (
               <div key={link.name} className="relative group">
-                <NavLink className="hover:text-blue-500" to={link.path}>
+                <NavLink className="hover:text-blue-500" to={link.path || null}>
                   {link.name}
                 </NavLink>
 
