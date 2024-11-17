@@ -6,10 +6,12 @@ import { FaEye, FaTrash } from "react-icons/fa";
 import { CiEdit } from "react-icons/ci";
 import ViewTeacher from "./ViewTeacher/ViewTeacher";
 import AddTeacher from "./AddTeacher/AddTeacher";
+import UpdateTeacher from "./UpdateTeacher/UpdateTeacher";
 
 const ManageTeachers = () => {
   const axiosPublic = useAxiosPublic();
   const [viewTeacher, setViewTeacher] = useState(null);
+  const [editTeacherData, setEditTeacherData] = useState(null);
 
   // Fetch Teacher Data
   const {
@@ -65,6 +67,12 @@ const ManageTeachers = () => {
   const handleViewTeacher = (teacher) => {
     setViewTeacher(teacher);
     document.getElementById("View_Modal_Teacher").showModal();
+  };
+
+  // Handle Edit Course
+  const handleUpdateTeacher = (course) => {
+    setEditTeacherData(course);
+    document.getElementById("Update_Teacher_Modal").showModal();
   };
 
   return (
@@ -164,6 +172,7 @@ const ManageTeachers = () => {
                     </button>
                     <button
                       className="border-2 border-yellow-400 px-4 py-2 rounded-lg hover:bg-yellow-400 hover:text-white text-lg"
+                      onClick={() => handleUpdateTeacher(teacher)}
                       title="Edit"
                     >
                       <CiEdit />
@@ -193,9 +202,17 @@ const ManageTeachers = () => {
         <ViewTeacher teacherData={viewTeacher}></ViewTeacher>
       </dialog>
 
-      {/* Add new Teacher */}
+      {/* Add new Teacher Modal */}
       <dialog id="Add_Teacher_Modal" className="modal">
         <AddTeacher refetch={refetch}></AddTeacher>
+      </dialog>
+
+      {/* Update Teacher Modal */}
+      <dialog id="Update_Teacher_Modal" className="modal">
+        <UpdateTeacher
+          TeacherData={editTeacherData}
+          refetch={refetch}
+        ></UpdateTeacher>
       </dialog>
     </div>
   );

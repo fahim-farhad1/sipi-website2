@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-import { useForm, useFieldArray } from "react-hook-form";
-import Swal from "sweetalert2";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
+import { useFieldArray, useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 
-const AddTeacher = ({ refetch }) => {
+const UpdateTeacher = ({ TeacherData, refetch }) => {
   const axiosPublic = useAxiosPublic();
 
   const {
@@ -113,44 +113,50 @@ const AddTeacher = ({ refetch }) => {
     </div>
   );
 
+  useEffect(() => {
+    if (TeacherData) {
+      reset({
+        image: TeacherData.image,
+        name: TeacherData.name,
+        designation: TeacherData.designation,
+        department: TeacherData.department,
+        subjects_taught: TeacherData.subjects_taught,
+        awards: TeacherData.awards,
+        award_date: TeacherData.award_date,
+        notable_contributions: TeacherData.notable_contributions,
+        about_me: TeacherData.about_me,
+        background: TeacherData.background,
+        more_info: TeacherData.more_info,
+      });
+    }
+  }, [TeacherData, reset]);
+
   const onSubmit = async (data) => {
-    const structuredData = {
-      image: data.image,
-      name: data.name,
-      designation: data.designation,
-      department: data.department,
-      subjects_taught: data.subjects_taught,
-      awards: data.awards,
-      award_date: data.award_date, // Assuming you have this field in your form
-      notable_contributions: data.notable_contributions,
-      about_me: data.about_me,
-      background: data.background,
-      more_info: data.more_info, // Assuming you have this field in your form
-    };
-
     try {
-      // Sending POST request to save teacher data
-      const response = await axiosPublic.post("/Teachers", structuredData);
+      // Sending PUT request to update teacher data by ID
+      const response = await axiosPublic.put(
+        `/Teachers/${TeacherData._id}`, // Assuming TeacherData._id contains the teacher's ID
+        data
+      );
 
-      if (response.data.insertedId) {
+      if (response.data.modifiedCount > 0) {
         // Show success alert
         Swal.fire({
           title: "Success!",
-          text: "Teacher has been added successfully!",
+          text: "Teacher has been updated successfully!",
           icon: "success",
           button: "OK",
         });
+        document.getElementById("Update_Teacher_Modal").close();
+        refetch();
       }
-      document.getElementById("Add_Teacher_Modal").close();
-      refetch();
-      reset();
     } catch (error) {
-      console.error("Error adding teacher:", error);
+      console.error("Error updating teacher:", error);
 
       // Show error alert
       Swal.fire({
         title: "Error!",
-        text: "Failed to add the teacher. Please try again.",
+        text: "Failed to update the teacher. Please try again.",
         icon: "error",
         button: "OK",
       });
@@ -163,7 +169,9 @@ const AddTeacher = ({ refetch }) => {
         <h1 className="text-3xl font-semibold text-center mb-6">Add Teacher</h1>
         <button
           className="text-3xl font-bold hover:text-red-500"
-          onClick={() => document.getElementById("Add_Teacher_Modal").close()}
+          onClick={() =>
+            document.getElementById("Update_Teacher_Modal").close()
+          }
         >
           X
         </button>
@@ -322,4 +330,4 @@ const AddTeacher = ({ refetch }) => {
   );
 };
 
-export default AddTeacher;
+export default UpdateTeacher;
