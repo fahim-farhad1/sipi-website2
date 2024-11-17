@@ -5,6 +5,7 @@ import Loader from "../../Shared/Loader/Loader";
 import { FaEye, FaTrash } from "react-icons/fa";
 import { CiEdit } from "react-icons/ci";
 import ViewTeacher from "./ViewTeacher/ViewTeacher";
+import AddTeacher from "./AddTeacher/AddTeacher";
 
 const ManageTeachers = () => {
   const axiosPublic = useAxiosPublic();
@@ -15,6 +16,7 @@ const ManageTeachers = () => {
     data: TeachersData = [],
     isLoading: TeachersDataIsLoading,
     error: TeachersDataError,
+    refetch,
   } = useQuery({
     queryKey: ["TeachersData"],
     queryFn: () => axiosPublic.get(`/Teachers`).then((res) => res.data),
@@ -71,7 +73,12 @@ const ManageTeachers = () => {
       <div className="flex justify-between border-b-2 border-gray-600 p-6 items-center">
         <p className="text-3xl font-semibold text-center">Manage Teachers</p>
         <div>
-          <button className="border border-green-500 px-8 py-3 font-semibold hover:bg-green-500 hover:text-white">
+          <button
+            className="border border-green-500 px-8 py-3 font-semibold hover:bg-green-500 hover:text-white"
+            onClick={() =>
+              document.getElementById("Add_Teacher_Modal").showModal()
+            }
+          >
             + Add Teacher
           </button>
         </div>
@@ -187,8 +194,8 @@ const ManageTeachers = () => {
       </dialog>
 
       {/* Add new Teacher */}
-      <dialog id="Create_New_Salary_Insights" className="modal">
-        <ModalAddSalaryInsights refetch={refetch}></ModalAddSalaryInsights>
+      <dialog id="Add_Teacher_Modal" className="modal">
+        <AddTeacher refetch={refetch}></AddTeacher>
       </dialog>
     </div>
   );
