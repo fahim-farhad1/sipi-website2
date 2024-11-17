@@ -314,7 +314,7 @@ const Banner = () => {
           </div>
 
           {/* Course Outline */}
-          <div id="Course" className="mt-10  bg-sky-400 py-5">
+          <div id="Course" className="mt-10 bg-sky-200 py-5">
             <div className="max-w-[1200px] mx-auto">
               <h2 className="text-xl font-semibold">
                 Course Outline - Regulation ( {Department.regulation} )

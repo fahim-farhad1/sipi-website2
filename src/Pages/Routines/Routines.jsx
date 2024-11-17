@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import fetchRoutine from "../../../Hooks/fetchRoutine";
 import { jsPDF } from "jspdf";
+import fetchRoutine from "../../Hooks/fetchRoutine";
 
 const AllRoutines = () => {
   const { data: Routine, content } = fetchRoutine();

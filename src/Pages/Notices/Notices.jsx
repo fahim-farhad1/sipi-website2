@@ -1,10 +1,10 @@
-import fetchNotices from "../../../Hooks/fetchNotices";
 import { CiCalendarDate } from "react-icons/ci";
 import { MdAdminPanelSettings } from "react-icons/md";
 import { FcDepartment } from "react-icons/fc";
 import { useState } from "react";
+import fetchNotices from "../../Hooks/fetchNotices";
 
-const AllNotices = () => {
+const Notices = () => {
   const { data: Notices, content } = fetchNotices();
   const [selectedNotice, setSelectedNotice] = useState(null); // State to store the selected notice for modal
 
@@ -29,7 +29,7 @@ const AllNotices = () => {
 
   // If data is successfully fetched, render the notices
   return (
-    <div className="container mx-auto px-4">
+    <div className="container mx-auto px-4 mt-32 max-w-[1200px] text-black">
       <h1 className="text-4xl font-bold mb-6 text-center">All Notices</h1>
       {sortedNotices && sortedNotices.length > 0 ? (
         sortedNotices.map((notice) => (
@@ -115,4 +115,4 @@ const AllNotices = () => {
   );
 };
 
-export default AllNotices;
+export default Notices;

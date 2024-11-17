@@ -12,6 +12,7 @@ import Management from "../Pages/Administration/Management/Management";
 import DashboardLayout from "../Layouts/DashboardLayout";
 import ManageTeachers from "../Dashboard_Pages/ManageTeachers/ManageTeachers";
 import ManageManagement from "../Dashboard_Pages/ManageManagement/ManageManagement";
+import Notices from "../Pages/Notices/Notices";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: "/academic",
         element: <Academic />,
+      },
+      {
+        path: "/Notices",
+        element: <Notices />,
       },
       {
         path: "/external",
