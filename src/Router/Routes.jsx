@@ -3,11 +3,12 @@ import MainLayout from "../Layouts/MainLayout";
 import Home from "../Pages/Home/Home";
 import Academic from "../Pages/Academic/Academic";
 import External from "../Pages/External/External";
-import Administration from "../Pages/Administration/Administration";
 import AboutUs from "../Pages/AboutUs/AboutUs";
 import ContactUs from "../Pages/ContactUs/ContactUs";
 import Admission from "../Pages/Admission/Admission";
 import Framework from "../Pages/Departments/Framework/Framework";
+import Teacher from "../Pages/Administration/Teacher/Teacher";
+import Management from "../Pages/Administration/Management/Management";
 
 const router = createBrowserRouter([
   {
@@ -39,8 +40,12 @@ const router = createBrowserRouter([
         element: <External />,
       },
       {
-        path: "/administration",
-        element: <Administration />,
+        path: "/Administration/Teacher",
+        element: <Teacher />,
+      },
+      {
+        path: "/Administration/Management",
+        element: <Management />,
       },
       {
         path: "/about",

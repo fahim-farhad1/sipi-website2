@@ -34,10 +34,9 @@ const navLinks = [
   },
   {
     name: "Administration",
-    path: "/administration",
     subLinks: [
-      { name: "Teach", path: "/academic/admissions" },
-      { name: "Programs", path: "/academic/programs" },
+      { name: "Teacher", path: "/Administration/Teacher" },
+      { name: "Management", path: "/Administration/Management" },
     ],
   },
   { name: "Blogs", path: "/blogs" },
