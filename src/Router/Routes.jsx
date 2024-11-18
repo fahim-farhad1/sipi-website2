@@ -15,6 +15,7 @@ import ManageManagement from "../Dashboard_Pages/ManageManagement/ManageManageme
 import Notices from "../Pages/Notices/Notices";
 import Routines from "../Pages/Routines/Routines";
 import Results from "../Pages/Results/Results";
+import ManageNotices from "../Dashboard_Pages/ManageNotices/ManageNotices";
 
 const router = createBrowserRouter([
   {
@@ -89,6 +90,10 @@ const router = createBrowserRouter([
       {
         path: "ManageManagement",
         element: <ManageManagement></ManageManagement>,
+      },
+      {
+        path: "ManageNotices",
+        element: <ManageNotices></ManageNotices>,
       },
     ],
   },
