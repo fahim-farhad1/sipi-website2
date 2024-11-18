@@ -2,9 +2,14 @@ import React from "react";
 import Loader from "../../Shared/Loader/Loader";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
+import { FaEye, FaTrash } from "react-icons/fa";
+import { CiEdit } from "react-icons/ci";
+import ViewDepartment from "./ViewDepartment/ViewDepartment";
 
 const ManageDepartment = () => {
   const axiosPublic = useAxiosPublic();
+  const [viewDepartment, setViewDepartment] = useState(null);
+  const [editDepartmentData, setEditDepartmentData] = useState(null);
 
   // Fetch Department Data
   const {
@@ -39,6 +44,16 @@ const ManageDepartment = () => {
     );
   }
 
+  const handleViewDepartment = (department) => {
+    setViewDepartment(department);
+    document.getElementById("View_Modal_Department").showModal();
+  };
+
+  const handleUpdateDepartment = (department) => {
+    setEditDepartmentData(department);
+    document.getElementById("Update_Department_Modal").showModal();
+  };
+
   return (
     <div className="bg-gray-200 min-h-screen">
       {/* Top Section */}
@@ -62,51 +77,57 @@ const ManageDepartment = () => {
             className="bg-white rounded-lg shadow-lg overflow-hidden"
           >
             {/* Department Image */}
-            <img
-              src={department.department.department_img}
-              alt={department.department.name}
-              className="w-full h-48 object-cover"
-            />
+            {department.department?.department_img ? (
+              <img
+                src={department.department.department_img}
+                alt={department.department?.name || "Department Image"}
+                className="w-full h-48 object-cover"
+              />
+            ) : (
+              <div className="w-full h-48 flex items-center justify-center bg-gray-200">
+                <p className="text-gray-500">No Image Available</p>
+              </div>
+            )}
 
             <div className="p-4">
-              {/* Department Details */}
-              <p className="text-gray-500 font-bold text-2xl mt-2">{department.diploma}</p>
-
-              <div className="mt-4">
-                {/*    */}
-                <p className="font-bold text-gray-600">Objectives</p>
-                <ul className="list-disc pl-6 mt-2 text-sm text-gray-500">
-                  {department.objectives.slice(0, 3).map((objective, index) => (
-                    <li key={index}>{objective}</li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="mt-4">
-                {/* Features */}
-                <p className="font-bold text-gray-600">Features</p>
-                <ul className="list-disc pl-6 mt-2 text-sm text-gray-500">
-                  {department.features.slice(0, 3).map((feature, index) => (
-                    <li key={index}>{feature}</li>
-                  ))}
-                </ul>
-              </div>
+              {/* Department Name */}
+              <p className="text-black font-bold text-2xl mt-2 text-center">
+                {department.diploma || "Unnamed Department"}
+              </p>
             </div>
 
             {/* More Info Button */}
-            <div className="bg-gray-100 p-4 text-center">
-              <a
-                href={department.department.redirect}
-                className="text-blue-500 font-semibold hover:text-blue-700"
-                target="_blank"
-                rel="noopener noreferrer"
+            <div className="p-4 flex gap-4">
+              <button
+                className="border-2 border-blue-400 py-3 rounded-lg hover:bg-blue-400 hover:text-white text-lg w-full"
+                onClick={() => handleViewDepartment(department)}
+                title="View"
               >
-                Learn More
-              </a>
+                <FaEye className="mx-auto text-lg" />
+              </button>
+              <button
+                className="border-2 border-yellow-400 py-3 rounded-lg hover:bg-yellow-400 hover:text-white text-lg w-full"
+                onClick={() => handleUpdateDepartment(department)}
+                title="Edit"
+              >
+                <CiEdit className="mx-auto text-lg" />
+              </button>
+              <button
+                className="border-2 border-red-400 py-3 rounded-lg hover:bg-red-400 hover:text-white text-lg w-full"
+                // onClick={() => handleDeleteDepartment(department._id)}
+                title="Delete"
+              >
+                <FaTrash className="mx-auto text-lg" />
+              </button>
             </div>
           </div>
         ))}
       </div>
+
+      {/* View Modal */}
+      <dialog id="View_Modal_Department" className="modal">
+        <ViewDepartment DepartmentData={viewDepartment}></ViewDepartment>
+      </dialog>
     </div>
   );
 };
