@@ -95,6 +95,7 @@ const UpdateManagement = ({ ManagementData, refetch }) => {
       console.error("Error updating mentorship:", error);
     }
   };
+  
   // Generic field array rendering function
   const renderFieldArray = (
     fields,

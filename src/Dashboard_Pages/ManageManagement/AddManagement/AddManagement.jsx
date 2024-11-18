@@ -14,17 +14,17 @@ const AddManagement = ({ refetch, managementData = {} }) => {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      name: managementData?.name || "",
-      image: managementData?.image || "",
-      designation: managementData?.designation || "",
-      department: managementData?.department || "",
-      email: managementData?.email || "",
-      phone: managementData?.phone || "",
-      about_me: managementData?.about_me || "",
-      background: managementData?.background || "",
-      responsibilities: managementData?.responsibilities || [""],
-      achievements: managementData?.achievements || [""],
-      more_info: managementData?.more_info || "",
+      name: "",
+      image: "",
+      designation: "",
+      department: "",
+      email: "",
+      phone: "",
+      about_me: "",
+      background: "",
+      responsibilities: [""],
+      achievements: [""],
+      more_info: "",
     },
   });
 

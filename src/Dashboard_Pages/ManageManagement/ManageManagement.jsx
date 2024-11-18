@@ -25,6 +25,28 @@ const ManageManagement = () => {
     queryFn: () => axiosPublic.get(`/Management`).then((res) => res.data),
   });
 
+  // Loader State
+  if (ManagementDataIsLoading) {
+    return <Loader />;
+  }
+
+  // Error State
+  if (ManagementDataError) {
+    return (
+      <div className="h-screen flex flex-col justify-center items-center bg-gradient-to-br from-blue-300 to-white">
+        <p className="text-center text-red-500 font-bold text-3xl mb-8">
+          Something went wrong. Please reload the page.
+        </p>
+        <button
+          className="px-6 py-3 bg-blue-500 text-white font-bold rounded-lg hover:bg-blue-400 transition duration-300"
+          onClick={() => window.location.reload()}
+        >
+          Reload
+        </button>
+      </div>
+    );
+  }
+
   // State for search filters
   const [searchName, setSearchName] = useState("");
   const [selectedDepartment, setSelectedDepartment] = useState("");
@@ -75,28 +97,6 @@ const ManageManagement = () => {
       }
     });
   };
-
-  // Loader State
-  if (ManagementDataIsLoading) {
-    return <Loader />;
-  }
-
-  // Error State
-  if (ManagementDataError) {
-    return (
-      <div className="h-screen flex flex-col justify-center items-center bg-gradient-to-br from-blue-300 to-white">
-        <p className="text-center text-red-500 font-bold text-3xl mb-8">
-          Something went wrong. Please reload the page.
-        </p>
-        <button
-          className="px-6 py-3 bg-blue-500 text-white font-bold rounded-lg hover:bg-blue-400 transition duration-300"
-          onClick={() => window.location.reload()}
-        >
-          Reload
-        </button>
-      </div>
-    );
-  }
 
   // Extract departments and designations for the dropdowns
   const departments = [
