@@ -1,7 +1,7 @@
 import { IoMdCall } from "react-icons/io";
 import { RxDividerVertical } from "react-icons/rx";
 import { TfiEmail } from "react-icons/tfi";
-import { FaFacebookF, FaListUl, FaYoutube } from "react-icons/fa";
+import { FaChevronDown, FaFacebookF, FaListUl, FaYoutube } from "react-icons/fa";
 import { IoLogoInstagram } from "react-icons/io5";
 import { FaXTwitter } from "react-icons/fa6";
 import { Link, NavLink } from "react-router-dom";
@@ -166,9 +166,9 @@ const Navbar = () => {
               <div key={link.name} className="relative group">
                 <span
                   onClick={(e) => e.preventDefault()}
-                  className="hover:text-blue-500 cursor-default"
+                  className="hover:text-blue-500 cursor-default flex items-center"
                 >
-                  {link.name}
+                  {link.name} <FaChevronDown className="ml-2"/>
                 </span>
 
                 <ul className="absolute hidden group-hover:block bg-white z-[1] w-52 p-2 shadow">
