@@ -3,6 +3,7 @@ import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../Shared/Loader/Loader";
 import Default from "../../../assets/Default.png";
+import DepartmentBanner from "../../../Components/Banners/DepartmentBanner";
 
 const Management = () => {
   const axiosPublic = useAxiosPublic();
@@ -40,14 +41,15 @@ const Management = () => {
     );
   }
 
+  const bannerImage =
+    "https://i.ibb.co/0rqXzZ7/fa8ed7e9-0e83-462f-8c5d-13b06d25cef3.jpg";
+
   return (
     <div className="py-10 px-4 bg-gray-50">
       <div>
-        <h1 className="text-center font-bold text-4xl text-blue-600 mb-12">
-          Meet Our Management Team
-        </h1>
+        <DepartmentBanner Image={bannerImage} />
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-[1200px] mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-[1200px] mx-auto mt-20">
         {ManagementData.map((member) => (
           <div
             key={member._id}

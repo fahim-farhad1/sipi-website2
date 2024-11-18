@@ -8,15 +8,16 @@ import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/Logo/sipi.png";
 import { useState } from "react";
 import { MdClose } from "react-icons/md";
-import { FaChevronUp, FaChevronDown } from "react-icons/fa";
+import { FaChevronLeft } from "react-icons/fa";
+import { FaChevronRight } from "react-icons/fa";
 
 const navLinks = [
   { name: "Home", path: "/" },
   {
     name: "Departments",
     subLinks: [
-      { name: "Computer", path: "/departments/Computer" },
-      { name: "Architecture", path: "/departments/Architecture" },
+      { name: "Computer", path: "/Departments/Computer" },
+      { name: "Architecture", path: "/Departments/Architecture" },
       { name: "Civil", path: "/Departments/Civil" },
       { name: "Graphics", path: "/Departments/Graphics" },
     ],
@@ -25,15 +26,15 @@ const navLinks = [
     name: "Academic",
     subLinks: [
       { name: "Academic", path: "/Academic" },
-      { name: "Notices", path: "/Notices" },
-      { name: "Routines", path: "/Routines" },
-      { name: "Results", path: "/Results" },
+      { name: "Notices", path: "/Academic/Notices" },
+      { name: "Routines", path: "/Academic/Routines" },
+      { name: "Results", path: "/Academic/Results" },
     ],
   },
   {
     name: "Administration",
     subLinks: [
-      { name: "Teacher", path: "/Administration/Teacher" },
+      { name: "Teachers", path: "/Administration/Teachers" },
       { name: "Management", path: "/Administration/Management" },
     ],
   },
@@ -43,16 +44,16 @@ const navLinks = [
 ];
 
 const Navbar = () => {
-  const [activeDropdown, setActiveDropdown] = useState(null);
+  const [activeAccordion, setActiveAccordion] = useState(null);
   const [open, setOpen] = useState(false);
 
-  const toggleDropdown = (index) => {
-    setActiveDropdown(activeDropdown === index ? null : index);
+  const toggleAccordion = (index) => {
+    setActiveAccordion(activeAccordion === index ? null : index);
   };
 
   return (
     <div className="w-full bg-white fixed z-10 border border-gray-200">
-      {/* Top navbar */}
+      {/* top navbar */}
       <div className="bg-orange-700 h-12 md:h-10 flex items-center">
         <div className="mx-auto w-full flex items-center justify-between">
           <div className="flex items-center md:h-10 px-1 md:px-5">
@@ -90,7 +91,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Main navbar */}
+      {/* main navbar */}
       <div className="mx-2 md:mx-10 h-16 flex items-center justify-between">
         <img className="h-16 w-16" src={logo} alt="SIPI LOGO" />
         {open ? (
@@ -115,17 +116,23 @@ const Navbar = () => {
             link.subLinks ? (
               <div key={link.name}>
                 <div
-                  onClick={() => toggleDropdown(index)}
+                  onClick={() => toggleAccordion(index)}
                   className="flex items-center cursor-pointer justify-between"
                 >
-                  <span className="font-semibold">{link.name}</span>
-                  {activeDropdown === index ? (
-                    <FaChevronUp className="h-4 w-4 text-gray-600" />
-                  ) : (
-                    <FaChevronDown className="h-4 w-4 text-gray-600" />
-                  )}
+                  <span className="font-semibold text-gray-700">
+                    {link.name}
+                  </span>
+                  <button className="ml-2">
+                    {activeAccordion === index ? (
+                      <FaChevronLeft className="h-4 w-4 text-gray-600" />
+                    ) : (
+                      <FaChevronRight className="h-4 w-4 text-gray-600" />
+                    )}
+                  </button>
                 </div>
-                {activeDropdown === index && (
+
+                {/* Dropdown Content */}
+                {activeAccordion === index && (
                   <div className="pl-6 mt-2 space-y-2">
                     {link.subLinks.map((subLink) => (
                       <div key={subLink.name}>
@@ -154,34 +161,28 @@ const Navbar = () => {
 
         {/* Desktop view */}
         <div className="hidden md:flex gap-5 font-semibold text-black items-center">
-          {navLinks.map((link, index) =>
+          {navLinks.map((link) =>
             link.subLinks ? (
-              <div key={link.name} className="relative">
-                <div
-                  onClick={() => toggleDropdown(index)}
-                  className="flex items-center cursor-pointer hover:text-blue-500"
+              <div key={link.name} className="relative group">
+                <span
+                  onClick={(e) => e.preventDefault()}
+                  className="hover:text-blue-500 cursor-default"
                 >
-                  <span className="">{link.name}</span>
-                  {activeDropdown === index ? (
-                    <FaChevronUp className="ml-2 h-4 w-4 " />
-                  ) : (
-                    <FaChevronDown className="ml-2 h-4 w-4 " />
-                  )}
-                </div>
-                {activeDropdown === index && (
-                  <ul className="absolute bg-white z-[1] w-52 p-2 shadow mt-2">
-                    {link.subLinks.map((subLink) => (
-                      <li key={subLink.name} className="w-full">
-                        <NavLink
-                          to={subLink.path}
-                          className="block w-full px-4 py-2 hover:text-blue-500 hover:bg-gray-100"
-                        >
-                          {subLink.name}
-                        </NavLink>
-                      </li>
-                    ))}
-                  </ul>
-                )}
+                  {link.name}
+                </span>
+
+                <ul className="absolute hidden group-hover:block bg-white z-[1] w-52 p-2 shadow">
+                  {link.subLinks.map((subLink) => (
+                    <li key={subLink.name} className="w-full">
+                      <NavLink
+                        to={subLink.path}
+                        className="block w-full px-4 py-2 hover:text-blue-500 hover:bg-gray-100"
+                      >
+                        {subLink.name}
+                      </NavLink>
+                    </li>
+                  ))}
+                </ul>
               </div>
             ) : (
               <NavLink

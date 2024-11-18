@@ -9,6 +9,7 @@ import {
   FaTwitter,
 } from "react-icons/fa";
 import Gallery from "../../Components/Gallary/Gallery";
+import DepartmentBanner from "../../Components/Banners/DepartmentBanner";
 
 const Academic = () => {
   const GalleryImages = [
@@ -46,8 +47,12 @@ const Academic = () => {
     "https://i.ibb.co.com/fv6ZRKG/1.jpg",
   ];
 
+  const bannerImage =
+    "https://i.ibb.co/0rqXzZ7/fa8ed7e9-0e83-462f-8c5d-13b06d25cef3.jpg";
+
   return (
     <div className="text-black">
+      <DepartmentBanner Image={bannerImage} />
       {/* Main Container */}
       <div className="gap-5">
         {/* Top Part */}

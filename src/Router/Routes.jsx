@@ -33,7 +33,7 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/departments/:department",
+        path: "/Departments/:department",
         element: <Framework />,
       },
       {
@@ -41,15 +41,15 @@ const router = createBrowserRouter([
         element: <Academic />,
       },
       {
-        path: "/Notices",
+        path: "/Academic/Notices",
         element: <Notices />,
       },
       {
-        path: "/Routines",
+        path: "/Academic/Routines",
         element: <Routines />,
       },
       {
-        path: "/Results",
+        path: "/Academic/Results",
         element: <Results />,
       },
       {
@@ -57,7 +57,7 @@ const router = createBrowserRouter([
         element: <External />,
       },
       {
-        path: "/Administration/Teacher",
+        path: "/Administration/Teachers",
         element: <Teacher />,
       },
       {
