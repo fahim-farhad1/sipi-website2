@@ -3,6 +3,8 @@ import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../Shared/Loader/Loader";
 import Default from "../../../assets/Default.png";
+import DepartmentBanner from "../../../Components/Banners/DepartmentBanner";
+import { useParams } from "react-router-dom";
 
 const Teacher = () => {
   const axiosPublic = useAxiosPublic();
@@ -73,7 +75,8 @@ const Teacher = () => {
 
   return (
     <div className="py-5 text-gray-800">
-      <div>
+      <DepartmentBanner />
+      <div className="mt-10">
         <h1 className="text-center font-bold text-4xl text-blue-600 mb-12">
           Meet Our Teachers
         </h1>

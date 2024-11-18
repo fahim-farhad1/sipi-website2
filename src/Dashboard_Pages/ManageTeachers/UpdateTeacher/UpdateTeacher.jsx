@@ -32,86 +32,19 @@ const UpdateTeacher = ({ TeacherData, refetch }) => {
     fields: subjectFields,
     append: addSubject,
     remove: removeSubject,
-  } = useFieldArray({
-    control,
-    name: "subjects_taught",
-  });
+  } = useFieldArray({ control, name: "subjects_taught" });
 
   const {
     fields: awardFields,
     append: addAward,
     remove: removeAward,
-  } = useFieldArray({
-    control,
-    name: "awards",
-  });
+  } = useFieldArray({ control, name: "awards" });
 
   const {
     fields: contributionFields,
     append: addContribution,
     remove: removeContribution,
-  } = useFieldArray({
-    control,
-    name: "notable_contributions",
-  });
-
-  useEffect(() => {
-    if (subjectFields.length === 0) {
-      addSubject("");
-    }
-    if (awardFields.length === 0) {
-      addAward("");
-    }
-    if (contributionFields.length === 0) {
-      addContribution("");
-    }
-  }, [
-    subjectFields,
-    addSubject,
-    awardFields,
-    addAward,
-    contributionFields,
-    addContribution,
-  ]);
-
-  const renderFieldArray = (
-    fields,
-    registerFn,
-    removeFn,
-    addFn,
-    label,
-    fieldName
-  ) => (
-    <div className="mb-3">
-      <label className="font-medium mb-1 block">{label}</label>
-      {fields.map((item, index) => (
-        <div key={item.id} className="flex mt-2">
-          <input
-            type="text"
-            className="border border-gray-300  px-4 py-3 flex-grow bg-white"
-            {...registerFn(`${fieldName}.${index}`, {
-              required: `${label.slice(0, -1)} is required`,
-            })}
-            placeholder={`Enter ${label.toLowerCase().slice(0, -1)}`}
-          />
-          <button
-            type="button"
-            onClick={() => removeFn(index)}
-            className="px-3 py-2 bg-red-500 text-white"
-          >
-            Remove
-          </button>
-        </div>
-      ))}
-      <button
-        type="button"
-        onClick={() => addFn("")}
-        className="px-4 py-2 bg-blue-500 text-white w-60 mt-2"
-      >
-        Add {label.slice(0, -1)}
-      </button>
-    </div>
-  );
+  } = useFieldArray({ control, name: "notable_contributions" });
 
   useEffect(() => {
     if (TeacherData) {
@@ -120,10 +53,10 @@ const UpdateTeacher = ({ TeacherData, refetch }) => {
         name: TeacherData.name,
         designation: TeacherData.designation,
         department: TeacherData.department,
-        subjects_taught: TeacherData.subjects_taught,
-        awards: TeacherData.awards,
+        subjects_taught: TeacherData.subjects_taught || [""],
+        awards: TeacherData.awards || [""],
         award_date: TeacherData.award_date,
-        notable_contributions: TeacherData.notable_contributions,
+        notable_contributions: TeacherData.notable_contributions || [""],
         about_me: TeacherData.about_me,
         background: TeacherData.background,
         more_info: TeacherData.more_info,
@@ -133,36 +66,31 @@ const UpdateTeacher = ({ TeacherData, refetch }) => {
 
   const onSubmit = async (data) => {
     try {
-      // Sending PUT request to update teacher data by ID
-      const response = await axiosPublic.put(
-        `/Teachers/${TeacherData._id}`,
-        data
-      );
+      // Make the PUT request to update the mentorship by ID
+      await axiosPublic.put(`/Teachers/${TeacherData._id}`, data);
 
-      if (response.data.modifiedCount > 0) {
-        // Show success alert
-        Swal.fire({
-          title: "Success!",
-          text: "Teacher has been updated successfully!",
-          icon: "success",
-          button: "OK",
-        });
-        document.getElementById("Update_Teacher_Modal").close();
-        refetch();
-      }
+      // Show a success alert
+      Swal.fire({
+        title: "Success!",
+        text: "Mentorship updated successfully",
+        icon: "success",
+        confirmButtonText: "OK",
+      });
+
+      document.getElementById("Update_Teacher_Modal").close();
+      refetch();
     } catch (error) {
-      console.error("Error updating teacher:", error);
-
-      // Show error alert
+      // Show an error alert
       Swal.fire({
         title: "Error!",
-        text: "Failed to update the teacher. Please try again.",
+        text: "Failed to update mentorship. Please try again.",
         icon: "error",
-        button: "OK",
+        confirmButtonText: "OK",
       });
+
+      console.error("Error updating mentorship:", error);
     }
   };
-
   return (
     <div className="modal-box bg-white max-w-[800px] p-0">
       <div className="flex justify-between items-center px-10">
@@ -322,12 +250,51 @@ const UpdateTeacher = ({ TeacherData, refetch }) => {
             type="submit"
             className="px-6 py-2 bg-blue-500 text-white font-semibold rounded-lg"
           >
-            Add Teacher
+            Update Teacher
           </button>
         </div>
       </form>
     </div>
   );
 };
+
+const renderFieldArray = (
+  fields,
+  registerFn,
+  removeFn,
+  addFn,
+  label,
+  fieldName
+) => (
+  <div className="mb-3">
+    <label className="font-medium mb-1 block">{label}</label>
+    {fields.map((item, index) => (
+      <div key={item.id} className="flex mt-2">
+        <input
+          type="text"
+          className="border border-gray-300 px-4 py-2 flex-grow bg-white"
+          {...registerFn(`${fieldName}.${index}`, {
+            required: `${label.slice(0, -1)} is required`,
+          })}
+          placeholder={`Enter ${label.toLowerCase().slice(0, -1)}`}
+        />
+        <button
+          type="button"
+          onClick={() => removeFn(index)}
+          className="px-3 py-2 bg-red-500 text-white"
+        >
+          Remove
+        </button>
+      </div>
+    ))}
+    <button
+      type="button"
+      onClick={() => addFn("")}
+      className="px-4 py-2 bg-blue-500 text-white mt-2"
+    >
+      Add {label.slice(0, -1)}
+    </button>
+  </div>
+);
 
 export default UpdateTeacher;

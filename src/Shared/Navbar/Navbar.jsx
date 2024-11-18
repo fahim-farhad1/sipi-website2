@@ -51,7 +51,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="w-full bg-white fixed z-10 border border-gray-200">
+    <div className="w-full bg-white fixed z-50 border border-gray-200">
       {/* Top navbar */}
       <div className="bg-orange-700 h-12 md:h-10 flex items-center">
         <div className="mx-auto w-full flex items-center justify-between">
