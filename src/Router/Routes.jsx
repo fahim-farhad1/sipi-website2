@@ -17,6 +17,7 @@ import Routines from "../Pages/Routines/Routines";
 import Results from "../Pages/Results/Results";
 import ManageNotices from "../Dashboard_Pages/ManageNotices/ManageNotices";
 import ManageTuitionFee from "../Dashboard_Pages/ManageTuitionFee/ManageTuitionFee";
+import ManageDepartment from "../Dashboard_Pages/ManageDepartment/ManageDepartment";
 
 const router = createBrowserRouter([
   {
@@ -99,6 +100,10 @@ const router = createBrowserRouter([
       {
         path: "ManageTuitionFee",
         element: <ManageTuitionFee></ManageTuitionFee>,
+      },
+      {
+        path: "ManageDepartment",
+        element: <ManageDepartment></ManageDepartment>,
       },
     ],
   },
