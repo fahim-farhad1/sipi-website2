@@ -3,13 +3,16 @@ import { FaArrowRight, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../Shared/Loader/Loader";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import Gallery from "../../../Components/Gallary/Gallery";
 import DepartmentBanner from "../../../Components/Banners/DepartmentBanner";
 
 const Banner = () => {
   const axiosPublic = useAxiosPublic();
   const { department } = useParams(); // Destructure department directly from useParams
+  const bannerImage =
+    "https://i.ibb.co/0rqXzZ7/fa8ed7e9-0e83-462f-8c5d-13b06d25cef3.jpg";
+
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
 
@@ -186,7 +189,7 @@ const Banner = () => {
     <div className="mt-[100px]">
       {/* Banner */}
       {/* <div className=" w-full overflow-hidden z-[5]"> */}
-        {/* <div
+      {/* <div
           className={`w-full transition-opacity duration-500 ${
             isAnimating ? "opacity-0" : "opacity-100"
           }`}
@@ -197,10 +200,10 @@ const Banner = () => {
             className="w-full h-56 md:h-[700px] object-cover"
           />
         </div> */}
-        <DepartmentBanner />
+      <DepartmentBanner Image={bannerImage} />
 
-        {/* Navigation Arrows */}
-        {/* <button
+      {/* Navigation Arrows */}
+      {/* <button
           className="absolute top-1/2 left-4 bg-black/50 text-white p-5 rounded-full hover:bg-black"
           onClick={handlePrevious}
         >

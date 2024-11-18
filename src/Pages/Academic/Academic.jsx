@@ -12,6 +12,8 @@ import Gallery from "../../Components/Gallary/Gallery";
 import DepartmentBanner from "../../Components/Banners/DepartmentBanner";
 
 const Academic = () => {
+  const bannerImage =
+  "https://i.ibb.co/0rqXzZ7/fa8ed7e9-0e83-462f-8c5d-13b06d25cef3.jpg";
   const GalleryImages = [
     "https://i.ibb.co.com/P9Bn5dx/trainer10.jpg",
     "https://i.ibb.co.com/4N0nmWk/trainer9.jpg",
@@ -47,9 +49,10 @@ const Academic = () => {
     "https://i.ibb.co.com/fv6ZRKG/1.jpg",
   ];
 
+
   return (
     <div className="text-black">
-      <DepartmentBanner />
+       <DepartmentBanner Image={bannerImage} />
       {/* Main Container */}
       <div className="gap-5">
         {/* Top Part */}
@@ -114,7 +117,7 @@ const Academic = () => {
         <div className="pt-[400px] relative flex flex-col md:flex-row items-center md:items-start max-w-[1200px] mx-auto px-5">
           <div className="bg-[#F2F8F1] px-6 py-16 md:px-11 md:py-28 w-full md:w-[600px] rounded-lg text-center md:text-left">
             <p className="text-2xl md:text-3xl font-bold">Mission & Values</p>
-            <p className="text-[#7A7A7A] text-base md:text-lg font-semibold mt-4 md:w-[300px] mx-auto md:mx-0">
+            <p className="text-[#272424] text-base md:text-lg font-semibold mt-4 md:w-[300px] mx-auto md:mx-0">
               Lorem ipsum dolor sit amet consec teturac magna aliqua. Ut enim ad
               minim veniamqisit amet consectet adipis...
             </p>

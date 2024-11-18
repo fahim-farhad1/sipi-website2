@@ -7,6 +7,7 @@ import { CiEdit } from "react-icons/ci";
 import ViewTeacher from "./ViewTeacher/ViewTeacher";
 import AddTeacher from "./AddTeacher/AddTeacher";
 import UpdateTeacher from "./UpdateTeacher/UpdateTeacher";
+import Swal from "sweetalert2";
 
 const ManageTeachers = () => {
   const axiosPublic = useAxiosPublic();
@@ -42,6 +43,37 @@ const ManageTeachers = () => {
     );
   });
 
+  const handleDeleteTeacher = async (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          await axiosPublic.delete(`/Teachers/${id}`);
+          refetch(); // Refresh the data after deletion
+          Swal.fire(
+            "Deleted!",
+            "The teacher has been deleted successfully.",
+            "success"
+          );
+        } catch (error) {
+          console.error("Error deleting teacher:", error);
+          Swal.fire(
+            "Failed!",
+            "Failed to delete the teacher. Please try again.",
+            "error"
+          );
+        }
+      }
+    });
+  };
+
   // Loader State
   if (TeachersDataIsLoading) {
     return <Loader />;
@@ -69,9 +101,8 @@ const ManageTeachers = () => {
     document.getElementById("View_Modal_Teacher").showModal();
   };
 
-  // Handle Edit Course
-  const handleUpdateTeacher = (course) => {
-    setEditTeacherData(course);
+  const handleUpdateTeacher = (teacher) => {
+    setEditTeacherData(teacher);
     document.getElementById("Update_Teacher_Modal").showModal();
   };
 
@@ -80,21 +111,18 @@ const ManageTeachers = () => {
       {/* Top Section */}
       <div className="flex justify-between border-b-2 border-gray-600 p-6 items-center">
         <p className="text-3xl font-semibold text-center">Manage Teachers</p>
-        <div>
-          <button
-            className="border border-green-500 px-8 py-3 font-semibold hover:bg-green-500 hover:text-white"
-            onClick={() =>
-              document.getElementById("Add_Teacher_Modal").showModal()
-            }
-          >
-            + Add Teacher
-          </button>
-        </div>
+        <button
+          className="border border-green-500 px-8 py-3 font-semibold hover:bg-green-500 hover:text-white"
+          onClick={() =>
+            document.getElementById("Add_Teacher_Modal").showModal()
+          }
+        >
+          + Add Teacher
+        </button>
       </div>
 
       {/* Query Section */}
       <div className="p-6 flex flex-col gap-4 sm:flex-row items-center justify-between bg-white shadow-md rounded-lg">
-        {/* Search by Name */}
         <input
           type="text"
           placeholder="Search by Name"
@@ -102,8 +130,6 @@ const ManageTeachers = () => {
           onChange={(e) => setSearchName(e.target.value)}
           className="border border-gray-400 rounded-lg px-4 py-2 w-full sm:w-1/3 bg-white"
         />
-
-        {/* Filter by Department */}
         <select
           value={selectedDepartment}
           onChange={(e) => setSelectedDepartment(e.target.value)}
@@ -116,8 +142,6 @@ const ManageTeachers = () => {
             </option>
           ))}
         </select>
-
-        {/* Filter by Designation */}
         <select
           value={selectedDesignation}
           onChange={(e) => setSelectedDesignation(e.target.value)}
@@ -135,7 +159,6 @@ const ManageTeachers = () => {
       {/* Table Section */}
       <div className="overflow-x-auto p-6">
         <table className="table w-full text-left border-collapse">
-          {/* Table Header */}
           <thead>
             <tr className="text-black">
               <th className="px-4 py-2">No</th>
@@ -146,11 +169,10 @@ const ManageTeachers = () => {
               <th className="px-4 py-2">Actions</th>
             </tr>
           </thead>
-          {/* Table Body */}
           <tbody>
             {filteredTeachers.length > 0 ? (
               filteredTeachers.map((teacher, index) => (
-                <tr key={teacher._id} className="border-b text-center">
+                <tr key={teacher._id} className="border-b text-center items-center">
                   <td className="px-4 py-2">{index + 1}</td>
                   <td className="px-4 py-2">
                     <img
@@ -179,6 +201,7 @@ const ManageTeachers = () => {
                     </button>
                     <button
                       className="border-2 border-red-400 px-4 py-2 rounded-lg hover:bg-red-400 hover:text-white text-lg"
+                      onClick={() => handleDeleteTeacher(teacher._id)}
                       title="Delete"
                     >
                       <FaTrash />
