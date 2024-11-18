@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../Shared/Loader/Loader";
 import { useParams } from "react-router-dom";
 import Gallery from "../../../Components/Gallary/Gallery";
+import DepartmentBanner from "../../../Components/Banners/DepartmentBanner";
 
 const Banner = () => {
   const axiosPublic = useAxiosPublic();
@@ -155,37 +156,37 @@ const Banner = () => {
   };
 
   // Access the banners (if any) and other content
-  const banners = Department?.banner_images || [];
+  // const banners = Department?.banner_images || [];
 
-  const handlePrevious = () => {
-    if (!isAnimating) {
-      setIsAnimating(true);
-      setTimeout(() => {
-        setCurrentIndex((prevIndex) =>
-          prevIndex === 0 ? banners.length - 1 : prevIndex - 1
-        );
-        setIsAnimating(false);
-      }, 500);
-    }
-  };
+  // const handlePrevious = () => {
+  //   if (!isAnimating) {
+  //     setIsAnimating(true);
+  //     setTimeout(() => {
+  //       setCurrentIndex((prevIndex) =>
+  //         prevIndex === 0 ? banners.length - 1 : prevIndex - 1
+  //       );
+  //       setIsAnimating(false);
+  //     }, 500);
+  //   }
+  // };
 
-  const handleNext = () => {
-    if (!isAnimating) {
-      setIsAnimating(true);
-      setTimeout(() => {
-        setCurrentIndex((prevIndex) =>
-          prevIndex === banners.length - 1 ? 0 : prevIndex + 1
-        );
-        setIsAnimating(false);
-      }, 500);
-    }
-  };
+  // const handleNext = () => {
+  //   if (!isAnimating) {
+  //     setIsAnimating(true);
+  //     setTimeout(() => {
+  //       setCurrentIndex((prevIndex) =>
+  //         prevIndex === banners.length - 1 ? 0 : prevIndex + 1
+  //       );
+  //       setIsAnimating(false);
+  //     }, 500);
+  //   }
+  // };
 
   return (
     <div className="mt-[100px]">
       {/* Banner */}
-      <div className=" w-full overflow-hidden z-[5]">
-        <div
+      {/* <div className=" w-full overflow-hidden z-[5]"> */}
+        {/* <div
           className={`w-full transition-opacity duration-500 ${
             isAnimating ? "opacity-0" : "opacity-100"
           }`}
@@ -195,10 +196,11 @@ const Banner = () => {
             alt={`Banner ${currentIndex + 1}`}
             className="w-full h-56 md:h-[700px] object-cover"
           />
-        </div>
+        </div> */}
+        <DepartmentBanner />
 
         {/* Navigation Arrows */}
-        <button
+        {/* <button
           className="absolute top-1/2 left-4 bg-black/50 text-white p-5 rounded-full hover:bg-black"
           onClick={handlePrevious}
         >
@@ -211,7 +213,7 @@ const Banner = () => {
         >
           <FaChevronRight />
         </button>
-      </div>
+      </div> */}
 
       {/* Content */}
 
