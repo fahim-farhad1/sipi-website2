@@ -15,6 +15,9 @@ import ManageManagement from "../Dashboard_Pages/ManageManagement/ManageManageme
 import Notices from "../Pages/Notices/Notices";
 import Routines from "../Pages/Routines/Routines";
 import Results from "../Pages/Results/Results";
+import ManageNotices from "../Dashboard_Pages/ManageNotices/ManageNotices";
+import ManageTuitionFee from "../Dashboard_Pages/ManageTuitionFee/ManageTuitionFee";
+import ManageDepartment from "../Dashboard_Pages/ManageDepartment/ManageDepartment";
 
 const router = createBrowserRouter([
   {
@@ -33,7 +36,7 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/departments/:department",
+        path: "/Departments/:department",
         element: <Framework />,
       },
       {
@@ -41,15 +44,15 @@ const router = createBrowserRouter([
         element: <Academic />,
       },
       {
-        path: "/Notices",
+        path: "/Academic/Notices",
         element: <Notices />,
       },
       {
-        path: "/Routines",
+        path: "/Academic/Routines",
         element: <Routines />,
       },
       {
-        path: "/Results",
+        path: "/Academic/Results",
         element: <Results />,
       },
       {
@@ -57,7 +60,7 @@ const router = createBrowserRouter([
         element: <External />,
       },
       {
-        path: "/Administration/Teacher",
+        path: "/Administration/Teachers",
         element: <Teacher />,
       },
       {
@@ -89,6 +92,18 @@ const router = createBrowserRouter([
       {
         path: "ManageManagement",
         element: <ManageManagement></ManageManagement>,
+      },
+      {
+        path: "ManageNotices",
+        element: <ManageNotices></ManageNotices>,
+      },
+      {
+        path: "ManageTuitionFee",
+        element: <ManageTuitionFee></ManageTuitionFee>,
+      },
+      {
+        path: "ManageDepartment",
+        element: <ManageDepartment></ManageDepartment>,
       },
     ],
   },

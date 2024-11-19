@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { FaArrowRight, FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { useState } from "react";
+import { FaArrowRight } from "react-icons/fa";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../Shared/Loader/Loader";
@@ -9,9 +9,7 @@ import DepartmentBanner from "../../../Components/Banners/DepartmentBanner";
 
 const Banner = () => {
   const axiosPublic = useAxiosPublic();
-  const { department } = useParams(); // Destructure department directly from useParams
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
+  const { department } = useParams();
 
   // Fetching DepartmentData
   const {
@@ -55,44 +53,6 @@ const Banner = () => {
     enabled: !!department,
   });
 
-  // Define an array of image URLs
-  const GalleryImages = [
-    "https://i.ibb.co.com/P9Bn5dx/trainer10.jpg",
-    "https://i.ibb.co.com/4N0nmWk/trainer9.jpg",
-    "https://i.ibb.co.com/sFbg1GC/trainer8.jpg",
-    "https://i.ibb.co.com/vzT51NW/trainer7.jpg",
-    "https://i.ibb.co.com/wYMGHKh/trainer6.jpg",
-    "https://i.ibb.co.com/qW0fPCJ/trainer5.jpg",
-    "https://i.ibb.co.com/HptxfC4/trainer4.jpg",
-    "https://i.ibb.co.com/gJYxGRR/trainer3.jpg",
-
-    "https://i.ibb.co.com/c121D0Y/trainer1.jpg",
-    "https://i.ibb.co.com/gR4tqQ6/trainer2.jpg",
-    "https://i.ibb.co.com/2Y5tf5q/24.jpg",
-    "https://i.ibb.co.com/tJZPZgw/23.jpg",
-    "https://i.ibb.co.com/wQRQZVC/22.jpg",
-    "https://i.ibb.co.com/tD69DLG/21.jpg",
-    "https://i.ibb.co.com/phkgxpG/20.jpg",
-    "https://i.ibb.co.com/0JfVKGP/19.jpg",
-
-    "https://i.ibb.co.com/VCvZb0V/18.jpg",
-    "https://i.ibb.co.com/Rhhm3sT/16.jpg",
-    "https://i.ibb.co.com/7nr0MKb/17.jpg",
-    "https://i.ibb.co.com/HH7nxPN/15.jpg",
-    "https://i.ibb.co.com/mzJQ2KF/14.jpg",
-    "https://i.ibb.co.com/yy81dMj/13.jpg",
-    "https://i.ibb.co.com/GVft1yn/12.jpg",
-    "https://i.ibb.co.com/B294FP3/11.jpg",
-
-    "https://i.ibb.co.com/SR7rrn4/10.jpg",
-    "https://i.ibb.co.com/MV6h0zR/9.jpg",
-    "https://i.ibb.co.com/sK6c4Sg/8.jpg",
-    "https://i.ibb.co.com/gd52G1n/7.jpg",
-    "https://i.ibb.co.com/P6ZT3P6/6.jpg",
-    "https://i.ibb.co.com/1RsfBYJ/4.jpg",
-    "https://i.ibb.co.com/YNDv7GW/3.jpg",
-    "https://i.ibb.co.com/fv6ZRKG/1.jpg",
-  ];
   // Error handling
   if (
     DepartmentDataIsLoading ||
@@ -155,78 +115,31 @@ const Banner = () => {
     return { timeSlots, grid, daysOfWeek }; // Include daysOfWeek in the return value
   };
 
-  // Access the banners (if any) and other content
-  // const banners = Department?.banner_images || [];
+  const splitText = (text) => {
+    const words = text.split(" ");
+    const chunks = [];
 
-  // const handlePrevious = () => {
-  //   if (!isAnimating) {
-  //     setIsAnimating(true);
-  //     setTimeout(() => {
-  //       setCurrentIndex((prevIndex) =>
-  //         prevIndex === 0 ? banners.length - 1 : prevIndex - 1
-  //       );
-  //       setIsAnimating(false);
-  //     }, 500);
-  //   }
-  // };
+    for (let i = 0; i < words.length; i += 100) {
+      chunks.push(words.slice(i, i + 100).join(" "));
+    }
 
-  // const handleNext = () => {
-  //   if (!isAnimating) {
-  //     setIsAnimating(true);
-  //     setTimeout(() => {
-  //       setCurrentIndex((prevIndex) =>
-  //         prevIndex === banners.length - 1 ? 0 : prevIndex + 1
-  //       );
-  //       setIsAnimating(false);
-  //     }, 500);
-  //   }
-  // };
+    return chunks;
+  };
 
   return (
     <div className="mt-[100px]">
       {/* Banner */}
-      {/* <div className=" w-full overflow-hidden z-[5]"> */}
-        {/* <div
-          className={`w-full transition-opacity duration-500 ${
-            isAnimating ? "opacity-0" : "opacity-100"
-          }`}
-        >
-          <img
-            src={banners[currentIndex]}
-            alt={`Banner ${currentIndex + 1}`}
-            className="w-full h-56 md:h-[700px] object-cover"
-          />
-        </div> */}
-        <DepartmentBanner />
-
-        {/* Navigation Arrows */}
-        {/* <button
-          className="absolute top-1/2 left-4 bg-black/50 text-white p-5 rounded-full hover:bg-black"
-          onClick={handlePrevious}
-        >
-          <FaChevronLeft />
-        </button>
-
-        <button
-          className="absolute top-1/2 right-4 bg-black/50 text-white p-5 rounded-full hover:bg-black"
-          onClick={handleNext}
-        >
-          <FaChevronRight />
-        </button>
-      </div> */}
+      <DepartmentBanner Image={Department.departmentBanner} />
 
       {/* Content */}
-
       <div className=" text-black">
         {/* Top part */}
         <div className="flex justify-between mt-11 max-w-[1200px] mx-auto">
+          
           {/* Left part */}
           <div className="w-[700px]">
             {/* Name */}
-            <h2
-              id="department-name"
-              className="text-black font-bold text-3xl md:text-5xl text-center md:text-left"
-            >
+            <h2 className="text-black font-bold text-3xl md:text-5xl text-center md:text-left">
               {Department.diploma}
             </h2>
 
@@ -235,15 +148,16 @@ const Banner = () => {
               <h2 className="text-xl font-semibold">
                 About {Department.diploma}
               </h2>
-              <div className="space-y-5 pt-5 leading-relaxed">
-                {Department.about.map((paragraph, index) => (
-                  <p key={index} className="text-gray-700">
-                    {paragraph}
+              <div className="space-y-1 pt-5 leading-relaxed">
+                {splitText(Department.aboutDepartment).map((chunk, index) => (
+                  <p key={index} className="text-gray-700 mb-[4px]">
+                    {chunk}
                   </p>
                 ))}
               </div>
             </div>
           </div>
+
           {/* Right Part */}
           <div className="w-[400px] text-white">
             {/* Info Part */}
@@ -255,31 +169,39 @@ const Banner = () => {
               {/* Chief Instructor */}
               <div className="flex justify-between items-center text-lg font-medium px-4 mb-6">
                 <p>Chief Instructor:</p>
-                <span>{Department.count?.chief_instructor || "N/A"}</span>
+                <span>
+                  {Department.departmentInfo?.chief_instructor || "N/A"}
+                </span>
               </div>
 
               {/* Current Students */}
               <div className="flex justify-between items-center text-lg font-medium border-t border-white py-4 px-4">
                 <p>Current Students:</p>
-                <span>{Department.count?.current_students || "N/A"}</span>
+                <span>
+                  {Department.departmentInfo?.current_students || "N/A"}
+                </span>
               </div>
 
               {/* Total Teachers */}
               <div className="flex justify-between items-center text-lg font-medium border-t border-white py-4 px-4">
                 <p>Total Teachers:</p>
-                <span>{Department.count?.total_teachers || "N/A"}</span>
+                <span>
+                  {Department.departmentInfo?.total_teachers || "N/A"}
+                </span>
               </div>
 
               {/* Job Placements */}
               <div className="flex justify-between items-center text-lg font-medium border-t border-white py-4 px-4">
                 <p>Job Placements:</p>
-                <span>{Department.count?.job_placement || "N/A"}</span>
+                <span>{Department.departmentInfo?.job_placement || "N/A"}</span>
               </div>
 
               {/* Passed Students */}
               <div className="flex justify-between items-center text-lg font-medium border-t border-white py-4 px-4">
                 <p>Passed Students:</p>
-                <span>{Department.count?.passed_students || "N/A"}</span>
+                <span>
+                  {Department.departmentInfo?.passed_students || "N/A"}
+                </span>
               </div>
 
               {/* Apply Now Button */}
@@ -610,7 +532,7 @@ const Banner = () => {
         </div>
 
         <p className="text-center text-3xl font-semibold py-5">Gallery</p>
-        <Gallery images={GalleryImages}></Gallery>
+        <Gallery images={Department.galleryImages}></Gallery>
       </div>
     </div>
   );

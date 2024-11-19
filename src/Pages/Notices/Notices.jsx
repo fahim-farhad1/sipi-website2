@@ -3,10 +3,14 @@ import { MdAdminPanelSettings } from "react-icons/md";
 import { FcDepartment } from "react-icons/fc";
 import { useState } from "react";
 import fetchNotices from "../../Hooks/fetchNotices";
+import DepartmentBanner from "../../Components/Banners/DepartmentBanner";
 
 const Notices = () => {
   const { data: Notices, content } = fetchNotices();
   const [selectedNotice, setSelectedNotice] = useState(null); // State to store the selected notice for modal
+
+  const bannerImage =
+    "https://i.ibb.co/0rqXzZ7/fa8ed7e9-0e83-462f-8c5d-13b06d25cef3.jpg";
 
   // Render loading or error content if present
   if (content) {
@@ -38,47 +42,49 @@ const Notices = () => {
 
   // If data is successfully fetched, render the notices
   return (
-    <div className="container mx-auto px-4 mt-32 max-w-[1200px] text-black">
-      <h1 className="text-4xl font-bold mb-6 text-center">All Notices</h1>
-      {sortedNotices && sortedNotices.length > 0 ? (
-        sortedNotices.map((notice) => (
-          <div
-            key={notice._id}
-            className="border-b py-4 bg-gray-100 px-5 mb-3 shadow-xl hover:shadow-2xl md:py-6 md:px-10 lg:px-20"
-          >
-            <h2 className="text-2xl font-semibold">{notice.title}</h2>
-            <div className="flex flex-col md:flex-row justify-between items-center mb-2 py-3">
-              <p className="text-lg text-gray-700 flex items-center mb-2 md:mb-0">
-                <FcDepartment className="mr-2 text-2xl" />
-                {notice.department}
-              </p>
-              <p className="text-lg text-gray-700 flex items-center mb-2 md:mb-0">
-                <MdAdminPanelSettings className="mr-2 text-2xl" />
-                {notice.authority_type}
-              </p>
-              <p className="text-lg text-gray-700 flex items-center">
-                <CiCalendarDate className="mr-2 text-2xl" />
-                {notice.date}
-              </p>
-            </div>
-
-            {/* Preview of the notice content */}
-            <p className="text-gray-700">
-              {getContentPreview(notice.details.content, 30)}
-            </p>
-
-            {/* Read more link */}
-            <a
-              onClick={() => handleReadMoreClick(notice)} // Handle the click event
-              className="text-green-500 hover:underline"
+    <div className="text-black">
+      <DepartmentBanner Image={bannerImage} />
+      <div className="mx-auto px-4 mt-32 max-w-[1200px]">
+        {sortedNotices && sortedNotices.length > 0 ? (
+          sortedNotices.map((notice) => (
+            <div
+              key={notice._id}
+              className="border-b py-4 bg-gray-100 px-5 mb-3 shadow-xl hover:shadow-2xl md:py-6 md:px-10 lg:px-20"
             >
-              Read more
-            </a>
-          </div>
-        ))
-      ) : (
-        <p>No notices available at the moment.</p>
-      )}
+              <h2 className="text-2xl font-semibold">{notice.title}</h2>
+              <div className="flex flex-col md:flex-row justify-between items-center mb-2 py-3">
+                <p className="text-lg text-gray-700 flex items-center mb-2 md:mb-0">
+                  <FcDepartment className="mr-2 text-2xl" />
+                  {notice.department}
+                </p>
+                <p className="text-lg text-gray-700 flex items-center mb-2 md:mb-0">
+                  <MdAdminPanelSettings className="mr-2 text-2xl" />
+                  {notice.authority_type}
+                </p>
+                <p className="text-lg text-gray-700 flex items-center">
+                  <CiCalendarDate className="mr-2 text-2xl" />
+                  {notice.date}
+                </p>
+              </div>
+
+              {/* Preview of the notice content */}
+              <p className="text-gray-700">
+                {getContentPreview(notice.details.content, 30)}
+              </p>
+
+              {/* Read more link */}
+              <a
+                onClick={() => handleReadMoreClick(notice)} // Handle the click event
+                className="text-green-500 hover:underline"
+              >
+                Read more
+              </a>
+            </div>
+          ))
+        ) : (
+          <p>No notices available at the moment.</p>
+        )}
+      </div>
 
       {/* Modal */}
       <dialog id="my_modal_1" className="modal">

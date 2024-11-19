@@ -12,9 +12,9 @@ const ContactUs = () => {
     <div>
       {/* Contact page Banner */}
       <DepartmentBanner />
-      <div>
-        {Campus.map((campus, isx) => (
-          <ContactCard image={campus.campus_image} map={campus.google_maps} location={campus.location} name={campus.name} number={campus.number} />
+      <div className="space-y-5">
+        {Campus.map((campus, idx) => (
+          <ContactCard key={idx} image={campus.campus_image} map={campus.google_maps} location={campus.location} name={campus.name} number={campus.number} />
         ))}
       </div>
     </div>

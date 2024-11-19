@@ -169,7 +169,11 @@ const ManageTeachers = () => {
               <th className="px-4 py-2">Actions</th>
             </tr>
           </thead>
+<<<<<<< HEAD
           <tbody>
+=======
+          <tbody className="">
+>>>>>>> sazzad
             {filteredTeachers.length > 0 ? (
               filteredTeachers.map((teacher, index) => (
                 <tr key={teacher._id} className="border-b text-center items-center">
@@ -178,13 +182,13 @@ const ManageTeachers = () => {
                     <img
                       src={teacher.image}
                       alt={teacher.name}
-                      className="w-16 h-16 object-cover rounded-full"
+                      className="w-16 h-16 object-cover "
                     />
                   </td>
                   <td className="px-4 py-2">{teacher.name}</td>
                   <td className="px-4 py-2">{teacher.department}</td>
                   <td className="px-4 py-2">{teacher.designation}</td>
-                  <td className="px-4 py-2 flex gap-5 text-black">
+                  <td className="px-4 py-2 gap-5 text-black flex items-center mt-3">
                     <button
                       className="border-2 border-blue-400 px-4 py-2 rounded-lg hover:bg-blue-400 hover:text-white text-lg"
                       onClick={() => handleViewTeacher(teacher)}

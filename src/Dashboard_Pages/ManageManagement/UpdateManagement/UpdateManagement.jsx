@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
+import { useForm, useFieldArray } from "react-hook-form";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
-import { useFieldArray, useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 
-const UpdateTeacher = ({ TeacherData, refetch }) => {
+const UpdateManagement = ({ ManagementData, refetch }) => {
   const axiosPublic = useAxiosPublic();
 
+  // Initialize the form with default values
   const {
     register,
     handleSubmit,
@@ -14,60 +15,63 @@ const UpdateTeacher = ({ TeacherData, refetch }) => {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      subjects_taught: [""],
-      awards: [""],
-      notable_contributions: [""],
       name: "",
       image: "",
       designation: "",
       department: "",
-      award_date: "",
+      email: "",
+      phone: "",
       about_me: "",
       background: "",
+      responsibilities: [""],
+      achievements: [""],
       more_info: "",
     },
   });
 
+  // Handle responsibilities fields
   const {
-    fields: subjectFields,
-    append: addSubject,
-    remove: removeSubject,
-  } = useFieldArray({ control, name: "subjects_taught" });
+    fields: responsibilitiesFields,
+    append: addResponsibilities,
+    remove: removeResponsibilities,
+  } = useFieldArray({
+    control,
+    name: "responsibilities",
+  });
 
+  // Handle achievements fields
   const {
-    fields: awardFields,
-    append: addAward,
-    remove: removeAward,
-  } = useFieldArray({ control, name: "awards" });
+    fields: awardAchievements,
+    append: addAchievements,
+    remove: removeAchievements,
+  } = useFieldArray({
+    control,
+    name: "achievements",
+  });
 
-  const {
-    fields: contributionFields,
-    append: addContribution,
-    remove: removeContribution,
-  } = useFieldArray({ control, name: "notable_contributions" });
-
+  // Reset the form with the fetched data when ManagementData changes
   useEffect(() => {
-    if (TeacherData) {
+    if (ManagementData) {
       reset({
-        image: TeacherData.image,
-        name: TeacherData.name,
-        designation: TeacherData.designation,
-        department: TeacherData.department,
-        subjects_taught: TeacherData.subjects_taught || [""],
-        awards: TeacherData.awards || [""],
-        award_date: TeacherData.award_date,
-        notable_contributions: TeacherData.notable_contributions || [""],
-        about_me: TeacherData.about_me,
-        background: TeacherData.background,
-        more_info: TeacherData.more_info,
+        name: ManagementData.name,
+        image: ManagementData.image,
+        designation: ManagementData.designation,
+        department: ManagementData.department,
+        email: ManagementData.email,
+        phone: ManagementData.phone,
+        about_me: ManagementData.about_me,
+        background: ManagementData.background,
+        responsibilities: ManagementData.responsibilities || [""],
+        achievements: ManagementData.achievements || [""],
+        more_info: ManagementData.more_info,
       });
     }
-  }, [TeacherData, reset]);
+  }, [ManagementData, reset]);
 
   const onSubmit = async (data) => {
     try {
       // Make the PUT request to update the mentorship by ID
-      await axiosPublic.put(`/Teachers/${TeacherData._id}`, data);
+      await axiosPublic.put(`/Management/${ManagementData._id}`, data);
 
       // Show a success alert
       Swal.fire({
@@ -77,7 +81,7 @@ const UpdateTeacher = ({ TeacherData, refetch }) => {
         confirmButtonText: "OK",
       });
 
-      document.getElementById("Update_Teacher_Modal").close();
+      document.getElementById("Update_Management_Modal").close();
       refetch();
     } catch (error) {
       // Show an error alert
@@ -91,18 +95,57 @@ const UpdateTeacher = ({ TeacherData, refetch }) => {
       console.error("Error updating mentorship:", error);
     }
   };
-<<<<<<< HEAD
-=======
   
->>>>>>> sazzad
+  // Generic field array rendering function
+  const renderFieldArray = (
+    fields,
+    registerFn,
+    removeFn,
+    addFn,
+    label,
+    fieldName
+  ) => (
+    <div className="mb-3">
+      <label className="font-medium mb-1 block">{label}</label>
+      {fields.map((item, index) => (
+        <div key={item.id} className="flex mt-2">
+          <input
+            type="text"
+            className="border border-gray-300 px-4 py-2 flex-grow bg-white"
+            {...registerFn(`${fieldName}.${index}`, {
+              required: `${label.slice(0, -1)} is required`,
+            })}
+            placeholder={`Enter ${label.toLowerCase().slice(0, -1)}`}
+          />
+          <button
+            type="button"
+            onClick={() => removeFn(index)}
+            className="px-3 py-2 bg-red-500 text-white"
+          >
+            Remove
+          </button>
+        </div>
+      ))}
+      <button
+        type="button"
+        onClick={() => addFn("")}
+        className="px-4 py-2 bg-blue-500 text-white mt-2"
+      >
+        Add {label.slice(0, -1)}
+      </button>
+    </div>
+  );
+
   return (
     <div className="modal-box bg-white max-w-[800px] p-0">
       <div className="flex justify-between items-center px-10">
-        <h1 className="text-3xl font-semibold text-center mb-6">Add Teacher</h1>
+        <h1 className="text-3xl font-semibold text-center mb-6">
+          Update Management Data
+        </h1>
         <button
           className="text-3xl font-bold hover:text-red-500"
           onClick={() =>
-            document.getElementById("Update_Teacher_Modal").close()
+            document.getElementById("Update_Management_Modal").close()
           }
         >
           X
@@ -138,19 +181,13 @@ const UpdateTeacher = ({ TeacherData, refetch }) => {
         {/* Designation */}
         <div>
           <label className="block font-medium mb-1">Designation</label>
-          <select
+          <input
+            type="text"
             {...register("designation", {
               required: "Designation is required",
             })}
             className="border border-gray-300 px-4 py-2 w-full bg-white"
-          >
-            <option value="">Select Designation</option>
-            <option value="Chief Instructor">Chief Instructor</option>
-            <option value="Senior Instructor">Senior Instructor</option>
-            <option value="Junior Instructor">Junior Instructor</option>
-            <option value="New Instructor">New Instructor</option>
-            <option value="Intern">Intern</option>
-          </select>
+          />
           {errors.designation && (
             <p className="text-red-500 text-sm">{errors.designation.message}</p>
           )}
@@ -169,54 +206,37 @@ const UpdateTeacher = ({ TeacherData, refetch }) => {
           )}
         </div>
 
-        {/* Subjects Taught */}
-        {renderFieldArray(
-          subjectFields,
-          register,
-          removeSubject,
-          addSubject,
-          "Subjects Taught",
-          "subjects_taught"
-        )}
-
-        {/* Awards */}
-        {renderFieldArray(
-          awardFields,
-          register,
-          removeAward,
-          addAward,
-          "Awards",
-          "awards"
-        )}
-
-        {/* Notable Contributions */}
-        {renderFieldArray(
-          contributionFields,
-          register,
-          removeContribution,
-          addContribution,
-          "Notable Contributions",
-          "notable_contributions"
-        )}
-
-        {/* Award Date */}
+        {/* Email */}
         <div>
-          <label className="block font-medium mb-1">Award Date</label>
+          <label className="block font-medium mb-1">Email</label>
           <input
-            type="date"
-            {...register("award_date", { required: "Award Date is required" })}
+            type="email"
+            {...register("email", { required: "Email is required" })}
             className="border border-gray-300 px-4 py-2 w-full bg-white"
           />
-          {errors.award_date && (
-            <p className="text-red-500 text-sm">{errors.award_date.message}</p>
+          {errors.email && (
+            <p className="text-red-500 text-sm">{errors.email.message}</p>
           )}
         </div>
 
-        {/* About Me */}
+        {/* Phone */}
         <div>
-          <label className="block font-medium mb-1">About Me</label>
+          <label className="block font-medium mb-1">Phone</label>
+          <input
+            type="text"
+            {...register("phone", { required: "Phone is required" })}
+            className="border border-gray-300 px-4 py-2 w-full bg-white"
+          />
+          {errors.phone && (
+            <p className="text-red-500 text-sm">{errors.phone.message}</p>
+          )}
+        </div>
+
+        {/* About me */}
+        <div>
+          <label className="block font-medium mb-1">About me</label>
           <textarea
-            {...register("about_me", { required: "About Me is required" })}
+            {...register("about_me", { required: "About me is required" })}
             className="border border-gray-300 h-28 px-4 py-2 w-full bg-white"
           />
           {errors.about_me && (
@@ -236,6 +256,26 @@ const UpdateTeacher = ({ TeacherData, refetch }) => {
           )}
         </div>
 
+        {/* Responsibilities */}
+        {renderFieldArray(
+          responsibilitiesFields,
+          register,
+          removeResponsibilities,
+          addResponsibilities,
+          "Responsibilities",
+          "responsibilities"
+        )}
+
+        {/* Achievements */}
+        {renderFieldArray(
+          awardAchievements,
+          register,
+          removeAchievements,
+          addAchievements,
+          "Achievements",
+          "achievements"
+        )}
+
         {/* More Info */}
         <div>
           <label className="block font-medium mb-1">More Info</label>
@@ -254,7 +294,7 @@ const UpdateTeacher = ({ TeacherData, refetch }) => {
             type="submit"
             className="px-6 py-2 bg-blue-500 text-white font-semibold rounded-lg"
           >
-            Update Teacher
+            Update Management
           </button>
         </div>
       </form>
@@ -262,43 +302,4 @@ const UpdateTeacher = ({ TeacherData, refetch }) => {
   );
 };
 
-const renderFieldArray = (
-  fields,
-  registerFn,
-  removeFn,
-  addFn,
-  label,
-  fieldName
-) => (
-  <div className="mb-3">
-    <label className="font-medium mb-1 block">{label}</label>
-    {fields.map((item, index) => (
-      <div key={item.id} className="flex mt-2">
-        <input
-          type="text"
-          className="border border-gray-300 px-4 py-2 flex-grow bg-white"
-          {...registerFn(`${fieldName}.${index}`, {
-            required: `${label.slice(0, -1)} is required`,
-          })}
-          placeholder={`Enter ${label.toLowerCase().slice(0, -1)}`}
-        />
-        <button
-          type="button"
-          onClick={() => removeFn(index)}
-          className="px-3 py-2 bg-red-500 text-white"
-        >
-          Remove
-        </button>
-      </div>
-    ))}
-    <button
-      type="button"
-      onClick={() => addFn("")}
-      className="px-4 py-2 bg-blue-500 text-white mt-2"
-    >
-      Add {label.slice(0, -1)}
-    </button>
-  </div>
-);
-
-export default UpdateTeacher;
+export default UpdateManagement;

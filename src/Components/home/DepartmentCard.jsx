@@ -1,9 +1,9 @@
-import React from 'react'
+import React from "react";
 
-export default function DepartmentCard({deparmentData}) {
-    const {department,diploma,bteb_thoughts}=deparmentData
-    console.log(deparmentData)
-    const {department_img,name,redirect}= department
+export default function DepartmentCard({ deparmentData }) {
+  const { department, diploma, bteb_thoughts } = deparmentData || {};
+  const { department_img, name, redirect } = department || {}; // Fallback to an empty object if `department` is undefined
+
   return (
     <div 
     // key={deparment._id} 
