@@ -9,8 +9,8 @@ export default function DepartmentCard({deparmentData}) {
     // key={deparment._id} 
     className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow"
   >
-    <img 
-      src={department_img} 
+    <img
+      src={department_img}
       className="w-full h-48 object-cover rounded-t-lg" 
     />
     <div className="p-4">
