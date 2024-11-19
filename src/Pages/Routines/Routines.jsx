@@ -1,16 +1,17 @@
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import fetchRoutine from "../../../Hooks/fetchRoutine";
 import { jsPDF } from "jspdf";
+import fetchRoutine from "../../Hooks/fetchRoutine";
+import DepartmentBanner from "../../Components/Banners/DepartmentBanner";
 
-const AllRoutines = () => {
+const Routines = () => {
   const { data: Routine, content } = fetchRoutine();
-
   const [filteredRoutines, setFilteredRoutines] = useState([]);
   const { register, handleSubmit, watch } = useForm();
-
   const selectedSemester = watch("semester");
   const selectedDepartment = watch("department");
+  const bannerImage =
+    "https://i.ibb.co/0rqXzZ7/fa8ed7e9-0e83-462f-8c5d-13b06d25cef3.jpg";
 
   useEffect(() => {
     if (Routine) {
@@ -65,21 +66,21 @@ const AllRoutines = () => {
       ),
     ];
 
-    let grid = Array(timeSlots.length)
+    let grid = Array(daysOfWeek.length)
       .fill()
-      .map(() => Array(daysOfWeek.length).fill(""));
+      .map(() => Array(timeSlots.length).fill(""));
 
     schedule.forEach((daySchedule) => {
       const dayIndex = daysOfWeek.indexOf(daySchedule.day);
       daySchedule.classes.forEach((classItem) => {
         const timeIndex = timeSlots.indexOf(classItem.time);
         if (timeIndex !== -1 && dayIndex !== -1) {
-          grid[timeIndex][dayIndex] = classItem.subject;
+          grid[dayIndex][timeIndex] = classItem.subject;
         }
       });
     });
 
-    return { timeSlots, grid };
+    return { timeSlots, grid, daysOfWeek }; // Include daysOfWeek in the return value
   };
 
   const generatePDF = (routine) => {
@@ -167,98 +168,97 @@ const AllRoutines = () => {
   };
 
   return (
-    <div className="border border-gray-100 p-5">
-      <p className="text-2xl font-bold">Routines</p>
+    <div className="text-black">
+      <DepartmentBanner Image={bannerImage} />
 
-      <form onSubmit={handleSubmit(onSubmit)} className="mb-5">
-        <div className="flex space-x-4">
-          <div className="flex items-center">
-            <label htmlFor="department" className="block text-lg font-semibold">
-              Department :
-            </label>
-            <select
-              {...register("department")}
-              className="p-3   border border-gray-400 ml-5 bg-white"
-            >
-              <option value="">Select Department</option>
-              {departments.map((department, index) => (
-                <option key={index} value={department}>
-                  {department}
-                </option>
-              ))}
-            </select>
+      <div className="max-w-[1200px] mx-auto mt-14">
+        <form onSubmit={handleSubmit(onSubmit)} className="mb-5">
+          <div className="flex space-x-4 justify-between">
+            <div className="flex items-center">
+              <label
+                htmlFor="department"
+                className="block text-lg font-semibold"
+              >
+                Department :
+              </label>
+              <select
+                {...register("department")}
+                className="p-3 border border-gray-400 ml-5 bg-white w-[300px]"
+              >
+                <option value="">Select Department</option>
+                {departments.map((department, index) => (
+                  <option key={index} value={department}>
+                    {department}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div className="flex items-center">
+              <label htmlFor="semester" className="block text-lg font-semibold">
+                Semester :
+              </label>
+              <select
+                {...register("semester")}
+                className="p-3 border border-gray-400 ml-5 bg-white w-[300px]"
+              >
+                <option value="">Select Semester</option>
+                {semesters.map((semester, index) => (
+                  <option key={index} value={semester}>
+                    {semester}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
+        </form>
 
-          <div className="flex items-center">
-            <label htmlFor="semester" className="block text-lg font-semibold">
-              Semester :
-            </label>
-            <select
-              {...register("semester")}
-              className="p-3   border border-gray-400 ml-5 bg-white"
-            >
-              <option value="">Select Semester</option>
-              {semesters.map((semester, index) => (
-                <option key={index} value={semester}>
-                  {semester}
-                </option>
-              ))}
-            </select>
-          </div>
-        </div>
-      </form>
+        <div>
+          {filteredRoutines.length > 0 ? (
+            filteredRoutines.map((routine) => {
+              const { timeSlots, grid, daysOfWeek } = generateGrid(
+                routine.schedule
+              ); // Destructure daysOfWeek
+              return (
+                <div key={routine._id} className="mb-10">
+                  <div className="text-xl font-medium mb-4">
+                    {routine.department} - {routine.semester} Semester (
+                    {routine.session} Session)
+                  </div>
+                  <div className="flex justify-between items-center mb-4">
+                    <p className="text-lg">
+                      Class Duration: {routine["class-Duration"]}
+                    </p>
+                    {/* Download PDF Button */}
+                    <button
+                      onClick={() => generatePDF(routine)}
+                      className="px-4 py-2 border border-blue-400 hover:bg-blue-400 text-black hover:text-white"
+                    >
+                      Download PDF
+                    </button>
+                  </div>
 
-      <div>
-        {filteredRoutines.length > 0 ? (
-          filteredRoutines.map((routine) => {
-            const { timeSlots, grid } = generateGrid(routine.schedule);
-            return (
-              <div key={routine._id} className="mb-10">
-                <div className="flex justify-between items-center">
-                  <h2 className="text-2xl font-bold">
-                    {routine.department} - {routine.semester} ({routine.session}{" "}
-                    Session)
-                  </h2>
-                  {/* Download PDF Button */}
-                  <button
-                    onClick={() => generatePDF(routine)}
-                    className="px-4 py-2 border border-blue-400 hover:bg-blue-400 text-black hover:text-white"
-                  >
-                    Download PDF
-                  </button>
-                </div>
-                <p className="text-lg">
-                  Class Duration: {routine["class-Duration"]}
-                </p>
-
-                <div className="mt-5">
+                  {/* Table of Time Slots */}
                   <table className="min-w-full table-auto border-collapse border border-gray-300">
                     <thead>
                       <tr>
-                        <th className="border border-gray-300 p-2">Time</th>
-                        {[
-                          "Saturday",
-                          "Sunday",
-                          "Monday",
-                          "Tuesday",
-                          "Wednesday",
-                          "Thursday",
-                        ].map((day, idx) => (
+                        <th className="border border-gray-300 p-2">Day</th>
+                        {timeSlots.map((time, idx) => (
                           <th key={idx} className="border border-gray-300 p-2">
-                            {day}
+                            {time}
                           </th>
                         ))}
                       </tr>
                     </thead>
                     <tbody>
-                      {grid.map((row, rowIndex) => (
-                        <tr key={rowIndex}>
-                          <td className="border border-gray-300 p-2">
-                            {timeSlots[rowIndex] || "No Class"}
+                      {grid.map((row, dayIndex) => (
+                        <tr key={dayIndex}>
+                          <td className="border border-gray-300 p-2 text-center">
+                            {daysOfWeek[dayIndex]}
                           </td>
-                          {row.map((cell, colIndex) => (
+                          {row.map((cell, timeIndex) => (
                             <td
-                              key={colIndex}
+                              key={timeIndex}
                               className="border border-gray-300 p-2 text-center"
                             >
                               {cell || "No Class"}
@@ -269,15 +269,17 @@ const AllRoutines = () => {
                     </tbody>
                   </table>
                 </div>
-              </div>
-            );
-          })
-        ) : (
-          <p>No routines found for the selected filters.</p>
-        )}
+              );
+            })
+          ) : (
+            <p className="text-center text-lg">
+              No routines found for the selected filters.
+            </p>
+          )}
+        </div>
       </div>
     </div>
   );
 };
 
-export default AllRoutines;
+export default Routines;

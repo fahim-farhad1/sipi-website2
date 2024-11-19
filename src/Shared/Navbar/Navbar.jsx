@@ -1,7 +1,12 @@
 import { IoMdCall } from "react-icons/io";
 import { RxDividerVertical } from "react-icons/rx";
 import { TfiEmail } from "react-icons/tfi";
-import { FaFacebookF, FaListUl, FaYoutube } from "react-icons/fa";
+import {
+  FaChevronDown,
+  FaFacebookF,
+  FaListUl,
+  FaYoutube,
+} from "react-icons/fa";
 import { IoLogoInstagram } from "react-icons/io5";
 import { FaXTwitter } from "react-icons/fa6";
 import { Link, NavLink } from "react-router-dom";
@@ -10,34 +15,30 @@ import { useState } from "react";
 import { MdClose } from "react-icons/md";
 import { FaChevronLeft } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import { useQuery } from "@tanstack/react-query";
+import Loader from "../Loader/Loader";
 
 const navLinks = [
   { name: "Home", path: "/" },
   {
     name: "Departments",
-    path: "/department",
-    subLinks: [
-      { name: "Computer", path: "/departments/Computer" },
-      { name: "Architecture", path: "/departments/Architecture" },
-      { name: "Civil", path: "/Departments/civil" },
-      { name: "Graphics", path: "/Departments/Graphics" },
-    ],
+    subLinks: [], // We'll dynamically populate this array with fetched data
   },
   {
     name: "Academic",
-    path: "/Academic",
     subLinks: [
-      { name: "Admissions", path: "/academic/admissions" },
-      { name: "Programs", path: "/academic/programs" },
-      { name: "Research", path: "/academic/research" },
+      { name: "Academic", path: "/Academic" },
+      { name: "Notices", path: "/Academic/Notices" },
+      { name: "Routines", path: "/Academic/Routines" },
+      { name: "Results", path: "/Academic/Results" },
     ],
   },
   {
     name: "Administration",
-    path: "/administration",
     subLinks: [
-      { name: "Teach", path: "/academic/admissions" },
-      { name: "Programs", path: "/academic/programs" },
+      { name: "Teachers", path: "/Administration/Teachers" },
+      { name: "Management", path: "/Administration/Management" },
     ],
   },
   { name: "Blogs", path: "/blogs" },
@@ -46,12 +47,56 @@ const navLinks = [
 ];
 
 const Navbar = () => {
+  const axiosPublic = useAxiosPublic();
   const [activeAccordion, setActiveAccordion] = useState(null);
   const [open, setOpen] = useState(false);
 
   const toggleAccordion = (index) => {
     setActiveAccordion(activeAccordion === index ? null : index);
   };
+
+  // Fetch DepartmentNames Data
+  const {
+    data: DepartmentNamesData = [],
+    isLoading: DepartmentNamesDataIsLoading,
+    error: DepartmentNamesDataError,
+  } = useQuery({
+    queryKey: ["DepartmentNamesData"],
+    queryFn: () => axiosPublic.get(`/DepartmentNames`).then((res) => res.data),
+  });
+
+  // Loader State
+  if (DepartmentNamesDataIsLoading) {
+    return <Loader />;
+  }
+
+  // Error State
+  if (DepartmentNamesDataError) {
+    return (
+      <div className="h-screen flex flex-col justify-center items-center bg-gradient-to-br from-blue-300 to-white">
+        <p className="text-center text-red-500 font-bold text-3xl mb-8">
+          Something went wrong. Please reload the page.
+        </p>
+        <button
+          className="px-6 py-3 bg-blue-500 text-white font-bold rounded-lg hover:bg-blue-400 transition duration-300"
+          onClick={() => window.location.reload()}
+        >
+          Reload
+        </button>
+      </div>
+    );
+  }
+
+  // Dynamically update the "Departments" nav item based on fetched data
+  const updatedNavLinks = navLinks.map((link) => {
+    if (link.name === "Departments") {
+      link.subLinks = DepartmentNamesData.map((dept) => ({
+        name: dept,
+        path: `/Departments/${dept}`, // Dynamically create the path
+      }));
+    }
+    return link;
+  });
 
   return (
     <div className="w-full bg-white fixed z-10 border border-gray-200">
@@ -114,20 +159,16 @@ const Navbar = () => {
             open ? "right-0" : "-right-[400px]"
           } duration-500 space-y-5 border border-gray-200 px-2 pt-5 font-semibold`}
         >
-          {navLinks.map((link, index) =>
+          {updatedNavLinks.map((link, index) =>
             link.subLinks ? (
               <div key={link.name}>
-                {/* Toggleable Accordion Header */}
                 <div
                   onClick={() => toggleAccordion(index)}
                   className="flex items-center cursor-pointer justify-between"
                 >
-                  <NavLink
-                    to={link.path}
-                    className="hover:text-blue-500 font-semibold"
-                  >
+                  <span className="font-semibold text-gray-700">
                     {link.name}
-                  </NavLink>
+                  </span>
                   <button className="ml-2">
                     {activeAccordion === index ? (
                       <FaChevronLeft className="h-4 w-4 text-gray-600" />
@@ -167,14 +208,16 @@ const Navbar = () => {
 
         {/* Desktop view */}
         <div className="hidden md:flex gap-5 font-semibold text-black items-center">
-          {navLinks.map((link) =>
+          {updatedNavLinks.map((link) =>
             link.subLinks ? (
               <div key={link.name} className="relative group">
-                <NavLink className="hover:text-blue-500" to={link.path}>
-                  {link.name}
-                </NavLink>
+                <span
+                  onClick={(e) => e.preventDefault()}
+                  className="hover:text-blue-500 cursor-default flex items-center"
+                >
+                  {link.name} <FaChevronDown className="ml-2" />
+                </span>
 
-                {/* Dropdown menu only shows on hover */}
                 <ul className="absolute hidden group-hover:block bg-white z-[1] w-52 p-2 shadow">
                   {link.subLinks.map((subLink) => (
                     <li key={subLink.name} className="w-full">
@@ -198,23 +241,6 @@ const Navbar = () => {
               </NavLink>
             )
           )}
-
-          {/* <button className="btn btn-ghost btn-circle">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5 text-black"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-              />
-            </svg>
-          </button> */}
         </div>
 
         <button className="bg-orange-700 py-3 px-3 text-white hover:bg-green-700 duration-500 hidden md:block">

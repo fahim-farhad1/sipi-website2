@@ -1,112 +1,153 @@
-import { useState } from "react";
 import school from "../../assets/school.png";
-import fetchNotices from "../../Hooks/fetchNotices";
+import Default from "../../assets/Default.png";
+import BannerDefault from "../../assets/BannerDefault.png";
 import {
   FaFacebookF,
   FaInstagram,
   FaLinkedinIn,
+  FaLongArrowAltRight,
   FaTwitter,
 } from "react-icons/fa";
-import AcademicComp from "./AcademicComp/AcademicComp";
-import AllNotices from "./AllNotices/AllNotices";
-import AllRoutines from "./AllRoutines/AllRoutines";
+import Gallery from "../../Components/Gallary/Gallery";
+import DepartmentBanner from "../../Components/Banners/DepartmentBanner";
 
 const Academic = () => {
-  const { data: Notices, content } = fetchNotices();
-  const [activeTab, setActiveTab] = useState("academic"); // Track the active tab
+  const bannerImage =
+  "https://i.ibb.co/0rqXzZ7/fa8ed7e9-0e83-462f-8c5d-13b06d25cef3.jpg";
+  const GalleryImages = [
+    "https://i.ibb.co.com/P9Bn5dx/trainer10.jpg",
+    "https://i.ibb.co.com/4N0nmWk/trainer9.jpg",
+    "https://i.ibb.co.com/sFbg1GC/trainer8.jpg",
+    "https://i.ibb.co.com/vzT51NW/trainer7.jpg",
+    "https://i.ibb.co.com/wYMGHKh/trainer6.jpg",
+    "https://i.ibb.co.com/qW0fPCJ/trainer5.jpg",
+    "https://i.ibb.co.com/HptxfC4/trainer4.jpg",
+    "https://i.ibb.co.com/gJYxGRR/trainer3.jpg",
+    "https://i.ibb.co.com/c121D0Y/trainer1.jpg",
+    "https://i.ibb.co.com/gR4tqQ6/trainer2.jpg",
+    "https://i.ibb.co.com/2Y5tf5q/24.jpg",
+    "https://i.ibb.co.com/tJZPZgw/23.jpg",
+    "https://i.ibb.co.com/wQRQZVC/22.jpg",
+    "https://i.ibb.co.com/tD69DLG/21.jpg",
+    "https://i.ibb.co.com/phkgxpG/20.jpg",
+    "https://i.ibb.co.com/0JfVKGP/19.jpg",
+    "https://i.ibb.co.com/VCvZb0V/18.jpg",
+    "https://i.ibb.co.com/Rhhm3sT/16.jpg",
+    "https://i.ibb.co.com/7nr0MKb/17.jpg",
+    "https://i.ibb.co.com/HH7nxPN/15.jpg",
+    "https://i.ibb.co.com/mzJQ2KF/14.jpg",
+    "https://i.ibb.co.com/yy81dMj/13.jpg",
+    "https://i.ibb.co.com/GVft1yn/12.jpg",
+    "https://i.ibb.co.com/B294FP3/11.jpg",
+    "https://i.ibb.co.com/SR7rrn4/10.jpg",
+    "https://i.ibb.co.com/MV6h0zR/9.jpg",
+    "https://i.ibb.co.com/sK6c4Sg/8.jpg",
+    "https://i.ibb.co.com/gd52G1n/7.jpg",
+    "https://i.ibb.co.com/P6ZT3P6/6.jpg",
+    "https://i.ibb.co.com/1RsfBYJ/4.jpg",
+    "https://i.ibb.co.com/YNDv7GW/3.jpg",
+    "https://i.ibb.co.com/fv6ZRKG/1.jpg",
+  ];
 
-  // Render loading or error content if present
-  if (content) {
-    return content;
-  }
-
-  // Handle button click to change active tab
-  const handleTabClick = (tab) => {
-    setActiveTab(tab);
-  };
 
   return (
-    <div className="mt-[105px] text-black">
-      <div className="flex flex-col md:flex-row max-w-[1200px] mx-auto gap-10">
-        {/* Buttons */}
-        <div
-          className="w-full md:w-[250px] space-y-2 mt-20 text-center md:text-left fixed top-28 left-60"
-         
-        >
-          <button
-            className={`font-semibold text-2xl p-5 w-full md:w-[400px] text-left md:text-left ${
-              activeTab === "academic"
-                ? "bg-[#002147] text-white"
-                : "bg-[#F2F8F1] hover:bg-[#002147] hover:text-white"
-            } transition-colors duration-700`}
-            onClick={() => handleTabClick("academic")}
-          >
-            Academic
-          </button>
-          <button
-            className={`font-semibold text-2xl p-5 w-full md:w-[400px] text-left md:text-left ${
-              activeTab === "notices"
-                ? "bg-[#002147] text-white"
-                : "bg-[#F2F8F1] hover:bg-[#002147] hover:text-white"
-            } transition-colors duration-700`}
-            onClick={() => handleTabClick("notices")}
-          >
-            All Notices
-          </button>
-          <button
-            className={`font-semibold text-2xl p-5 w-full md:w-[400px] text-left md:text-left ${
-              activeTab === "routines"
-                ? "bg-[#002147] text-white"
-                : "bg-[#F2F8F1] hover:bg-[#002147] hover:text-white"
-            } transition-colors duration-700`}
-            onClick={() => handleTabClick("routines")}
-          >
-            All Routines
-          </button>
-          <button
-            className={`font-semibold text-2xl p-5 w-full md:w-[400px] text-left md:text-left ${
-              activeTab === "results"
-                ? "bg-[#002147] text-white"
-                : "bg-[#F2F8F1] hover:bg-[#002147] hover:text-white"
-            } transition-colors duration-700`}
-            onClick={() => handleTabClick("results")}
-          >
-            Results
-          </button>
+    <div className="text-black">
+       <DepartmentBanner Image={bannerImage} />
+      {/* Main Container */}
+      <div className="gap-5">
+        {/* Top Part */}
+        <div className="max-w-[1200px] mx-auto">
+          <div className="flex flex-col md:flex-row items-center w-full">
+            <p className="text-[128px] font-semibold text-center">12+ <span className="text-3xl md:text-5xl font-semibold md:text-left">BTEB Affiliated Courses</span></p>
+          </div>
+          {/* Top text-1 */}
+          <p className="text-[#7A7A7A] text-lg font-medium md:px-5 text-center md:text-left">
+          The Bangladesh Technical Education Board (BTEB) offers a range of 12+ vocational and technical education programs to equip students with practical skills and industry-specific knowledge. These courses are designed for students who have completed their secondary education and wish to pursue specialized training in fields like engineering, technology, healthcare, design, and hospitality.
+          </p>
         </div>
 
-        {/* Content */}
-        <div className="w-full md:w-2/3 mt-20 ml-[500px]">
-          {activeTab === "academic" && <AcademicComp />}
-          {activeTab === "notices" && <AllNotices />}
-          {activeTab === "routines" && <AllRoutines />}
-          {activeTab === "results" && (
-            <iframe
-              src="https://btebresultszone.com/results"
-              width="100%"
-              height="500px"
-              frameBorder="0"
-            ></iframe>
-          )}
+        {/* Gallery */}
+        <div className="my-32 px-32">
+          <Gallery images={GalleryImages} />
+        </div>
+
+        {/* Banner */}
+        <div className="pt-10 relative max-w-[1200px] mx-auto">
+          <img
+            src={BannerDefault}
+            alt="Banner"
+            className="w-full h-[300px] sm:h-[400px] md:h-[500px] object-cover"
+          />
+          <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 bg-white w-full sm:max-w-[900px] p-5 border border-gray-60">
+            <p className="text-black text-2xl md:text-3xl font-semibold text-center">
+              Graduate Areas of Study
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 gap-2 pt-5">
+              {[
+                "Refrigeration and Air Conditioning Technology",
+                "Computer Technology",
+                "Architecture and Interior Design Technology",
+                "Electronics Technology",
+                "Civil Technology",
+                "Mechanical Technology",
+                "Power Technology",
+                "Ceramic Technology",
+                "Surveying Technology",
+                "Automobile Technology",
+                "Garment Design and Pattern Making",
+                "Food Technology",
+                "Data Communication and Networking",
+                "Telecommunication Technology",
+                "Graphic Design Technology",
+                "Printing Technology",
+              ].map((tag, index) => (
+                <button
+                  key={index}
+                  className="flex items-center justify-between text-lg md:text-xl bg-[#f2F8F1] hover:text-green-500 transition-colors duration-700 px-5 py-2 rounded-lg"
+                >
+                  <span>{tag}</span>
+                  <FaLongArrowAltRight className="ml-5" />
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Value Section */}
+        <div className="pt-[400px] relative flex flex-col md:flex-row items-center md:items-start max-w-[1200px] mx-auto px-5">
+          <div className="bg-[#F2F8F1] px-6 py-16 md:px-11 md:py-28 w-full md:w-[600px] rounded-lg text-center md:text-left">
+            <p className="text-2xl md:text-3xl font-bold">Mission & Values</p>
+            <p className="text-[#272424] text-base md:text-lg font-semibold mt-4 md:w-[300px] mx-auto md:mx-0">
+              Lorem ipsum dolor sit amet consec teturac magna aliqua. Ut enim ad
+              minim veniamqisit amet consectet adipis...
+            </p>
+            <p className="text-[#7A7A7A] text-base md:text-lg font-semibold mt-4 md:w-[300px] mx-auto md:mx-0">
+              Lorem ipsum dolor sit amet consec teturac magna aliqua. Ut enim ad
+              minim veniamqisit amet consectet adipis...
+            </p>
+            <p className="text-green-500 text-base md:text-lg font-semibold pt-5 cursor-pointer">
+              Read More
+            </p>
+          </div>
+          <img
+            src={Default}
+            alt="Default Image"
+            className="mt-8 md:mt-0 md:absolute md:left-[480px] md:bottom-14 w-[280px] md:w-[400px] h-[250px] md:h-[380px] object-cover rounded-lg"
+          />
         </div>
       </div>
 
       {/* Bottom Part */}
-      <div className="bg-[#2e465e] mt-28 py-20 text-center relative">
-        <img
-          src={school}
-          alt="school"
-          className="absolute -top-16 left-[850px]"
-        />
+      {/* <div className="bg-[#2e465e] mt-28 py-10 text-center">
+        <img src={school} alt="school" className="mx-auto" />
         <div>
-          <p className="text-2xl text-[#B9B9BA] w-[700px] mx-auto max-w-[800px] mb-8">
+          <p className="text-2xl text-[#B9B9BA] w-[90%] max-w-[800px] mx-auto mb-8">
             University Life Nurtures an Inclusive Campus Life Environment Where
-            Students Grow Intellectually and Engage in Meaningful Experiential
-            Opportunities.
-          </p>
+            Students Grow Intellectually...
+          </p> */}
 
-          {/* Social Media Icons */}
-          <div className="flex justify-center gap-3">
+      {/* Social Media Icons */}
+      {/* <div className="flex justify-center gap-3 flex-wrap">
             <p className="bg-[#073972] hover:bg-green-500 transition-colors duration-700 text-white px-4 py-4">
               <FaFacebookF className="text-xl" />
             </p>
@@ -121,7 +162,7 @@ const Academic = () => {
             </p>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
