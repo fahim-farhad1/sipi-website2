@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import Loader from "../../Shared/Loader/Loader";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import { FaEye, FaTrash } from "react-icons/fa";
 import { CiEdit } from "react-icons/ci";
 import ViewDepartment from "./ViewDepartment/ViewDepartment";
+import AddDepartment from "./AddDepartment/AddDepartment";
+import UpdateDepartment from "./UpdateDepartment/UpdateDepartment";
+import Swal from "sweetalert2";
 
 const ManageDepartment = () => {
   const axiosPublic = useAxiosPublic();
@@ -54,6 +57,37 @@ const ManageDepartment = () => {
     document.getElementById("Update_Department_Modal").showModal();
   };
 
+  const handleDeleteDepartment = async (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          await axiosPublic.delete(`/Department/${id}`);
+          refetch(); // Refresh the data after deletion
+          Swal.fire(
+            "Deleted!",
+            "The Department has been deleted successfully.",
+            "success"
+          );
+        } catch (error) {
+          console.error("Error deleting Department:", error);
+          Swal.fire(
+            "Failed!",
+            "Failed to delete the Department. Please try again.",
+            "error"
+          );
+        }
+      }
+    });
+  };
+
   return (
     <div className="bg-gray-200 min-h-screen">
       {/* Top Section */}
@@ -74,12 +108,12 @@ const ManageDepartment = () => {
         {DepartmentData.map((department) => (
           <div
             key={department._id}
-            className="bg-white rounded-lg shadow-lg overflow-hidden"
+            className="bg-white rounded-lg shadow-lg flex flex-col h-full"
           >
             {/* Department Image */}
-            {department.department?.department_img ? (
+            {department.departmentBanner ? (
               <img
-                src={department.department.department_img}
+                src={department.departmentBanner}
                 alt={department.department?.name || "Department Image"}
                 className="w-full h-48 object-cover"
               />
@@ -89,14 +123,33 @@ const ManageDepartment = () => {
               </div>
             )}
 
-            <div className="p-4">
+            <div className="flex-grow p-4">
               {/* Department Name */}
-              <p className="text-black font-bold text-2xl mt-2 text-center">
-                {department.diploma || "Unnamed Department"}
-              </p>
+              <div className="flex text-lg font-medium gap-5">
+                <p className="w-24">Department:</p>
+                <p className="text-black ">
+                  {department.departmentName || "Unnamed Department"}
+                </p>
+              </div>
+
+              {/* Degree Name */}
+              <div className="flex text-lg font-medium gap-5">
+                <p className="w-24">Degree:</p>
+                <p className="text-black ">
+                  {department.diploma || "Unnamed Degree"}
+                </p>
+              </div>
+
+              {/* Regulation Name */}
+              <div className="flex text-lg font-medium gap-5">
+                <p className="w-24">Regulation:</p>
+                <p className="text-black ">
+                  {department.regulation || "Unnamed Regulation"}
+                </p>
+              </div>
             </div>
 
-            {/* More Info Button */}
+            {/* Buttons Section */}
             <div className="p-4 flex gap-4">
               <button
                 className="border-2 border-blue-400 py-3 rounded-lg hover:bg-blue-400 hover:text-white text-lg w-full"
@@ -114,7 +167,7 @@ const ManageDepartment = () => {
               </button>
               <button
                 className="border-2 border-red-400 py-3 rounded-lg hover:bg-red-400 hover:text-white text-lg w-full"
-                // onClick={() => handleDeleteDepartment(department._id)}
+                onClick={() => handleDeleteDepartment(department._id)}
                 title="Delete"
               >
                 <FaTrash className="mx-auto text-lg" />
@@ -127,6 +180,19 @@ const ManageDepartment = () => {
       {/* View Modal */}
       <dialog id="View_Modal_Department" className="modal">
         <ViewDepartment DepartmentData={viewDepartment}></ViewDepartment>
+      </dialog>
+
+      {/* Add New Department Modal */}
+      <dialog id="Add_Department_Modal" className="modal">
+        <AddDepartment refetch={refetch}></AddDepartment>
+      </dialog>
+
+      {/* Update Department Modal */}
+      <dialog id="Update_Department_Modal" className="modal">
+        <UpdateDepartment
+          DepartmentData={editDepartmentData}
+          refetch={refetch}
+        ></UpdateDepartment>
       </dialog>
     </div>
   );
