@@ -28,7 +28,7 @@ const navLinks = [
   {
     name: "Academic",
     subLinks: [
-      { name: "Academic", path: "/Academic" },
+      { name: "Academic", path: "/Academic" }, 
       { name: "Notices", path: "/Academic/Notices" },
       { name: "Routines", path: "/Academic/Routines" },
       { name: "Results", path: "/Academic/Results" },
