@@ -131,6 +131,7 @@ const UpdateDepartment = ({ DepartmentData, refetch }) => {
         departmentBanner: DepartmentData.departmentBanner,
         departmentName: DepartmentData.departmentName,
         aboutDepartment: DepartmentData.aboutDepartment,
+        diploma: DepartmentData.diploma,
         departmentInfo: {
           chief_instructor:
             DepartmentData.departmentInfo?.chief_instructor || "",
