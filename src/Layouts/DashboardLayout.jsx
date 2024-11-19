@@ -10,6 +10,8 @@ const DashboardLayout = () => {
     { to: "ManageRoutine", label: "Manage Routine " },
     { to: "ManageTuitionFee", label: "Manage Tuition Fee " },
     { to: "ManageDepartment", label: "Manage Department " },
+    { to: "ManageTestimonials", label: "Manage Testimonials " },
+    { to: "ManageCampus", label: "Manage Campus " },
   ];
 
   return (

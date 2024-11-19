@@ -19,7 +19,6 @@ const ViewDepartment = ({ DepartmentData }) => {
 
   return (
     <div className="modal-box bg-white max-w-[1000px]">
-        
       <div className="flex justify-between items-center px-10">
         <h1 className="text-3xl font-semibold text-center mb-6">
           View Department
