@@ -14,6 +14,7 @@ const DashboardLayout = () => {
     { to: "ManageGuestTestimonials", label: "Manage Guest Testimonials " },
     { to: "ManageCampus", label: "Manage Campus " },
     { to: "ManageBlogs", label: "Manage Blogs " },
+    { to: "ManageApplicant", label: "Manage Applicant " },
   ];
 
   return (

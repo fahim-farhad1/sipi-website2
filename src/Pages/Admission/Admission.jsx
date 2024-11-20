@@ -42,7 +42,7 @@ const InputField = ({
     ) : isTextArea ? (
       <textarea
         {...register(name, validation)}
-        className="w-full p-2 py-3 rounded-xl border border-[#0060c0] bg-white"
+        className="w-full p-2 py-3 h-32 border border-[#0060c0] bg-white"
         placeholder={placeholder || ""}
       />
     ) : (
@@ -69,6 +69,16 @@ const Admission = () => {
   } = useForm({});
 
   const onSubmit = async (data) => {
+    // Get today's date
+    const today = new Date();
+
+    // Format the date to dd-mm-yy
+    const day = String(today.getDate()).padStart(2, "0"); // Add leading zero if day < 10
+    const month = String(today.getMonth() + 1).padStart(2, "0"); // Months are 0-based
+    const year = String(today.getFullYear()); // Get last two digits of the year
+
+    const formattedDate = `${day}-${month}-${year}`; // Format as dd-mm-yy
+
     const structuredData = {
       fullName: data.fullName,
       fathersName: data.fathersName,
@@ -89,34 +99,13 @@ const Admission = () => {
       sscRoll: data.sscRoll,
       sscRegistrationNumber: data.sscRegistrationNumber,
       gpa: data.gpa,
+      applicantStatus: "Applied",
+      appliedDate: formattedDate, // Add the formatted date here
     };
 
-    // Prepare FormData
-    const formData = new FormData();
-
-    // Append text data (non-file fields)
-    Object.keys(structuredData).forEach((key) => {
-      formData.append(key, structuredData[key]);
-    });
-
-    // Handle file fields separately
-    if (data.marksheet?.[0]) {
-      formData.append("marksheet", data.marksheet[0]);
-    }
-    if (data.studentImage?.[0]) {
-      formData.append("studentImage", data.studentImage[0]);
-    }
-    if (data.additionalDocument2?.[0]) {
-      formData.append("additionalDocument2", data.additionalDocument2[0]);
-    }
-
     try {
-      // Sending POST request to save the data
-      const response = await axiosPublic.post("/Applicant", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data", // Ensure that the content type is set to multipart/form-data
-        },
-      });
+      // Sending POST request to save teacher data
+      const response = await axiosPublic.post("/Applicant", structuredData);
 
       if (response.data.insertedId) {
         // Show success alert
@@ -128,7 +117,6 @@ const Admission = () => {
         });
       }
 
-      // Optionally reset form fields after submission
       // reset();
     } catch (error) {
       console.error("Error adding teacher:", error);
@@ -367,7 +355,6 @@ const Admission = () => {
           label="Upload Marksheets"
           name="marksheet"
           register={register}
-          validation={{ required: "Marksheets are required" }}
           errors={errors}
           isFile={true}
         />
@@ -377,7 +364,6 @@ const Admission = () => {
           label="Student Image"
           name="studentImage"
           register={register}
-          validation={{ required: "Student Image is required" }}
           errors={errors}
           isFile={true}
         />
@@ -387,7 +373,6 @@ const Admission = () => {
           label="Upload Additional Document 2"
           name="additionalDocument2"
           register={register}
-          validation={{ required: "Additional Document 2 is required" }}
           errors={errors}
           isFile={true}
         />
