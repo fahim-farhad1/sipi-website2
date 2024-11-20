@@ -13,16 +13,16 @@ const Home = () => {
   return (
     <div className="">
       <BannerSection/>
-      <div className="w-[90%] xl:w-[1224px] mx-auto overflow-hidden">
+      <div className="w-[98%] xl:w-[1224px] mx-auto overflow-hidden">
       <AboutUsSection/>
       <DepartmentSection/>
+      <NoticeSection/>
       <CampusSecton/>
       <OurTeachers/>
       <EventSection/>
       <GuestTestimonialSection/>
       <LabFacilitiesSection/>
       <WhyChoseUs/>
-      <NoticeSection/>
       </div>
     </div>
   )

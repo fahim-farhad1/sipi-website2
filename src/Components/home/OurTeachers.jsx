@@ -36,7 +36,7 @@ export default function OurTeachers() {
         };
   return (
     <div className='mt-[60px]'>
-        <MiddleSectionTitle badge="our teachers" title="Get every single answer here."/>
+        <MiddleSectionTitle badge="teachers" title="our teachers"/>
 
         {/* slider */}
                 <Slider {...settings}>
