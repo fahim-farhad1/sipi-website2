@@ -1,3 +1,5 @@
+import DepartmentBanner from "../../Components/Banners/DepartmentBanner";
+import LeftTitle from "../../Components/ReuseableTitle/leftTitle";
 import AboutPrincipal from "./AboutPrincipal/AboutPrincipal";
 import AboutUniversity from "./AboutUniversity/AboutUniversity";
 import Academics from "./Academics/Academics";
@@ -12,7 +14,7 @@ const BannerData = {
 };
 
 const aboutUniversityData = {
-  title: "About Our University",
+  title: "About Our polytechnic",
   subtitle: "A Station of Engineering Education",
   description:
     "Shyamoli Ideal Polytechnic Institute is dedicated to advancing education and research, producing skilled diploma engineers for national and global needs. With a commitment to excellence, it aims to shape a new era in engineering education, preparing graduates to excel in professional opportunities while embracing future challenges with unwavering determination.",
@@ -32,7 +34,7 @@ const principalData = {
   image: "https://i.ibb.co/xYYdxXn/Principal.jpg",
   name: "Principal of Shyamoli Ideal Polytechnic Institute",
   description:
-    "Our principal embodies leadership, vision, and dedication, driving Shyamoli Ideal Polytechnic Institute towards academic excellence. With a focus on innovation and quality education, they inspire both students and faculty to achieve their best. Their unwavering commitment to nurturing skilled engineers and fostering a culture of integrity and professionalism ensures that the institute remains a beacon of knowledge and progress. Under their guidance, we confidently embrace future challenges and opportunities.",
+    "Founder   of Shyamoli Ideal Shikkha Poribar President,Bangladesh Federation of Technical Teachers's Association (BFTTA) President,Bangladesh Technical Teachers's Association (BTCTA) Chairman, Bangladesh Computer Education Development Society (BCEDS) Chairman, Shyamoli Textile Engineering College (STEC) Chairman, Principal M.A.Sattar Trust",
   contact: {
     phone: "+8801917335945",
     email: "psazzadul@gmail.com",
@@ -114,10 +116,11 @@ const staffData = [
 const AboutUs = () => {
   return (
     <div className="min-h-screen">
-      <Banner BannerData={BannerData}></Banner>
+      <DepartmentBanner />
       <AboutUniversity
         aboutUniversityData={aboutUniversityData}
       ></AboutUniversity>
+      {/* <LeftTitle badge={"A Station of Engineering Education"} /> */}
       <AboutPrincipal principalData={principalData}></AboutPrincipal>
       <Academics academicServices={academicServices}></Academics>
       <Staff staffData={staffData}></Staff>

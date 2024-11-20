@@ -6,6 +6,7 @@ import Loader from "../../../Shared/Loader/Loader";
 import { useParams } from "react-router-dom";
 import Gallery from "../../../Components/Gallary/Gallery";
 import DepartmentBanner from "../../../Components/Banners/DepartmentBanner";
+import MiddleSectionTitle from "../../../Components/ReuseableTitle/MiddleSectionTitle";
 
 const Banner = () => {
   const axiosPublic = useAxiosPublic();
@@ -530,7 +531,7 @@ const Banner = () => {
           </div>
         </div>
 
-        <p className="text-center text-3xl font-semibold py-5">Gallery</p>
+              <MiddleSectionTitle badge={"Departments Gallery"} title={'The Memory of Students'} />
         <Gallery images={Department.galleryImages}></Gallery>
       </div>
     </div>

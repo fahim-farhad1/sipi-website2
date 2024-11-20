@@ -22,11 +22,8 @@ import ManageRoutine from "../Dashboard_Pages/ManageRoutine/ManageRoutine";
 import ManageTestimonials from "../Dashboard_Pages/ManageTestimonials/ManageTestimonials";
 import ManageCampus from "../Dashboard_Pages/ManageCampus/ManageCampus";
 import ManageGuestTestimonials from "../Dashboard_Pages/ManageGuestTestimonials/ManageGuestTestimonials";
-<<<<<<< HEAD
 import Blogs from "../Pages/Blogs/Blogs";
-=======
 import ManageBlogs from "../Dashboard_Pages/ManageBlogs/ManageBlogs";
->>>>>>> sazzad
 
 const router = createBrowserRouter([
   {
@@ -90,6 +87,10 @@ const router = createBrowserRouter([
       },
       {
         path: "/Blog",
+        element: <Blogs />,
+      },
+      {
+        path: "/Blog/:id",
         element: <Blogs />,
       },
     ],

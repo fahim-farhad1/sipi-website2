@@ -8,7 +8,7 @@ const AboutUniversity = ({ aboutUniversityData }) => {
         <p className="text-black font-semibold text-3xl">
           {aboutUniversityData?.title}
         </p>
-        <p className="text-black font-semibold text-4xl pt-5">
+        <p className="text-blue-600 font-semibold text-lg pt-5">
           {aboutUniversityData?.subtitle}
         </p>
         <p className="pt-5 text-lg">{aboutUniversityData?.description}</p>
