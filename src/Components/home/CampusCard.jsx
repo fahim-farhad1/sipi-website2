@@ -2,7 +2,6 @@ import React from 'react'
 import { FaMapMarkerAlt } from 'react-icons/fa';
 
 export default function CampusCard({campus}) {
-    console.log(campus)
     const {campus_image,name,number, location} =campus;
   return (
     <div 

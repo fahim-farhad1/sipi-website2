@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../Shared/Loader/Loader";
 import Default from "../../../assets/Default.png";
 import DepartmentBanner from "../../../Components/Banners/DepartmentBanner";
+import bannerImage from  "../../../assets/Departments/image1.jpg";
 
 const Management = () => {
   const axiosPublic = useAxiosPublic();
@@ -41,8 +42,6 @@ const Management = () => {
     );
   }
 
-  const bannerImage =
-    "https://i.ibb.co/0rqXzZ7/fa8ed7e9-0e83-462f-8c5d-13b06d25cef3.jpg";
 
   return (
     <div className="py-10 px-4 bg-gray-50">
@@ -58,7 +57,7 @@ const Management = () => {
             <img
               src={member.image}
               alt={member.name}
-              className="w-full h-48 object-cover"
+              className="w-full object-cover"
               onError={(e) => (e.target.src = Default)}
             />
             <div className="p-4">
@@ -69,14 +68,14 @@ const Management = () => {
               <p className="mt-2 text-gray-600 text-sm line-clamp-3">
                 {member.about_me}
               </p>
-              <div className="mt-4 text-right">
+              {/* <div className="mt-4 text-right">
                 <button
                   className="text-blue-500 hover:underline"
                   onClick={() => setSelectedManagement(member)}
                 >
                   See More ...
                 </button>
-              </div>
+              </div> */}
             </div>
           </div>
         ))}

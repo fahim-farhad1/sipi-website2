@@ -42,8 +42,8 @@ const navLinks = [
     ],
   },
   { name: "Blogs", path: "/Blog" },
-  { name: "About", path: "/about" },
-  { name: "Contact", path: "/contact" },
+  { name: "About", path: "/About" },
+  { name: "Contact", path: "/Contact" },
 ];
 
 const Navbar = () => {
@@ -221,7 +221,7 @@ const Navbar = () => {
                   {link.name} <FaChevronDown className="ml-2" />
                 </span>
 
-                <ul className="absolute hidden group-hover:block bg-white z-[1] w-52 p-2 shadow">
+                <ul className="absolute hidden group-hover:block bg-white z-[1] w-60 p-2 shadow">
                   {link.subLinks.map((subLink) => (
                     <li key={subLink.name} className="w-full">
                       <NavLink
@@ -246,9 +246,11 @@ const Navbar = () => {
           )}
         </div>
 
-        <button className="bg-orange-700 py-3 px-3 text-white hover:bg-green-700 duration-500 hidden md:block">
-          ADMISSION OPEN
-        </button>
+        <Link to={"/Admission"}>
+          <button className="bg-orange-700 py-3 px-3 text-white hover:bg-green-700 duration-500 hidden md:block">
+            ADMISSION OPEN
+          </button>
+        </Link>
       </div>
     </div>
   );
