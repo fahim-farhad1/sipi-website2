@@ -41,7 +41,7 @@ const navLinks = [
       { name: "Management", path: "/Administration/Management" },
     ],
   },
-  { name: "Blogs", path: "/blogs" },
+  { name: "Blogs", path: "/Blog" },
   { name: "About", path: "/about" },
   { name: "Contact", path: "/contact" },
 ];
@@ -101,7 +101,7 @@ const Navbar = () => {
   return (
     <div className="w-full bg-white fixed z-50 border border-gray-200">
       {/* Top navbar */}
-      <div className="bg-orange-700 h-12 md:h-10 flex items-center">
+      <div className="bg-red-700 h-12 md:h-10 flex items-center">
         <div className="mx-auto w-full flex items-center justify-between">
           <div className="flex items-center md:h-10 px-1 md:px-5">
             <div className="flex items-center gap-3 text-sm">
@@ -118,6 +118,7 @@ const Navbar = () => {
               </a>
             </div>
           </div>
+
           <div className="hidden md:block mr-10">
             <div className="text-white absolute z-10 right-10 top-3 flex gap-5">
               <Link to="https://www.facebook.com/">
@@ -139,7 +140,7 @@ const Navbar = () => {
       </div>
 
       {/* main navbar */}
-      <div className="mx-2 md:mx-10 h-16 flex items-center justify-between">
+      <div className="mx-2 md:mx-[112px] h-16 flex items-center justify-between">
         <img className="h-16 w-16" src={logo} alt="SIPI LOGO" />
         {open ? (
           <MdClose

@@ -22,6 +22,7 @@ import ManageRoutine from "../Dashboard_Pages/ManageRoutine/ManageRoutine";
 import ManageTestimonials from "../Dashboard_Pages/ManageTestimonials/ManageTestimonials";
 import ManageCampus from "../Dashboard_Pages/ManageCampus/ManageCampus";
 import ManageGuestTestimonials from "../Dashboard_Pages/ManageGuestTestimonials/ManageGuestTestimonials";
+import Blogs from "../Pages/Blogs/Blogs";
 
 const router = createBrowserRouter([
   {
@@ -82,6 +83,10 @@ const router = createBrowserRouter([
       {
         path: "/admission",
         element: <Admission />,
+      },
+      {
+        path: "/Blog",
+        element: <Blogs />,
       },
     ],
   },
