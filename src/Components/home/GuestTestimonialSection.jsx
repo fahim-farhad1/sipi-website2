@@ -5,6 +5,7 @@ import 'slick-carousel/slick/slick-theme.css'; // Import slick-carousel theme CS
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import MiddleSectionTitle from '../ReuseableTitle/MiddleSectionTitle';
+import { Link } from 'react-router-dom';
 
 // Replace with your actual guest testimonials data
 const testimonials = [
@@ -52,26 +53,35 @@ export default function GuestTestimonialSection() {
   };
   return (
     <section className="py-12 bg-gray-50">
-    <div className="container mx-auto px-6 lg:px-8">
+    <div className=" mx-auto px-6 lg:px-8">
       <MiddleSectionTitle badge="Testimonial" title="Guest Testimonials" />
       <Slider {...settings}>
         {testimonials.map((testimonial) => (
           <div key={testimonial.id} className="px-4 py-5">
-            <div className="bg-white rounded-lg shadow-lg p-6 text-center hover:shadow-xl transition">
+            <div className="flex items-center rounded-lg shadow-lg p-6 text-center hover:shadow-xl transition md:w-[370px] md:h-[200px]">
+              <div className='flex  items-center'>
               {/* Guest Image */}
-              <div className="w-24 h-24 mx-auto rounded-full overflow-hidden mb-4">
+              <div className="w-[40%] flex flex-col items-center justify-center">
                 <img 
                   src={testimonial.image} 
                   alt={testimonial.name} 
-                  className="w-full h-full object-cover"
+                  className=" object-cover w-[60px] h-[60px] mb-2 rounded-full border-2 border-primary"
                 />
+              {/* Guest Name */}
+              <h3 className="text-[18px] font-semibold text-primary">{testimonial.name}</h3>
+              <p className="text-sm m-0 p-0 text-primary">perents</p>
               </div>
 
-              {/* Guest Name */}
-              <h3 className="text-xl font-semibold mb-2">{testimonial.name}</h3>
+              {/* massge */}
+              <div className='w-[60%] border-l-2 border-primary'>{/* Testimonial Content */}
+              <div className='pl-2 text-start'>
+                <p className="text-gray-600 text-sm text-start">{testimonial.content.slice(0,70)}</p>
+                <Link className='text-primary'>Read more</Link>
+              </div>
+              </div>
 
-              {/* Testimonial Content */}
-              <p className="text-gray-600">{testimonial.content}</p>
+              </div>
+
             </div>
           </div>
         ))}

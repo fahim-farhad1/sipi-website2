@@ -1,6 +1,7 @@
 import React from 'react'
 import MiddleSectionTitle from '../ReuseableTitle/MiddleSectionTitle';
 import { FaLongArrowAltRight } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const events = [
     {
@@ -70,9 +71,9 @@ export default function EventSection() {
               <div className="px-6">
                 <h3 className="text-xl font-semibold mb-2 text-primary">{event.title}</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis quisquam, veritatis dolorum in vitae quam quibusdam maiores n</p>
-                <button className="text-primary py-2 px-4 rounded hover:bg-blue-600 transition-colors flex items-center">
+                <Link className="text-primary py-2  rounded hover:bg-blue-600 transition-colors flex items-center">
                   Read More <FaLongArrowAltRight className='ml-2 my-5' />
-                </button>
+                </Link>
               </div>
             </div>
           ))}
