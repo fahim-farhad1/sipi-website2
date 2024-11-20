@@ -59,7 +59,7 @@ export default function EventSection() {
                 <img 
                   src={event.image} 
                   alt={event.title} 
-                  className="w-[90%] mx-auto h-64 object-cover rounded-2xl my-3 border-4 border-primary"
+                  className="w-[90%] mx-auto h-64 object-cover rounded-2xl my-3 border-4 border-primary/60"
                 />
                 {/* Event Date Overlay */}
                 <div className="absolute top-2 left-2 bg-primary text-white text-xs font-semibold px-3 py-1 rounded">
