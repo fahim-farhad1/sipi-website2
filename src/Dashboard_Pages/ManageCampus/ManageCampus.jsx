@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import Loader from "../../Shared/Loader/Loader";
 import { useQuery } from "@tanstack/react-query";
+import { FaTrash } from "react-icons/fa";
+import { CiEdit } from "react-icons/ci";
+import Swal from "sweetalert2";
+import AddCampus from "./AddCampus/AddCampus";
+import UpdateCampus from "./UpdateCampus/UpdateCampus";
 
 const ManageCampus = () => {
   const axiosPublic = useAxiosPublic();
+  const [editCampusData, setEditCampusData] = useState(null);
 
   // Fetch Campus Data
   const {
@@ -39,10 +45,46 @@ const ManageCampus = () => {
     );
   }
 
+  const handleUpdateCampus = (campus) => {
+    setEditCampusData(campus);
+    document.getElementById("Update_Campus_Modal").showModal();
+  };
+
+  const handleDeleteCampus = async (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          await axiosPublic.delete(`/Campus/${id}`);
+          refetch(); // Refresh the data after deletion
+          Swal.fire(
+            "Deleted!",
+            "The Campus has been deleted successfully.",
+            "success"
+          );
+        } catch (error) {
+          console.error("Error deleting Campus:", error);
+          Swal.fire(
+            "Failed!",
+            "Failed to delete the Campus. Please try again.",
+            "error"
+          );
+        }
+      }
+    });
+  };
+
   return (
-    <div className="bg-gray-200 min-h-screen p-6">
+    <div className="bg-gray-200 min-h-screen border border-black">
       {/* Top Section */}
-      <div className="flex justify-between border-b-2 border-gray-600 p-6 items-center mb-6">
+      <div className="flex justify-between border-b-2 border-gray-600 p-6 h-24 items-center">
         <p className="text-3xl font-semibold text-center">Manage Campus</p>
         <button
           className="border border-green-500 px-8 py-3 font-semibold hover:bg-green-500 hover:text-white"
@@ -55,11 +97,11 @@ const ManageCampus = () => {
       </div>
 
       {/* Display Campus Data as Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6 pb-4">
         {CampusData.map((campus) => (
           <div
             key={campus._id}
-            className="bg-white rounded-lg shadow-lg p-6 flex flex-col"
+            className="bg-white  shadow-lg p-6 flex flex-col h-full"
           >
             {/* Campus Image */}
             <img
@@ -96,20 +138,44 @@ const ManageCampus = () => {
             </div>
 
             {/* Google Maps Link */}
-            <p className="text-gray-600 mt-2">
+            <div className="text-gray-600 mt-2 flex flex-col gap-2">
               <strong>Google Maps Link:</strong>
-              <a
-                href={campus.googleMapsLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-500 hover:underline"
+              <span>{campus.googleMapsLink}</span>
+            </div>
+
+            {/* Push buttons to the bottom */}
+            <div className="mt-auto p-4 flex gap-4">
+              <button
+                className="border-2 border-yellow-400 py-3 rounded-lg hover:bg-yellow-400 hover:text-white text-lg w-full"
+                onClick={() => handleUpdateCampus(campus)}
+                title="Edit"
               >
-                View on Google Maps
-              </a>
-            </p>
+                <CiEdit className="mx-auto text-lg" />
+              </button>
+              <button
+                className="border-2 border-red-400 py-3 rounded-lg hover:bg-red-400 hover:text-white text-lg w-full"
+                onClick={() => handleDeleteCampus(campus._id)}
+                title="Delete"
+              >
+                <FaTrash className="mx-auto text-lg" />
+              </button>
+            </div>
           </div>
         ))}
       </div>
+
+      {/* Add New Campus Modal */}
+      <dialog id="Add_Campus_Modal" className="modal">
+        <AddCampus refetch={refetch}></AddCampus>
+      </dialog>
+
+      {/* Update Campus Modal */}
+      <dialog id="Update_Campus_Modal" className="modal">
+        <UpdateCampus
+          CampusData={editCampusData}
+          refetch={refetch}
+        ></UpdateCampus>
+      </dialog>
     </div>
   );
 };

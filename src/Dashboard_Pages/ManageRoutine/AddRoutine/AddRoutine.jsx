@@ -28,25 +28,6 @@ const AddRoutine = ({ refetch }) => {
     name: "schedule",
   });
 
-  // Prepopulate form with fetched data
-  //   useEffect(() => {
-  //     if (fetchedData) {
-  //       reset({
-  //         department: fetchedData.department,
-  //         semester: fetchedData.semester,
-  //         session: fetchedData.session,
-  //         classDuration: fetchedData["class-Duration"],
-  //         schedule: fetchedData.schedule.map((daySchedule) => ({
-  //           day: daySchedule.day,
-  //           classes: daySchedule.classes.map((cls) => ({
-  //             time: cls.time,
-  //             subject: cls.subject,
-  //           })),
-  //         })),
-  //       });
-  //     }
-  //   }, [fetchedData, reset]);
-
   const onSubmit = async (data) => {
     console.log("Routine submitted:", data);
     try {
@@ -57,7 +38,7 @@ const AddRoutine = ({ refetch }) => {
         // Show success alert
         Swal.fire({
           title: "Success!",
-          text: "Teacher has been added successfully!",
+          text: "Routine has been added successfully!",
           icon: "success",
           button: "OK",
         });
@@ -83,8 +64,8 @@ const AddRoutine = ({ refetch }) => {
   };
 
   return (
-    <div className="modal-box bg-white max-w-[800px] p-0">
-      <div className="flex justify-between items-center px-10">
+    <div className="modal-box bg-white max-w-[1000px] p-0 ">
+      <div className="flex justify-between items-center border-b border-gray-300 px-10">
         <h1 className="text-3xl font-semibold text-center mb-6">Add Routine</h1>
         <button
           className="text-3xl font-bold hover:text-red-500"
@@ -159,7 +140,7 @@ const AddRoutine = ({ refetch }) => {
                         {...register(
                           `schedule.${dayIndex}.classes.${classIndex}.time`
                         )}
-                        placeholder="Class Time"
+                        placeholder="e.g. 9:00 AM - 9:50 AM"
                         className="border border-gray-300 px-4 py-2 w-1/2 bg-white"
                       />
                       <input
@@ -194,9 +175,9 @@ const AddRoutine = ({ refetch }) => {
 
         <button
           type="submit"
-          className="w-full py-2 bg-blue-500 text-white hover:bg-blue-600"
+          className="px-6 py-2 bg-blue-500 text-white font-semibold g w-full"
         >
-          Save Routine
+          Add Routine
         </button>
       </form>
     </div>

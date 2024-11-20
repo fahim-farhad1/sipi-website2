@@ -60,22 +60,26 @@ const Staff = () => {
       {staffData.map((staff, index) => (
         <div
           key={staff.id}
-          className={`flex items-center ${
-            index % 2 === 0 ? "flex-row" : "flex-row-reverse"
+          className={`flex flex-col md:flex-row items-center mb-10 md:mb-0 gap-5 md:gap-0 ${
+            index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
           }`}
         >
           {/* Left (Text) */}
-          <div className="w-1/2 px-20 text-black ">
+          <div className="w-full md:w-1/2 px-4 md:px-10 text-black">
             <div className="flex text-2xl items-center font-semibold gap-5">
-              <IoIosSchool className="text-green-600"/>
+              <IoIosSchool className="text-green-600" />
               {staff.designation}
             </div>
-            <p className="text-2xl font-semibold py-5">{staff.name}</p>
+            <p className="text-2xl font-semibold ">{staff.name}</p>
             <p className="text-lg leading-relaxed">{staff.description}</p>
           </div>
           {/* Right (Image) */}
-          <div className="w-1/2">
-            <img src={staff.imageUrl} alt={staff.name} className="w-full" />
+          <div className="w-full md:w-1/2">
+            <img
+              src={staff.imageUrl}
+              alt={staff.name}
+              className="w-full h-auto"
+            />
           </div>
         </div>
       ))}
@@ -84,5 +88,3 @@ const Staff = () => {
 };
 
 export default Staff;
-
-[];

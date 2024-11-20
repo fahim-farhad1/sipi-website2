@@ -64,8 +64,8 @@ const ViewRoutine = ({ RoutineData }) => {
   const { timeSlots, grid, daysOfWeek } = generateGrid(RoutineData.schedule);
 
   return (
-    <div className="modal-box bg-white max-w-[1000px]">
-      <div className="flex justify-between items-center px-10">
+    <div className="modal-box bg-white max-w-[1000px] p-0 ">
+      <div className="flex justify-between items-center border-b border-gray-300 px-10">
         <h1 className="text-3xl font-semibold text-center mb-6">
           View Routine
         </h1>
@@ -77,7 +77,7 @@ const ViewRoutine = ({ RoutineData }) => {
         </button>
       </div>
 
-      <div>
+      <div className="p-10">
         {/* Table of Time Slots */}
         <table className="min-w-full table-auto border-collapse border border-gray-300">
           <thead>

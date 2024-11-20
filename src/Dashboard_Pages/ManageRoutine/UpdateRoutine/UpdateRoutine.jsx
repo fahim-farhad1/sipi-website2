@@ -77,8 +77,8 @@ const UpdateRoutine = ({ RoutineData, refetch }) => {
   };
 
   return (
-    <div className="modal-box bg-white max-w-[800px] p-0">
-      <div className="flex justify-between items-center px-10">
+    <div className="modal-box bg-white max-w-[1000px] p-0 ">
+      <div className="flex justify-between items-center border-b border-gray-300 px-10">
         <h1 className="text-3xl font-semibold text-center mb-6">
           Update Routine
         </h1>
@@ -91,7 +91,6 @@ const UpdateRoutine = ({ RoutineData, refetch }) => {
           X
         </button>
       </div>
-
       <form onSubmit={handleSubmit(onSubmit)} className="p-6 space-y-4">
         {/* Routine */}
         <div>
@@ -190,9 +189,11 @@ const UpdateRoutine = ({ RoutineData, refetch }) => {
           })}
         </div>
 
+        {/* Submit Button */}
+
         <button
           type="submit"
-          className="w-full py-2 bg-blue-500 text-white hover:bg-blue-600"
+          className="px-6 py-2 bg-blue-500 text-white font-semibold g w-full"
         >
           Update Routine
         </button>

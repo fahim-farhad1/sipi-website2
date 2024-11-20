@@ -51,8 +51,8 @@ const AddTuitionFee = ({ refetch }) => {
   };
 
   return (
-    <div className="modal-box bg-white max-w-[800px] p-0">
-      <div className="flex justify-between items-center px-10">
+    <div className="modal-box bg-white max-w-[1000px] p-0 ">
+      <div className="flex justify-between items-center border-b border-gray-300 px-10">
         <h1 className="text-3xl font-semibold text-center mb-6">
           Add Tuition Fee
         </h1>
@@ -65,6 +65,7 @@ const AddTuitionFee = ({ refetch }) => {
           X
         </button>
       </div>
+
       <form onSubmit={handleSubmit(onSubmit)} className="p-6 space-y-4">
         {/* Semester */}
         <div>
@@ -178,14 +179,13 @@ const AddTuitionFee = ({ refetch }) => {
         </div>
 
         {/* Submit Button */}
-        <div className="text-center">
-          <button
-            type="submit"
-            className="bg-blue-500 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-400 transition"
-          >
-            Add Tuition Fee
-          </button>
-        </div>
+
+        <button
+          type="submit"
+          className="px-6 py-2 bg-blue-500 text-white font-semibold g w-full"
+        >
+          Add Tuition Fee
+        </button>
       </form>
     </div>
   );

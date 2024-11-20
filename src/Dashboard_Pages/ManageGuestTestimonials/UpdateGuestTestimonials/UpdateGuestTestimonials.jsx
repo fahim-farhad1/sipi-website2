@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
@@ -27,7 +27,7 @@ const FormField = ({
   );
 };
 
-const AddTestimonials = ({ refetch }) => {
+const UpdateGuestTestimonials = ({ GuestTestimonialsData, refetch }) => {
   const axiosPublic = useAxiosPublic();
   const {
     register,
@@ -36,45 +36,47 @@ const AddTestimonials = ({ refetch }) => {
     formState: { errors },
   } = useForm();
 
-  // Function to handle form submission
+  // Populate the form fields with existing data on component load
+  useEffect(() => {
+    if (GuestTestimonialsData) {
+      reset({
+        name: GuestTestimonialsData.name,
+        position: GuestTestimonialsData.position,
+        image: GuestTestimonialsData.image,
+        comments: GuestTestimonialsData.comments,
+        testimonial: GuestTestimonialsData.testimonial,
+      });
+    }
+  }, [GuestTestimonialsData, reset]);
+
   const onSubmit = async (data) => {
-    // We exclude the _id field since it's generated automatically in the backend
-    const structuredData = {
-      name: data.name,
-      position: data.position,
-      department: data.department,
-      image: data.image,
-      date: new Date().toISOString().split("T")[0], // Current date
-      content: data.content,
-    };
-
     try {
-      // Sending POST request to save the testimonial data
-      const response = await axiosPublic.post("/Testimonials", structuredData);
+      // Make the PUT request to update the testimonial
+      await axiosPublic.put(
+        `/GuestTestimonials/${GuestTestimonialsData._id}`,
+        data
+      );
 
-      if (response.data.insertedId) {
-        // Show success alert
-        Swal.fire({
-          title: "Success!",
-          text: "Testimonial has been added successfully!",
-          icon: "success",
-          button: "OK",
-        });
-      }
-      // Close the modal and reset form
-      document.getElementById("Add_Testimonials_Modal").close();
-      refetch();
-      reset();
+      // Show a success alert
+      Swal.fire({
+        title: "Success!",
+        text: "Testimonial updated successfully.",
+        icon: "success",
+        confirmButtonText: "OK",
+      });
+
+      document.getElementById("Update_GuestTestimonials_Modal").close();
+      refetch(); // Refresh data
     } catch (error) {
-      console.error("Error adding testimonial:", error);
-
-      // Show error alert
+      // Show an error alert
       Swal.fire({
         title: "Error!",
-        text: "Failed to add the testimonial. Please try again.",
+        text: "Failed to update the testimonial. Please try again.",
         icon: "error",
-        button: "OK",
+        confirmButtonText: "OK",
       });
+
+      console.error("Error updating testimonial:", error);
     }
   };
 
@@ -82,12 +84,12 @@ const AddTestimonials = ({ refetch }) => {
     <div className="modal-box bg-white max-w-[1000px] p-0 ">
       <div className="flex justify-between items-center border-b border-gray-300 px-10">
         <h1 className="text-3xl font-semibold text-center mb-6">
-          Add Testimonials
+          Update Guest Testimonials
         </h1>
         <button
           className="text-3xl font-bold hover:text-red-500"
           onClick={() =>
-            document.getElementById("Add_Testimonials_Modal").close()
+            document.getElementById("Update_GuestTestimonials_Modal").close()
           }
         >
           X
@@ -110,13 +112,6 @@ const AddTestimonials = ({ refetch }) => {
           error={errors.position}
         />
         <FormField
-          label="Department"
-          name="department"
-          register={register}
-          validationRules={{ required: "Department is required" }}
-          error={errors.department}
-        />
-        <FormField
           label="Image URL"
           name="image"
           register={register}
@@ -130,26 +125,33 @@ const AddTestimonials = ({ refetch }) => {
           error={errors.image}
         />
         <FormField
-          label="Testimonial Content"
-          name="content"
+          label="Comments"
+          name="comments"
           register={register}
-          validationRules={{ required: "Content is required" }}
-          error={errors.content}
+          validationRules={{ required: "Comments are required" }}
+          error={errors.comments}
+          isTextarea
+          rows={3}
+        />
+        <FormField
+          label="Testimonial Content"
+          name="testimonial"
+          register={register}
+          validationRules={{ required: "Testimonial content is required" }}
+          error={errors.testimonial}
           isTextarea
           rows={4}
         />
-
-        {/* Submit Button */}
 
         <button
           type="submit"
           className="px-6 py-2 bg-blue-500 text-white font-semibold g w-full"
         >
-          Add Testimonials
+          Update Guest Teacher
         </button>
       </form>
     </div>
   );
 };
 
-export default AddTestimonials;
+export default UpdateGuestTestimonials;

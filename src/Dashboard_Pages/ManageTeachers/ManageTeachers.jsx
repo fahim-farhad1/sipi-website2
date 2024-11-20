@@ -107,9 +107,9 @@ const ManageTeachers = () => {
   };
 
   return (
-    <div className="bg-gray-200 min-h-screen">
+    <div className="bg-gray-200 min-h-screen border border-black">
       {/* Top Section */}
-      <div className="flex justify-between border-b-2 border-gray-600 p-6 items-center">
+      <div className="flex justify-between border-b-2 border-gray-600 p-6 h-24 items-center">
         <p className="text-3xl font-semibold text-center">Manage Teachers</p>
         <button
           className="border border-green-500 px-8 py-3 font-semibold hover:bg-green-500 hover:text-white"
@@ -122,7 +122,7 @@ const ManageTeachers = () => {
       </div>
 
       {/* Query Section */}
-      <div className="p-6 flex flex-col gap-4 sm:flex-row items-center justify-between bg-white shadow-md rounded-lg">
+      <div className="p-6 px-20 flex flex-col gap-4 sm:flex-row items-center justify-between bg-white border border-gray-500">
         <input
           type="text"
           placeholder="Search by Name"
@@ -172,7 +172,7 @@ const ManageTeachers = () => {
           <tbody className="">
             {filteredTeachers.length > 0 ? (
               filteredTeachers.map((teacher, index) => (
-                <tr key={teacher._id} className="border-b text-center">
+                <tr key={teacher._id} className="border-b ">
                   <td className="px-4 py-2">{index + 1}</td>
                   <td className="px-4 py-2">
                     <img

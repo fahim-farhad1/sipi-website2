@@ -113,10 +113,10 @@ const ManageRoutine = () => {
   };
 
   return (
-    <div className="bg-gray-200 min-h-screen p-6">
+    <div className="bg-gray-200 min-h-screen border border-black">
       {/* Top Section */}
-      <div className="flex justify-between border-b-2 border-gray-600 pb-4 mb-6 items-center">
-        <p className="text-3xl font-semibold">Manage Routine</p>
+      <div className="flex justify-between border-b-2 border-gray-600 p-6 h-24 items-center">
+        <p className="text-3xl font-semibold text-center">Manage Routines</p>
         <button
           className="border border-green-500 px-8 py-3 font-semibold hover:bg-green-500 hover:text-white"
           onClick={() =>
@@ -128,7 +128,7 @@ const ManageRoutine = () => {
       </div>
 
       {/* Query Section */}
-      <div className="p-6 flex flex-col gap-4 sm:flex-row items-center justify-between bg-white shadow-md rounded-lg">
+      <div className="p-6 px-20 flex flex-col gap-4 sm:flex-row items-center justify-between bg-white border border-gray-500">
         <select
           value={selectedDepartment}
           onChange={(e) => setSelectedDepartment(e.target.value)}
@@ -171,7 +171,7 @@ const ManageRoutine = () => {
       <div className="overflow-x-auto p-6">
         <table className="table w-full text-left border-collapse">
           {/* Table Head */}
-          <thead className="text-center">
+          <thead >
             <tr className="text-black">
               <th className=" px-4 py-2">#</th>
               <th className=" px-4 py-2">Department</th>
@@ -184,10 +184,7 @@ const ManageRoutine = () => {
           {/* Table Body */}
           <tbody>
             {filteredData.map((routine, index) => (
-              <tr
-                key={routine._id}
-                className="border-b text-center hover:bg-gray-100 transition duration-200"
-              >
+              <tr key={routine._id} >
                 <td className=" px-4 py-2">{index + 1}</td>
                 <td className=" px-4 py-2">{routine.department}</td>
                 <td className=" px-4 py-2">{routine.semester}</td>

@@ -117,7 +117,7 @@ const ManageManagement = () => {
   };
 
   return (
-    <div className="bg-gray-200 min-h-screen">
+    <div className="bg-gray-200 min-h-screen border border-black">
       {/* Top Section */}
       <div className="flex justify-between border-b-2 border-gray-600 p-6 items-center">
         <p className="text-3xl font-semibold text-center">
@@ -134,7 +134,7 @@ const ManageManagement = () => {
       </div>
 
       {/* Query Section */}
-      <div className="p-6 flex flex-col gap-4 sm:flex-row items-center justify-between bg-white shadow-md rounded-lg">
+      <div className="p-6 px-20 flex flex-col gap-4 sm:flex-row items-center justify-between bg-white border border-gray-500">
         <input
           type="text"
           placeholder="Search by Name"
@@ -184,7 +184,7 @@ const ManageManagement = () => {
           <tbody>
             {filteredManagement.length > 0 ? (
               filteredManagement.map((management, index) => (
-                <tr key={management._id} className="border-b text-center">
+                <tr key={management._id} className="border-b">
                   <td className="px-4 py-2">{index + 1}</td>
                   <td className="px-4 py-2">
                     <img

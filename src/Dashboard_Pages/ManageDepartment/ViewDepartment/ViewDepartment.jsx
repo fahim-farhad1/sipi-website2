@@ -18,8 +18,8 @@ const ViewDepartment = ({ DepartmentData }) => {
   };
 
   return (
-    <div className="modal-box bg-white max-w-[1000px]">
-      <div className="flex justify-between items-center px-10">
+    <div className="modal-box bg-white max-w-[1000px] p-0 ">
+      <div className="flex justify-between items-center border-b border-gray-300 px-10">
         <h1 className="text-3xl font-semibold text-center mb-6">
           View Department
         </h1>
@@ -33,7 +33,7 @@ const ViewDepartment = ({ DepartmentData }) => {
         </button>
       </div>
 
-      <div>
+      <div className="px-5">
         {/* Banner */}
         <DepartmentBanner Image={DepartmentData?.departmentBanner} />
 

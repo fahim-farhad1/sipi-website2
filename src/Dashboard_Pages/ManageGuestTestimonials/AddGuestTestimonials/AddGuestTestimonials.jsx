@@ -1,7 +1,7 @@
 import React from "react";
+import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
-import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 
 const FormField = ({
   label,
@@ -27,7 +27,7 @@ const FormField = ({
   );
 };
 
-const AddTestimonials = ({ refetch }) => {
+const AddGuestTestimonials = ({ refetch }) => {
   const axiosPublic = useAxiosPublic();
   const {
     register,
@@ -36,24 +36,23 @@ const AddTestimonials = ({ refetch }) => {
     formState: { errors },
   } = useForm();
 
-  // Function to handle form submission
   const onSubmit = async (data) => {
-    // We exclude the _id field since it's generated automatically in the backend
     const structuredData = {
       name: data.name,
       position: data.position,
-      department: data.department,
       image: data.image,
-      date: new Date().toISOString().split("T")[0], // Current date
-      content: data.content,
+      date_of_visit: new Date().toISOString().split("T")[0], // Use the correct key
+      testimonial: data.testimonial, // Use the correct key
+      comments: data.comments, // Add comments field
     };
 
     try {
-      // Sending POST request to save the testimonial data
-      const response = await axiosPublic.post("/Testimonials", structuredData);
+      const response = await axiosPublic.post(
+        "/GuestTestimonials",
+        structuredData
+      );
 
       if (response.data.insertedId) {
-        // Show success alert
         Swal.fire({
           title: "Success!",
           text: "Testimonial has been added successfully!",
@@ -61,14 +60,12 @@ const AddTestimonials = ({ refetch }) => {
           button: "OK",
         });
       }
-      // Close the modal and reset form
-      document.getElementById("Add_Testimonials_Modal").close();
+      document.getElementById("Add_GuestTestimonials_Modal").close();
       refetch();
       reset();
     } catch (error) {
       console.error("Error adding testimonial:", error);
 
-      // Show error alert
       Swal.fire({
         title: "Error!",
         text: "Failed to add the testimonial. Please try again.",
@@ -82,12 +79,12 @@ const AddTestimonials = ({ refetch }) => {
     <div className="modal-box bg-white max-w-[1000px] p-0 ">
       <div className="flex justify-between items-center border-b border-gray-300 px-10">
         <h1 className="text-3xl font-semibold text-center mb-6">
-          Add Testimonials
+          Add Guest Testimonials
         </h1>
         <button
           className="text-3xl font-bold hover:text-red-500"
           onClick={() =>
-            document.getElementById("Add_Testimonials_Modal").close()
+            document.getElementById("Add_GuestTestimonials_Modal").close()
           }
         >
           X
@@ -110,13 +107,6 @@ const AddTestimonials = ({ refetch }) => {
           error={errors.position}
         />
         <FormField
-          label="Department"
-          name="department"
-          register={register}
-          validationRules={{ required: "Department is required" }}
-          error={errors.department}
-        />
-        <FormField
           label="Image URL"
           name="image"
           register={register}
@@ -130,26 +120,33 @@ const AddTestimonials = ({ refetch }) => {
           error={errors.image}
         />
         <FormField
-          label="Testimonial Content"
-          name="content"
+          label="Comments"
+          name="comments"
           register={register}
-          validationRules={{ required: "Content is required" }}
-          error={errors.content}
+          validationRules={{ required: "Comments are required" }}
+          error={errors.comments}
+          isTextarea
+          rows={3}
+        />
+        <FormField
+          label="Testimonial Content"
+          name="testimonial"
+          register={register}
+          validationRules={{ required: "Testimonial content is required" }}
+          error={errors.testimonial}
           isTextarea
           rows={4}
         />
-
-        {/* Submit Button */}
 
         <button
           type="submit"
           className="px-6 py-2 bg-blue-500 text-white font-semibold g w-full"
         >
-          Add Testimonials
+          Add Guest Testimonials
         </button>
       </form>
     </div>
   );
 };
 
-export default AddTestimonials;
+export default AddGuestTestimonials;

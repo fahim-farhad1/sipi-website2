@@ -1,23 +1,19 @@
 import React from "react";
 
-const Banner = () => {
+const Banner = ({ BannerData }) => {
   return (
     <div className="relative ">
       {/* Image */}
       <img
-        src={"https://i.ibb.co/ZBFLMk0/dsgadsgbdb.jpg"}
-        alt={"Banner"}
-        className="w-full h-[400px] object-cover"
+        src={BannerData?.image}
+        alt={BannerData?.title}
+        className="w-full h-[300px] md:h-[400px] object-cover"
       />
 
       {/* About */}
-      <div className="absolute -bottom-28 left-[300px] bg-green-400 text-white py-10 px-16 w-[40%]">
-        <p className="text-5xl font-semibold mb-4 ">About Us</p>
-        <p className="text-lg font-semibold">
-          Clgun University is more than just a place of learning; it's a place
-          where dreams take flight, where ideas flourish, and where you'll find
-          the support and...
-        </p>
+      <div className="md:absolute -bottom-28 left-[300px] bg-green-400 text-white md:py-10 p-4 md:px-16 w-full md:w-[40%]">
+        <p className="text-5xl font-semibold mb-4 ">{BannerData?.title}</p>
+        <p className="text-lg font-semibold">{BannerData?.description}</p>
       </div>
     </div>
   );

@@ -2,17 +2,14 @@ import React from "react";
 
 const ViewTestimonials = ({ testimonialData }) => {
   return (
-    <div className="modal-box bg-white max-w-[1000px] rounded-lg shadow-lg p-6">
-      {/* Header Section */}
-      <div className="flex justify-between items-center pb-4 border-b border-gray-300">
-        <h1 className="text-3xl font-semibold text-gray-700">
-          View Testimonial
+    <div className="modal-box bg-white max-w-[1000px] p-0 ">
+      <div className="flex justify-between items-center border-b border-gray-300 px-10">
+        <h1 className="text-3xl font-semibold text-center mb-6">
+          View Testimonials
         </h1>
         <button
-          className="text-3xl font-bold text-gray-700 hover:text-red-500"
-          onClick={() =>
-            document.getElementById("View_Modal_Testimonials").close()
-          }
+          className="text-3xl font-bold hover:text-red-500"
+          onClick={() => document.getElementById("View_Modal_Testimonials").close()}
         >
           X
         </button>

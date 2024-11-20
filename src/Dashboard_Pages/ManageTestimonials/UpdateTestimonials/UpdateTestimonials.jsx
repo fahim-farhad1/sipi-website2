@@ -77,13 +77,13 @@ const UpdateTestimonials = ({ refetch, TestimonialsData }) => {
   };
 
   return (
-    <div className="modal-box bg-white max-w-[1000px] rounded-lg shadow-lg p-6">
-      <div className="flex justify-between items-center pb-4 border-b border-gray-300">
-        <h1 className="text-3xl font-semibold text-gray-700">
+    <div className="modal-box bg-white max-w-[1000px] p-0 ">
+      <div className="flex justify-between items-center border-b border-gray-300 px-10">
+        <h1 className="text-3xl font-semibold text-center mb-6">
           Update Testimonials
         </h1>
         <button
-          className="text-3xl font-bold text-gray-700 hover:text-red-500"
+          className="text-3xl font-bold hover:text-red-500"
           onClick={() =>
             document.getElementById("Update_Testimonials_Modal").close()
           }
@@ -92,7 +92,7 @@ const UpdateTestimonials = ({ refetch, TestimonialsData }) => {
         </button>
       </div>
 
-      <form className="mt-6" onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)} className="p-6 space-y-4">
         <FormField
           label="Name"
           name="name"
@@ -138,14 +138,13 @@ const UpdateTestimonials = ({ refetch, TestimonialsData }) => {
         />
 
         {/* Submit Button */}
-        <div className="flex justify-center mt-6">
-          <button
-            type="submit"
-            className="px-6 py-2 bg-blue-500 text-white font-semibold rounded-lg"
-          >
-            Update Testimonial
-          </button>
-        </div>
+
+        <button
+          type="submit"
+          className="px-6 py-2 bg-blue-500 text-white font-semibold g w-full"
+        >
+          Update Teacher
+        </button>
       </form>
     </div>
   );
