@@ -221,7 +221,7 @@ const Navbar = () => {
                   {link.name} <FaChevronDown className="ml-2" />
                 </span>
 
-                <ul className="absolute hidden group-hover:block bg-white z-[1] w-52 p-2 shadow">
+                <ul className="absolute hidden group-hover:block bg-white z-[1] w-60 p-2 shadow">
                   {link.subLinks.map((subLink) => (
                     <li key={subLink.name} className="w-full">
                       <NavLink
