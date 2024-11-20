@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 
 export default function NoticeCard({notice}) {
     const {title,date,department,details,authority_type}=notice;
-    console.log(notice)
   return (
     <div  className="pr-4">
     <div className="my-5 bg-white border-2 border-primary/40 rounded-lg shadow-lg p-6 hover:shadow-xl transition">

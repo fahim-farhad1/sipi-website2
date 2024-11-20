@@ -18,13 +18,11 @@ export default function OurTeachers() {
     .then(res=>res.json())
     .then(data=>setTeachers(data))
   },[])
-  console.log(teachers)
 
         const settings = {
           autoplay: true, // Auto scroll through slides
           autoplaySpeed: 1000, // Time in ms between slides
           arrows: true,
-          dots: true,
           infinite: true,
           speed: 500,
           slidesToShow: 3,

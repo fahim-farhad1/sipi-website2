@@ -16,7 +16,6 @@ export default function NoticeSection() {
         .then(res=>res.json())
         .then(data=>setNotices(data))
     },[])
-    console.log(notices)
     const settings = {
         dots: true,
         infinite: true,

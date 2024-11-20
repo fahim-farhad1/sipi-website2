@@ -39,7 +39,6 @@ export default function GuestTestimonialSection() {
     autoplay: true, // Auto scroll through slides
     autoplaySpeed: 1000, // Time in ms between slides
     arrows: true,
-    dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 3,

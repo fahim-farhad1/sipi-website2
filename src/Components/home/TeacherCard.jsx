@@ -2,7 +2,6 @@ import React from "react";
 import { FaAward } from "react-icons/fa";
 
 export default function TeacherCard({ teacher }) {
-  console.log(teacher);
   const { name, image, department, designation, awards } = teacher;
   const qr = "https://i.ibb.co.com/zRmKWvP/Untitled-1.png";
 

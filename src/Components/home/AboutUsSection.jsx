@@ -1,6 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 export default function AboutUsSection() {
+  useEffect(()=>{
+    fetch("https://sipi-server.vercel.app/AboutUS")
+    .then(res=>res.json())
+    .then(data=>console.log(data))
+  },[])
   return (
     <section className="bg-gray-100 py-12 lg:py-24">
       <div className="container mx-auto px-6 lg:px-8 flex flex-col lg:flex-row items-center lg:items-start">
@@ -17,7 +22,7 @@ export default function AboutUsSection() {
         {/* Right Side: Content */}
         <div className="w-full lg:w-1/2 lg:pl-12">
         <p className='text-primary font-semibold capitalize text-[22px]'>About Us</p>
-          <h1 className="text-3xl lg:text-5xl font-bold mb-4 py-5">
+          <h1 className="text-3xl lg:text-4xl font-bold mb-4 py-5">
           A Station of Engineering Education
           </h1>
           <p className="text-lg text-gray-700 mb-6">
