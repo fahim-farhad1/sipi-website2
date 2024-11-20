@@ -18,6 +18,7 @@ import Results from "../Pages/Results/Results";
 import ManageNotices from "../Dashboard_Pages/ManageNotices/ManageNotices";
 import ManageTuitionFee from "../Dashboard_Pages/ManageTuitionFee/ManageTuitionFee";
 import ManageDepartment from "../Dashboard_Pages/ManageDepartment/ManageDepartment";
+import ManageRoutine from "../Dashboard_Pages/ManageRoutine/ManageRoutine";
 
 const router = createBrowserRouter([
   {
@@ -104,6 +105,10 @@ const router = createBrowserRouter([
       {
         path: "ManageDepartment",
         element: <ManageDepartment></ManageDepartment>,
+      },
+      {
+        path: "ManageRoutine",
+        element: <ManageRoutine></ManageRoutine>,
       },
     ],
   },

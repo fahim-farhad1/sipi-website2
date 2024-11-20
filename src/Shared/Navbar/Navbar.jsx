@@ -28,7 +28,7 @@ const navLinks = [
   {
     name: "Academic",
     subLinks: [
-      { name: "Academic", path: "/Academic" },
+      { name: "Academic", path: "/Academic" }, 
       { name: "Notices", path: "/Academic/Notices" },
       { name: "Routines", path: "/Academic/Routines" },
       { name: "Results", path: "/Academic/Results" },
@@ -99,13 +99,8 @@ const Navbar = () => {
   });
 
   return (
-<<<<<<< HEAD
     <div className="w-full bg-white fixed z-50 border border-gray-200">
       {/* Top navbar */}
-=======
-    <div className="w-full bg-white fixed z-10 border border-gray-200">
-      {/* top navbar */}
->>>>>>> sazzad
       <div className="bg-orange-700 h-12 md:h-10 flex items-center">
         <div className="mx-auto w-full flex items-center justify-between">
           <div className="flex items-center md:h-10 px-1 md:px-5">

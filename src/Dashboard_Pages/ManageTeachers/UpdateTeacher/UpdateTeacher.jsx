@@ -91,10 +91,6 @@ const UpdateTeacher = ({ TeacherData, refetch }) => {
       console.error("Error updating mentorship:", error);
     }
   };
-<<<<<<< HEAD
-=======
-  
->>>>>>> sazzad
   return (
     <div className="modal-box bg-white max-w-[800px] p-0">
       <div className="flex justify-between items-center px-10">

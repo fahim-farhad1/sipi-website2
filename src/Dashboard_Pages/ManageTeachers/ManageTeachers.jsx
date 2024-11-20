@@ -169,11 +169,7 @@ const ManageTeachers = () => {
               <th className="px-4 py-2">Actions</th>
             </tr>
           </thead>
-<<<<<<< HEAD
           <tbody>
-=======
-          <tbody className="">
->>>>>>> sazzad
             {filteredTeachers.length > 0 ? (
               filteredTeachers.map((teacher, index) => (
                 <tr key={teacher._id} className="border-b text-center items-center">
