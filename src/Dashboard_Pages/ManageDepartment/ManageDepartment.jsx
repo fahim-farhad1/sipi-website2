@@ -89,9 +89,9 @@ const ManageDepartment = () => {
   };
 
   return (
-    <div className="bg-gray-200 min-h-screen">
+    <div className="bg-gray-200 min-h-screen border border-black">
       {/* Top Section */}
-      <div className="flex justify-between border-b-2 border-gray-600 p-6 items-center">
+      <div className="flex justify-between border-b-2 border-gray-600 p-6 h-24 items-center">
         <p className="text-3xl font-semibold text-center">Manage Departments</p>
         <button
           className="border border-green-500 px-8 py-3 font-semibold hover:bg-green-500 hover:text-white"

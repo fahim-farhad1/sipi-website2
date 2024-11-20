@@ -28,7 +28,7 @@ const navLinks = [
   {
     name: "Academic",
     subLinks: [
-      { name: "Academic", path: "/Academic" }, 
+      { name: "Academic", path: "/Academic" },
       { name: "Notices", path: "/Academic/Notices" },
       { name: "Routines", path: "/Academic/Routines" },
       { name: "Results", path: "/Academic/Results" },
@@ -186,6 +186,7 @@ const Navbar = () => {
                         <NavLink
                           to={subLink.path}
                           className="block py-1 text-gray-700 hover:text-blue-500"
+                          onClick={() => setOpen(false)} // Close the sidebar
                         >
                           {subLink.name}
                         </NavLink>
@@ -199,6 +200,7 @@ const Navbar = () => {
                 key={link.name}
                 to={link.path}
                 className="block mb-2 hover:text-blue-500 font-semibold"
+                onClick={() => setOpen(false)} // Close the sidebar
               >
                 {link.name}
               </NavLink>

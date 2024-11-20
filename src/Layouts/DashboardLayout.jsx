@@ -10,6 +10,9 @@ const DashboardLayout = () => {
     { to: "ManageRoutine", label: "Manage Routine " },
     { to: "ManageTuitionFee", label: "Manage Tuition Fee " },
     { to: "ManageDepartment", label: "Manage Department " },
+    { to: "ManageTestimonials", label: "Manage Testimonials " },
+    { to: "ManageGuestTestimonials", label: "Manage Guest Testimonials " },
+    { to: "ManageCampus", label: "Manage Campus " },
   ];
 
   return (
@@ -18,10 +21,12 @@ const DashboardLayout = () => {
         {/* Dashboard sidebar */}
         <div className="w-80 h-screen pb-10 fixed bg-white overflow-y-auto">
           {/* Logo */}
-          <div className="py-5 text-center border-b-2 border-black">
-            <p className="text-xl font-bold text-blue-500">
-              SIPI Portfolio Website
-            </p>
+          <div className="py-5 text-center border-b-2 border-black h-24">
+            <NavLink to={"/"}>
+              <p className="text-xl font-bold text-blue-500">
+                SIPI Portfolio Website
+              </p>
+            </NavLink>
             <p className="text-xl font-bold text-black">Dashboard</p>
           </div>
 

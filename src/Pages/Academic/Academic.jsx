@@ -13,7 +13,7 @@ import DepartmentBanner from "../../Components/Banners/DepartmentBanner";
 
 const Academic = () => {
   const bannerImage =
-  "https://i.ibb.co/0rqXzZ7/fa8ed7e9-0e83-462f-8c5d-13b06d25cef3.jpg";
+    "https://i.ibb.co/0rqXzZ7/fa8ed7e9-0e83-462f-8c5d-13b06d25cef3.jpg";
   const GalleryImages = [
     "https://i.ibb.co.com/P9Bn5dx/trainer10.jpg",
     "https://i.ibb.co.com/4N0nmWk/trainer9.jpg",
@@ -49,20 +49,29 @@ const Academic = () => {
     "https://i.ibb.co.com/fv6ZRKG/1.jpg",
   ];
 
-
   return (
     <div className="text-black">
-       <DepartmentBanner Image={bannerImage} />
+      <DepartmentBanner Image={bannerImage} />
       {/* Main Container */}
-      <div className="gap-5">
+      <div className="gap-5 pt-10">
         {/* Top Part */}
         <div className="max-w-[1200px] mx-auto">
           <div className="flex flex-col md:flex-row items-center w-full">
-            <p className="text-[128px] font-semibold text-center">12+ <span className="text-3xl md:text-5xl font-semibold md:text-left">BTEB Affiliated Courses</span></p>
+            <p className="text-[128px] font-semibold text-center">
+              12+{" "}
+              <span className="text-3xl md:text-5xl font-semibold md:text-left">
+                BTEB Affiliated Courses
+              </span>
+            </p>
           </div>
           {/* Top text-1 */}
           <p className="text-[#7A7A7A] text-lg font-medium md:px-5 text-center md:text-left">
-          The Bangladesh Technical Education Board (BTEB) offers a range of 12+ vocational and technical education programs to equip students with practical skills and industry-specific knowledge. These courses are designed for students who have completed their secondary education and wish to pursue specialized training in fields like engineering, technology, healthcare, design, and hospitality.
+            The Bangladesh Technical Education Board (BTEB) offers a range of
+            12+ vocational and technical education programs to equip students
+            with practical skills and industry-specific knowledge. These courses
+            are designed for students who have completed their secondary
+            education and wish to pursue specialized training in fields like
+            engineering, technology, healthcare, design, and hospitality.
           </p>
         </div>
 

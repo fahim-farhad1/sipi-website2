@@ -3,6 +3,7 @@ import ContactCard from "../../Components/ContactCard/ContactCard";
 import fetchCampus from "../../Hooks/fetchCampus";
 import image from '../../assets/Departments/Computer/Department-of-Computer-Science.jpg'
 
+
 const ContactUs = () => {
   const { data: Campus, content } = fetchCampus();
   if (content) {
@@ -10,6 +11,7 @@ const ContactUs = () => {
   }
   console.log(Campus[0])
   return (
+<<<<<<< HEAD
     <div className="">
       {/* Contact page Banner */}
       <DepartmentBanner Image={image} />
@@ -22,6 +24,10 @@ const ContactUs = () => {
         />
       ))}
     </div>
+=======
+    <div>
+      
+>>>>>>> sazzad
     </div>
   );
 };
