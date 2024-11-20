@@ -138,9 +138,17 @@ const ManageCampus = () => {
             </div>
 
             {/* Google Maps Link */}
-            <div className="text-gray-600 mt-2 flex flex-col gap-2">
+            {/* Google Maps Link */}
+            <div className="text-gray-600 mt-2 flex  gap-2">
               <strong>Google Maps Link:</strong>
-              <span>{campus.googleMapsLink}</span>
+              <a
+                href={campus.googleMapsLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-blue-500 hover:underline"
+              >
+                Google Maps link
+              </a>
             </div>
 
             {/* Push buttons to the bottom */}
