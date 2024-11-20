@@ -5,7 +5,8 @@ const DepartmentBanner = ({ Image }) => {
   const location = useLocation();
 
   // Extract the pathname and split it into parts
-  const pathParts = location.pathname.slice(1).split("/"); // Remove the leading '/' and split
+  const decodedPath = decodeURIComponent(location.pathname); // Decode the pathname
+  const pathParts = decodedPath.slice(1).split("/"); // Remove the leading '/' and split
   const firstPart = pathParts[0] || "Home"; // Default to 'Home' if empty
   const secondPart = pathParts[1]; // If there's no second part, it will be undefined
 
