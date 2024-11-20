@@ -11,7 +11,6 @@ const ContactUs = () => {
   }
   console.log(Campus[0])
   return (
-<<<<<<< HEAD
     <div className="">
       {/* Contact page Banner */}
       <DepartmentBanner Image={image} />
@@ -24,10 +23,6 @@ const ContactUs = () => {
         />
       ))}
     </div>
-=======
-    <div>
-      
->>>>>>> sazzad
     </div>
   );
 };

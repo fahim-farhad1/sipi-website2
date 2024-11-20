@@ -172,11 +172,7 @@ const ManageTeachers = () => {
           <tbody>
             {filteredTeachers.length > 0 ? (
               filteredTeachers.map((teacher, index) => (
-<<<<<<< HEAD
                 <tr key={teacher._id} className="border-b text-center items-center">
-=======
-                <tr key={teacher._id} className="border-b ">
->>>>>>> sazzad
                   <td className="px-4 py-2">{index + 1}</td>
                   <td className="px-4 py-2">
                     <img
