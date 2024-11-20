@@ -24,7 +24,7 @@ const AboutPrincipal = ({ principalData }) => {
         </p>
 
         {/* Contact Information */}
-        <div className="mt-6 space-y-4 text-gray-800">
+        {/* <div className="mt-6 space-y-4 text-gray-800">
           <p className="flex items-center gap-3 text-lg">
             <FaPhone className="text-orange-500" />
             <span>{principalData?.contact.phone}</span>
@@ -33,7 +33,7 @@ const AboutPrincipal = ({ principalData }) => {
             <MdEmail className="text-orange-500" />
             <span>{principalData?.contact.email}</span>
           </p>
-        </div>
+        </div> */}
       </div>
     </div>
   );

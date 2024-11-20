@@ -4,13 +4,10 @@ import { FcDepartment } from "react-icons/fc";
 import { useState } from "react";
 import fetchNotices from "../../Hooks/fetchNotices";
 import DepartmentBanner from "../../Components/Banners/DepartmentBanner";
-
+import bannerImage from "../../assets/NOTICEBANNER.jpg"
 const Notices = () => {
   const { data: Notices, content } = fetchNotices();
   const [selectedNotice, setSelectedNotice] = useState(null);
-
-  const bannerImage =
-    "https://i.ibb.co/0rqXzZ7/fa8ed7e9-0e83-462f-8c5d-13b06d25cef3.jpg";
 
   if (content) {
     return content;
