@@ -1,6 +1,6 @@
 import React from "react";
 import DepartmentBanner from "../../Components/Banners/DepartmentBanner";
-import BlogBanner from "../../assets/Departments/image1.jpg";
+import BlogBanner from "../../assets/BlogBanner.jpg";
 import Blog from "../../Components/Blogs/Blog";
 import fetchBlogs from "../../Hooks/fetchBlogs";
 const Blogs = () => {

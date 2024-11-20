@@ -3,7 +3,7 @@ import LeftTitle from "../../Components/ReuseableTitle/leftTitle";
 import AboutPrincipal from "./AboutPrincipal/AboutPrincipal";
 import AboutUniversity from "./AboutUniversity/AboutUniversity";
 import Academics from "./Academics/Academics";
-import Banner from "./Banner/Banner";
+import BannerImage from "../../assets/AboutUsBanner.jpg"
 import Staff from "./Staff/Staff";
 
 const BannerData = {
@@ -35,10 +35,6 @@ const principalData = {
   name: "Principal of Shyamoli Ideal Polytechnic Institute",
   description:
     "Founder   of Shyamoli Ideal Shikkha Poribar President,Bangladesh Federation of Technical Teachers's Association (BFTTA) President,Bangladesh Technical Teachers's Association (BTCTA) Chairman, Bangladesh Computer Education Development Society (BCEDS) Chairman, Shyamoli Textile Engineering College (STEC) Chairman, Principal M.A.Sattar Trust",
-  contact: {
-    phone: "+8801917335945",
-    email: "psazzadul@gmail.com",
-  },
 };
 
 const academicServices = [
@@ -116,14 +112,16 @@ const staffData = [
 const AboutUs = () => {
   return (
     <div className="min-h-screen">
-      <DepartmentBanner />
+      <DepartmentBanner Image={BannerImage} />
       <AboutUniversity
         aboutUniversityData={aboutUniversityData}
       ></AboutUniversity>
       {/* <LeftTitle badge={"A Station of Engineering Education"} /> */}
       <AboutPrincipal principalData={principalData}></AboutPrincipal>
-      <Academics academicServices={academicServices}></Academics>
+
       <Staff staffData={staffData}></Staff>
+      <Academics academicServices={academicServices}></Academics>
+      
     </div>
   );
 };

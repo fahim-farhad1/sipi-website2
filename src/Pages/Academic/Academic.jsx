@@ -10,10 +10,8 @@ import {
 } from "react-icons/fa";
 import Gallery from "../../Components/Gallary/Gallery";
 import DepartmentBanner from "../../Components/Banners/DepartmentBanner";
-
+import bannerImage from "../../assets/AcademicBanner.jpg"
 const Academic = () => {
-  const bannerImage =
-    "https://i.ibb.co/0rqXzZ7/fa8ed7e9-0e83-462f-8c5d-13b06d25cef3.jpg";
   const GalleryImages = [
     "https://i.ibb.co.com/P9Bn5dx/trainer10.jpg",
     "https://i.ibb.co.com/4N0nmWk/trainer9.jpg",
