@@ -5,6 +5,7 @@ import DepartmentSection from "../../Components/home/DepartmentSection"
 import EventSection from "../../Components/home/EventSection"
 import GuestTestimonialSection from "../../Components/home/GuestTestimonialSection"
 import LabFacilitiesSection from "../../Components/home/LabFacilitiesSection"
+import NoticeSection from "../../Components/home/NoticeSection"
 import OurTeachers from "../../Components/home/OurTeachers"
 import WhyChoseUs from "../../Components/home/WhyChoseUs"
 
@@ -21,6 +22,7 @@ const Home = () => {
       <GuestTestimonialSection/>
       <LabFacilitiesSection/>
       <WhyChoseUs/>
+      <NoticeSection/>
       </div>
     </div>
   )
