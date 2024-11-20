@@ -12,7 +12,6 @@ export default function AboutUsSection() {
     .then(res=>res.json())
     .then(data=>setAboutus(data[0]))
   },[])
-  console.log(about.length)
   return (
     <section className="bg-gray-100 py-12 lg:py-24">
       <div className="mx-auto px-6 lg:px-8 flex flex-col lg:flex-row items-center lg:items-start">

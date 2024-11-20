@@ -46,7 +46,7 @@ const events = [
 export default function EventSection() {
   return (
     <section className="py-12 bg-gray-100">
-      <div className="container mx-auto px-6 lg:px-8">
+      <div className=" mx-auto px-6 lg:px-8">
         <MiddleSectionTitle badge="Events" title="Great Moments Of Campus Life." />
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
           {events.map((event) => (
