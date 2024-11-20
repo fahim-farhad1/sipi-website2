@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../Shared/Loader/Loader";
 import Default from "../../../assets/Default.png";
 import DepartmentBanner from "../../../Components/Banners/DepartmentBanner";
+import { useParams } from "react-router-dom";
 
 const Teacher = () => {
   const axiosPublic = useAxiosPublic();
@@ -76,9 +77,12 @@ const Teacher = () => {
     "https://i.ibb.co/0rqXzZ7/fa8ed7e9-0e83-462f-8c5d-13b06d25cef3.jpg";
   return (
     <div className="py-5 text-gray-800">
-      <div>
-        <DepartmentBanner Image={bannerImage} />
-        <div className="max-w-[1200px] mx-auto mt-20">
+      <DepartmentBanner />
+      <div className="mt-10">
+        <h1 className="text-center font-bold text-4xl text-blue-600 mb-12">
+          Meet Our Teachers
+        </h1>
+        <div className="max-w-[1200px] mx-auto">
           {Object.entries(groupedTeachers).map(([department, teachers]) => (
             <div key={department} className="mb-12">
               <h2 className="text-3xl font-semibold text-blue-500 border-b-4 border-blue-300 pb-2 mb-6">

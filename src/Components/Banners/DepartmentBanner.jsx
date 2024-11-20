@@ -33,12 +33,12 @@ const DepartmentBanner = ({ Image }) => {
       <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2">
         <a
           href="#"
-          className="bg-primary text-white py-3 px-6 rounded-badge shadow-lg hover:bg-primary transition"
+          className="bg-primary text-white flex py-3 px-6 rounded-badge shadow-lg hover:bg-primary transition"
         >
           <NavLink to={"/"}>
             <span>Home</span>
-          </NavLink>{" "}
-          <span className="px-2">|</span> <span>{firstPart}</span>{" "}
+          </NavLink>
+          <span className="px-2">|</span> <span>{firstPart}</span>
           {secondPart && (
             <>
               <span className="px-2">|</span> <span>{secondPart}</span>

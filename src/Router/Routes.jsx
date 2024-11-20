@@ -18,6 +18,12 @@ import Results from "../Pages/Results/Results";
 import ManageNotices from "../Dashboard_Pages/ManageNotices/ManageNotices";
 import ManageTuitionFee from "../Dashboard_Pages/ManageTuitionFee/ManageTuitionFee";
 import ManageDepartment from "../Dashboard_Pages/ManageDepartment/ManageDepartment";
+import ManageRoutine from "../Dashboard_Pages/ManageRoutine/ManageRoutine";
+import ManageTestimonials from "../Dashboard_Pages/ManageTestimonials/ManageTestimonials";
+import ManageCampus from "../Dashboard_Pages/ManageCampus/ManageCampus";
+import ManageGuestTestimonials from "../Dashboard_Pages/ManageGuestTestimonials/ManageGuestTestimonials";
+import Blogs from "../Pages/Blogs/Blogs";
+import ManageBlogs from "../Dashboard_Pages/ManageBlogs/ManageBlogs";
 
 const router = createBrowserRouter([
   {
@@ -79,6 +85,14 @@ const router = createBrowserRouter([
         path: "/admission",
         element: <Admission />,
       },
+      {
+        path: "/Blog",
+        element: <Blogs />,
+      },
+      {
+        path: "/Blog/:id",
+        element: <Blogs />,
+      },
     ],
   },
   {
@@ -98,12 +112,32 @@ const router = createBrowserRouter([
         element: <ManageNotices></ManageNotices>,
       },
       {
+        path: "ManageRoutine",
+        element: <ManageRoutine></ManageRoutine>,
+      },
+      {
         path: "ManageTuitionFee",
         element: <ManageTuitionFee></ManageTuitionFee>,
       },
       {
         path: "ManageDepartment",
         element: <ManageDepartment></ManageDepartment>,
+      },
+      {
+        path: "ManageTestimonials",
+        element: <ManageTestimonials></ManageTestimonials>,
+      },
+      {
+        path: "ManageGuestTestimonials",
+        element: <ManageGuestTestimonials></ManageGuestTestimonials>,
+      },
+      {
+        path: "ManageCampus",
+        element: <ManageCampus></ManageCampus>,
+      },
+      {
+        path: "ManageBlogs",
+        element: <ManageBlogs></ManageBlogs>,
       },
     ],
   },

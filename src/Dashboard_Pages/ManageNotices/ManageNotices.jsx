@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../Shared/Loader/Loader";
-
-// Importing necessary icons
 import { FcDepartment } from "react-icons/fc";
 import { MdAdminPanelSettings } from "react-icons/md";
 import { CiCalendarDate, CiEdit } from "react-icons/ci";
@@ -54,13 +52,6 @@ const ManageNotices = () => {
     (a, b) => new Date(b.date) - new Date(a.date)
   );
 
-  // Function to limit content preview
-  const getContentPreview = (content, length = 30) => {
-    return content.length > length
-      ? content.substring(0, length) + "..."
-      : content;
-  };
-
   const handleUpdateNotices = (notice) => {
     setEditNoticesData(notice);
     document.getElementById("Update_Notices_Modal").showModal();
@@ -98,9 +89,9 @@ const ManageNotices = () => {
   };
 
   return (
-    <div className="bg-gray-200 min-h-screen">
+    <div className="bg-gray-200 min-h-screen border border-black">
       {/* Top Section */}
-      <div className="flex justify-between border-b-2 border-gray-600 p-6 items-center">
+      <div className="flex justify-between border-b-2 border-gray-600 p-6 h-24 items-center">
         <p className="text-3xl font-semibold text-center">Manage Notices</p>
         <button
           className="border border-green-500 px-8 py-3 font-semibold hover:bg-green-500 hover:text-white"
@@ -113,7 +104,7 @@ const ManageNotices = () => {
       </div>
 
       {/* Notices List */}
-      <div className="gap-6 p-6">
+      <div className="gap-6 p-6 px-10">
         {sortedNotices && sortedNotices.length > 0 ? (
           sortedNotices.map((notice) => (
             <div

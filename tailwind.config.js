@@ -14,7 +14,11 @@ export default {
     //   gray: "#6D7486",
     //   "gray-light": "#d3dce6",
     // },
-    extend: {},
+    extend: {
+      // backgroundImage: {
+      //   'campus-bg': "url('/src/assets/background-svg-image-pattern.svg')", // Update the path
+      // },
+    },
   },
   plugins: [require("daisyui")],
 };
