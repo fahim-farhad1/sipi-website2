@@ -2,7 +2,7 @@ import DepartmentBanner from "../../Components/Banners/DepartmentBanner";
 import LeftTitle from "../../Components/ReuseableTitle/leftTitle";
 import AboutPrincipal from "./AboutPrincipal/AboutPrincipal";
 import AboutUniversity from "./AboutUniversity/AboutUniversity";
-import Academics from "./Academics/Academics";
+// import Academics from "./Academics/Academics";
 import BannerImage from "../../assets/AboutUsBanner.jpg"
 import Staff from "./Staff/Staff";
 
