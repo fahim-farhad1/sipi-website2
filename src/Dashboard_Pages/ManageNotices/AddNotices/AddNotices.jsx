@@ -66,11 +66,9 @@ const AddNotices = ({ refetch, managementData }) => {
   };
 
   return (
-    <div className="modal-box bg-white max-w-[800px] p-0">
-      <div className="flex justify-between items-center px-10">
-        <h1 className="text-3xl font-semibold text-center mb-6">
-          Add Notices
-        </h1>
+    <div className="modal-box bg-white max-w-[1000px] p-0 ">
+      <div className="flex justify-between items-center border-b border-gray-300 px-10">
+        <h1 className="text-3xl font-semibold text-center mb-6">Add Notices</h1>
         <button
           className="text-3xl font-bold hover:text-red-500"
           onClick={() => document.getElementById("Add_Notices_Modal").close()}
@@ -163,14 +161,12 @@ const AddNotices = ({ refetch, managementData }) => {
         </div>
 
         {/* Submit Button */}
-        <div className="flex justify-center mt-6">
-          <button
-            type="submit"
-            className="px-6 py-2 bg-blue-500 text-white font-semibold rounded-lg"
-          >
-            Add Notices
-          </button>
-        </div>
+        <button
+          type="submit"
+          className="px-6 py-2 bg-blue-500 text-white font-semibold g w-full"
+        > 
+          Add Notices
+        </button>
       </form>
     </div>
   );

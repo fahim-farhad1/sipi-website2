@@ -6,6 +6,7 @@ import Loader from "../../../Shared/Loader/Loader";
 import { useParams } from "react-router-dom";
 import Gallery from "../../../Components/Gallary/Gallery";
 import DepartmentBanner from "../../../Components/Banners/DepartmentBanner";
+import MiddleSectionTitle from "../../../Components/ReuseableTitle/MiddleSectionTitle";
 
 const Banner = () => {
   const axiosPublic = useAxiosPublic();
@@ -134,20 +135,19 @@ const Banner = () => {
       {/* Content */}
       <div className=" text-black">
         {/* Top part */}
-        <div className="flex justify-between mt-11 max-w-[1200px] mx-auto">
-          
+        <div className="flex flex-col md:flex-row justify-between mt-11 max-w-[1200px] mx-auto space-y-5 px-2">
           {/* Left part */}
-          <div className="w-[700px]">
-            {/* Name */}
+          <div className="w-full md:w-[700px]">
             <h2 className="text-black font-bold text-3xl md:text-5xl text-center md:text-left">
               {Department.diploma}
             </h2>
 
             {/* About */}
-            <div id="About" className="mt-10 mx-5 md:mx-0">
+            <div id="About" className="mt-10 md:mx-5 text-center md:text-left">
               <h2 className="text-xl font-semibold">
                 About {Department.diploma}
               </h2>
+
               <div className="space-y-1 pt-5 leading-relaxed">
                 {splitText(Department.aboutDepartment).map((chunk, index) => (
                   <p key={index} className="text-gray-700 mb-[4px]">
@@ -159,7 +159,7 @@ const Banner = () => {
           </div>
 
           {/* Right Part */}
-          <div className="w-[400px] text-white">
+          <div className="w-full md:w-[400px] text-white">
             {/* Info Part */}
             <div className="bg-blue-500 py-10">
               <h3 className="text-2xl font-bold text-center mb-6">
@@ -215,7 +215,7 @@ const Banner = () => {
         </div>
 
         {/* Objectives */}
-        <div className="mt-10 max-w-[1200px] mx-auto">
+        <div className="mt-10 max-w-[1200px] mx-auto px-2">
           <h2 className="text-xl font-semibold">Our Objectives</h2>
           <ul className=" pl-2 pt-2 space-y-3 ">
             {Department.objectives.map((objective, index) => (
@@ -228,7 +228,7 @@ const Banner = () => {
         </div>
 
         {/* Features */}
-        <div className="mt-10  max-w-[1200px] mx-auto">
+        <div className="mt-10  max-w-[1200px] mx-auto px-2">
           <h2 className="text-xl font-semibold">Features</h2>
           <ul className=" pl-2 pt-2 space-y-3 ">
             {Department.features.map((feature, index) => (
@@ -241,7 +241,7 @@ const Banner = () => {
         </div>
 
         {/* Success */}
-        <div className="mt-10 max-w-[1200px] mx-auto">
+        <div className="mt-10 max-w-[1200px] mx-auto px-2">
           <h2 className="text-xl font-semibold">Our Success</h2>
           <ul className=" pl-2 pt-2 space-y-3 ">
             {Department.success.map((successItem, index) => (
@@ -254,7 +254,7 @@ const Banner = () => {
         </div>
 
         {/* Requirements */}
-        <div className="mt-10 max-w-[1200px] mx-auto">
+        <div className="mt-10 max-w-[1200px] mx-auto px-2">
           <h2 className="text-xl font-semibold">Admission Requirements</h2>
           <ul className=" pl-2 pt-2 space-y-3 ">
             {Department.requirements.map((requirement, index) => (
@@ -267,7 +267,7 @@ const Banner = () => {
         </div>
 
         {/* lab_facilities */}
-        <div className="mt-10 max-w-[1200px] mx-auto">
+        <div className="mt-10 max-w-[1200px] mx-auto px-2">
           <h2 className="text-xl font-semibold">Lab facilities</h2>
           <ul className=" pl-2 pt-2 space-y-3 ">
             {Department.lab_facilities.map((facilities, index) => (
@@ -280,7 +280,7 @@ const Banner = () => {
         </div>
 
         {/* Qualifications, Duration */}
-        <div className="mt-10 max-w-[1200px] mx-auto">
+        <div className="mt-10 max-w-[1200px] mx-auto px-2">
           <div className="text-lg ">
             <p className="font-semibold ">Qualifications: </p>
             <span className="ml-5">{Department.qualifications}</span>
@@ -292,12 +292,12 @@ const Banner = () => {
         </div>
 
         {/* Course Outline */}
-        <div id="Course" className="mt-10 bg-sky-200 py-5">
+        <div className="mt-10 bg-sky-200 py-5 px-1">
           <div className="max-w-[1200px] mx-auto">
-            <h2 className="text-xl font-semibold">
+            <h2 className="text-lg md:text-xl font-semibold">
               Course Outline - Regulation ( {Department.regulation} )
             </h2>
-            <div className="grid grid-cols-2 gap-4 pt-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-5">
               {Department.course_outline.map((semester, index) => (
                 <div
                   key={index}
@@ -316,11 +316,11 @@ const Banner = () => {
         </div>
 
         {/* Scholarship */}
-        <div id="Scholarship" className="mt-10 max-w-[1200px] mx-auto">
-          <h2 className="text-xl font-semibold">Scholarships</h2>
+        <div className="mt-10 max-w-[1200px] mx-auto px-1">
+          <h2 className="text-2xl md:text-xl font-semibold">Scholarships</h2>
 
           {/* Scholarship Description */}
-          <div className="pt-5 space-y-3">
+          <div className="pt-5 space-y-3 leading-relaxed">
             <p className="text-gray-700">
               {Department.scholarship.description}
             </p>
@@ -336,7 +336,7 @@ const Banner = () => {
             </h3>
 
             {/* Grid Layout for Scholarships */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {Department.course_outline.map((semester, index) => {
                 // Generate scholarship money for each semester (example values)
                 const scholarshipMoney = `$${(index + 1) * 1000}`; // Example: $1000 for Semester 1, $2000 for Semester 2, etc.
@@ -359,7 +359,7 @@ const Banner = () => {
         </div>
 
         {/* BTEB Thoughts Section */}
-        <div className="mt-10 max-w-[1200px] mx-auto">
+        <div className="mt-10 max-w-[1200px] mx-auto px-2">
           <h2 className="text-xl font-semibold">BTEB Thoughts</h2>
           <p className="text-gray-700 mt-2 leading-relaxed text-lg">
             {Department.bteb_thoughts}
@@ -378,7 +378,7 @@ const Banner = () => {
                 return (
                   <div key={routine._id} className="mb-10">
                     {/* Accordion Section for Each Routine */}
-                    <div className="collapse collapse-arrow">
+                    <div className="collapse collapse-arrow overflow-scroll md:overflow-hidden border border-gray-300">
                       <input
                         type="radio"
                         name="my-accordion-2"
@@ -457,7 +457,7 @@ const Banner = () => {
             </p>
             <div>
               {TuitionFee.length > 0 ? (
-                <div className="grid grid-cols-3 gap-5">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-5 px-2">
                   {TuitionFee.map((feeData) => (
                     <div
                       key={feeData._id}
@@ -531,7 +531,7 @@ const Banner = () => {
           </div>
         </div>
 
-        <p className="text-center text-3xl font-semibold py-5">Gallery</p>
+              <MiddleSectionTitle badge={"Departments Gallery"} title={'The Memory of Students'} />
         <Gallery images={Department.galleryImages}></Gallery>
       </div>
     </div>
