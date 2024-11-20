@@ -2,7 +2,7 @@ import React from "react";
 
 const AboutUniversity = ({ aboutUniversityData }) => {
   return (
-    <div className="mt-[50px] md:mt-[200px] max-w-[1200px] mx-auto flex flex-col md:flex-row gap-10 px-4">
+    <div className="mt-[50px] md:mt-[100px] max-w-[1200px] mx-auto flex flex-col md:flex-row gap-10 px-4">
       {/* Text Section */}
       <div className="md:w-1/2 text-center md:text-left">
         <p className="text-black font-semibold text-3xl">

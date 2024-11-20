@@ -3,15 +3,13 @@ import { useForm } from "react-hook-form";
 import { jsPDF } from "jspdf";
 import fetchRoutine from "../../Hooks/fetchRoutine";
 import DepartmentBanner from "../../Components/Banners/DepartmentBanner";
-
+import bannerImage from "../../assets/RoutinePage.jpg"
 const Routines = () => {
   const { data: Routine, content } = fetchRoutine();
   const [filteredRoutines, setFilteredRoutines] = useState([]);
   const { register, handleSubmit, watch } = useForm();
   const selectedSemester = watch("semester");
   const selectedDepartment = watch("department");
-  const bannerImage =
-    "https://i.ibb.co/0rqXzZ7/fa8ed7e9-0e83-462f-8c5d-13b06d25cef3.jpg";
 
   useEffect(() => {
     if (Routine) {
