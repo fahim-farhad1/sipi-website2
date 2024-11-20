@@ -74,15 +74,15 @@ const router = createBrowserRouter([
         element: <Management />,
       },
       {
-        path: "/about",
+        path: "/About",
         element: <AboutUs />,
       },
       {
-        path: "/contact",
+        path: "/Contact",
         element: <ContactUs />,
       },
       {
-        path: "/admission",
+        path: "/Admission",
         element: <Admission />,
       },
       {

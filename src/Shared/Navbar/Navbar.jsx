@@ -42,8 +42,8 @@ const navLinks = [
     ],
   },
   { name: "Blogs", path: "/Blog" },
-  { name: "About", path: "/about" },
-  { name: "Contact", path: "/contact" },
+  { name: "About", path: "/About" },
+  { name: "Contact", path: "/Contact" },
 ];
 
 const Navbar = () => {
@@ -246,9 +246,11 @@ const Navbar = () => {
           )}
         </div>
 
-        <button className="bg-orange-700 py-3 px-3 text-white hover:bg-green-700 duration-500 hidden md:block">
-          ADMISSION OPEN
-        </button>
+        <Link to={"/Admission"}>
+          <button className="bg-orange-700 py-3 px-3 text-white hover:bg-green-700 duration-500 hidden md:block">
+            ADMISSION OPEN
+          </button>
+        </Link>
       </div>
     </div>
   );
