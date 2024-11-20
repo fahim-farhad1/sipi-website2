@@ -117,7 +117,7 @@ const Admission = () => {
         });
       }
 
-      // reset();
+      reset();
     } catch (error) {
       console.error("Error adding teacher:", error);
 
