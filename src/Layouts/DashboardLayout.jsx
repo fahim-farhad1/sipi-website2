@@ -16,7 +16,7 @@ const DashboardLayout = () => {
   ];
 
   return (
-    <div className="bg-gradient-to-br from-blue-500 to-sky-100 text-black">
+    <div className="bg-white text-black">
       <div className="flex ">
         {/* Dashboard sidebar */}
         <div className="w-80 h-screen pb-10 fixed bg-white overflow-y-auto">
@@ -50,7 +50,7 @@ const DashboardLayout = () => {
         </div>
 
         {/* Dashboard Content */}
-        <div className="flex-1 lg:ml-[320px] overflow-y-auto min-h-screen relative bg-gradient-to-br from-blue-500 to-sky-100 ">
+        <div className="flex-1 lg:ml-[320px] overflow-y-auto min-h-screen relative bg-white ">
           <Outlet />
         </div>
       </div>
