@@ -4,8 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../Shared/Loader/Loader";
 import Default from "../../../assets/Default.png";
 import DepartmentBanner from "../../../Components/Banners/DepartmentBanner";
-import { useParams } from "react-router-dom";
-
+import bannerImage from  "../../../assets/TeachersBanner.jpg";
 const Teacher = () => {
   const axiosPublic = useAxiosPublic();
   const [selectedTeacher, setSelectedTeacher] = useState(null);
@@ -73,14 +72,12 @@ const Teacher = () => {
     );
   }
 
-  const bannerImage =
-    "https://i.ibb.co/0rqXzZ7/fa8ed7e9-0e83-462f-8c5d-13b06d25cef3.jpg";
   return (
     <div className="py-5 text-gray-800">
-      <DepartmentBanner />
+      <DepartmentBanner Image={bannerImage} />
       <div className="mt-10">
         <h1 className="text-center font-bold text-4xl text-blue-600 mb-12">
-          Meet Our Teachers
+          Meet Our Teachers 
         </h1>
         <div className="max-w-[1200px] mx-auto">
           {Object.entries(groupedTeachers).map(([department, teachers]) => (
@@ -92,7 +89,7 @@ const Teacher = () => {
                 {teachers.map((teacher) => (
                   <div
                     key={teacher._id}
-                    className="shadow-md rounded-lg hover:shadow-xl transition-shadow duration-300 bg-gradient-to-bl from-slate-200 to-white"
+                    className="rounded-lg bg-white border"
                   >
                     <img
                       src={teacher.image || Default}
@@ -111,7 +108,7 @@ const Teacher = () => {
                         <strong>Department:</strong>{" "}
                         {teacher.department || "N/A"}
                       </p>
-                      <p className="pt-2">
+                      {/* <p className="pt-2">
                         <strong>Subjects:</strong>{" "}
                         {teacher.subjects_taught?.length > 0
                           ? teacher.subjects_taught.join(", ")
@@ -122,8 +119,8 @@ const Teacher = () => {
                         {teacher.awards?.length > 0
                           ? teacher.awards.join(", ")
                           : "N/A"}
-                      </p>
-                      <div className="mt-4 text-right">
+                      </p> */}
+                      <div className="mt-4">
                         <button
                           className="text-blue-500 hover:underline"
                           onClick={() => setSelectedTeacher(teacher)}
@@ -141,9 +138,9 @@ const Teacher = () => {
       </div>
 
       {/* Modal */}
-      {selectedTeacher && (
+      {/* {selectedTeacher && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
-          <div className="bg-white rounded-lg max-w-[800px] p-5">
+          <div className="bg-white rounded-lg max-w-[800px] p-5 mt-[234px]">
             <img
               src={selectedTeacher.image || Default}
               alt={selectedTeacher.name}
@@ -198,7 +195,7 @@ const Teacher = () => {
             </button>
           </div>
         </div>
-      )}
+      )} */}
     </div>
   );
 };
