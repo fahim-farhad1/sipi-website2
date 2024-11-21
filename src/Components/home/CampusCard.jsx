@@ -1,8 +1,10 @@
 import React from 'react'
 import { FaMapMarkerAlt } from 'react-icons/fa';
 
-export default function CampusCard({campus}) {
-    const {campus_image,name,number, location} =campus;
+export default function CampusCard({campusData}) {
+  console.log(campusData)
+    const {campusImg,campus,googleMapsLink,mobileNumbers,campusAddress,emailAddress} =campusData || {};
+    const {address,area,country,postalCode}=campusAddress || {};
   return (
     <div 
               
@@ -10,16 +12,20 @@ export default function CampusCard({campus}) {
             >
               {/* Campus Image */}
               <img 
-                src={campus_image} 
+                src={campusImg} 
                 className="w-full h-48 object-cover"
               />
 
-                <a className='absolute top-[10px] left-[10px]' href="https://maps.google.com/?q=123+Main+Street,+Cityville" target='_blank'><FaMapMarkerAlt className='text-primary hover:text-white text-[40px]' /></a>
+                <a className='absolute top-[10px] left-[10px]' href={googleMapsLink} target='_blank'><FaMapMarkerAlt className='text-primary hover:text-white text-[40px]' /></a>
               {/* Campus Details */}
               <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">{name} </h3>
-                <p className="text-gray-600 mb-2">Contact: {number}</p>
-                <p className="text-gray-500 mb-4">Location: {location}</p>
+                <h3 className="text-xl font-semibold mb-2">{campus} </h3>
+                <p className="text-black">Contact:</p>
+                {
+                  mobileNumbers?.map(number=><p className='text-gray-600' key={number}>{number}</p>)
+                }
+                <p>Email: <span className='text-gray-500'>{emailAddress}</span></p>
+                <p className="text-gray-500 mb-4"><span className='text-black'>Location:</span> {address} {postalCode} {area} {country}</p>
                 <a 
                 //   href={campus.website} 
                   target="_blank" 
