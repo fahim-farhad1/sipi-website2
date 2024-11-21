@@ -2,14 +2,14 @@ import React from 'react'
 import LeftTitle from '../ReuseableTitle/leftTitle'
 
 const galleryImages = [
-  'https://via.placeholder.com/300x400', // Replace with actual image URLs
-  'https://via.placeholder.com/400x300',
-  'https://via.placeholder.com/300x300',
-  'https://via.placeholder.com/500x400',
-  'https://via.placeholder.com/400x400',
-  'https://via.placeholder.com/350x500',
-  'https://via.placeholder.com/450x350',
-  'https://via.placeholder.com/350x450',
+  'https://www.sipi.edu.bd/img/lab8.jpg', // Replace with actual image URLs
+  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuinrf9ZVg8OWJGHcbsyi7_HQFiVIMcJNp9A&s',
+  'https://www.sipi.edu.bd/img/lab7.jpg',
+  'https://www.sipi.edu.bd/img/lab6.jpg',
+  'https://www.sipi.edu.bd/img/lab1.jpg',
+  'https://www.sipi.edu.bd/img/lab11.jpg',
+  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXgjmWM2EBpiosV6eDsusnPw1QC-k1aXU8MYsHxn9d3EM8LWqXNPa2cnhMiHP-oLw4Dm4&usqp=CAU',
+  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXaTA4FE24FzTmM5O0SIuw02jUw6C4vZeh2TBsrMTox-JkNj_GuT1FwNBX3ZNZX10t0c4&usqp=CAU',
 ];
 
 export default function LabFacilitiesSection() {
@@ -22,46 +22,46 @@ export default function LabFacilitiesSection() {
 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
     <div class="grid gap-4">
         <div>
-            <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image.jpg" alt=""/>
+            <img class="h-auto max-w-full rounded-lg" src="https://www.sipi.edu.bd/img/lab8.jpg" alt=""/>
         </div>
         <div>
-            <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-1.jpg" alt=""/>
+            <img class="h-auto max-w-full rounded-lg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuinrf9ZVg8OWJGHcbsyi7_HQFiVIMcJNp9A&s" alt=""/>
         </div>
         <div>
-            <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-2.jpg" alt=""/>
-        </div>
-    </div>
-    <div class="grid gap-4">
-        <div>
-            <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-3.jpg" alt=""/>
-        </div>
-        <div>
-            <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-4.jpg" alt=""/>
-        </div>
-        <div>
-            <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-5.jpg" alt=""/>
+            <img class="h-auto max-w-full rounded-lg" src="https://www.sipi.edu.bd/img/lab7.jpg" alt=""/>
         </div>
     </div>
     <div class="grid gap-4">
         <div>
-            <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-6.jpg" alt=""/>
+            <img class="h-auto max-w-full rounded-lg" src="https://www.sipi.edu.bd/img/lab1.jpg" alt=""/>
         </div>
         <div>
-            <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-7.jpg" alt=""/>
+            <img class="h-auto max-w-full rounded-lg" src="https://www.sipi.edu.bd/img/lab11.jpg" alt=""/>
         </div>
         <div>
-            <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-8.jpg" alt=""/>
+            <img class="h-auto max-w-full rounded-lg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXaTA4FE24FzTmM5O0SIuw02jUw6C4vZeh2TBsrMTox-JkNj_GuT1FwNBX3ZNZX10t0c4&usqp=CAU" alt=""/>
         </div>
     </div>
     <div class="grid gap-4">
         <div>
-            <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-9.jpg" alt=""/>
+            <img class="h-auto max-w-full rounded-lg" src="https://www.sipi.edu.bd/img/lab7.jpg" alt=""/>
         </div>
         <div>
-            <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg" alt=""/>
+            <img class="h-auto max-w-full rounded-lg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXgjmWM2EBpiosV6eDsusnPw1QC-k1aXU8MYsHxn9d3EM8LWqXNPa2cnhMiHP-oLw4Dm4&usqp=CAU" alt=""/>
         </div>
         <div>
-            <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-11.jpg" alt=""/>
+            <img class="h-auto max-w-full rounded-lg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXgjmWM2EBpiosV6eDsusnPw1QC-k1aXU8MYsHxn9d3EM8LWqXNPa2cnhMiHP-oLw4Dm4&usqp=CAU" alt=""/>
+        </div>
+    </div>
+    <div class="grid gap-4">
+        <div>
+            <img class="h-auto max-w-full rounded-lg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7ipL8NFO_HgayqyqirzL72hB_gY8lj6UVKqHWTGoyOfRrcogpLAItdSHxfQP7XuZKX_Y&usqp=CAU" alt=""/>
+        </div>
+        <div>
+            <img class="h-auto max-w-full rounded-lg" src="https://www.sipi.edu.bd/img/lab6.jpg" alt=""/>
+        </div>
+        <div>
+            <img class="h-auto max-w-full rounded-lg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSfz3MzTeTobhhX0g9um_PXyArYaREXSrT0aY4rmoqx3ihVEqjSUj3lS2s1VFhDj0zOKU&usqp=CAU" alt=""/>
         </div>
     </div>
 </div>

@@ -64,7 +64,7 @@ export default function WhyChoseUs() {
       {/* Right Side: Content */}
       <div className="w-full lg:w-1/2 lg:pl-12 hidden md:block">
       <img 
-          src="https://i.ibb.co.com/T4LtMDB/smiling-young-slavic-student-girl-with-headphones-wearing-backpack-holds-book-notebook-looking-point.jpg" 
+          src="https://www.sipi.edu.bd/img/courses-1.jpg" 
           alt="Our Institute" 
           className="rounded-lg shadow-lg w-full h-[700px] object-cover "
         />
