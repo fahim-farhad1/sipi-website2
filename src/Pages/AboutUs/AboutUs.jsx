@@ -120,7 +120,7 @@ const AboutUs = () => {
       <AboutPrincipal principalData={principalData}></AboutPrincipal>
 
       <Staff staffData={staffData}></Staff>
-      <Academics academicServices={academicServices}></Academics>
+      {/* <Academics academicServices={academicServices}></Academics> */}
       
     </div>
   );

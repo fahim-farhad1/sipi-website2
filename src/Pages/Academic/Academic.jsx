@@ -1,5 +1,5 @@
 import school from "../../assets/school.png";
-import Default from "../../assets/Default.png";
+import Default from "../../assets/AboutBanner.jpg";
 import BannerDefault from "../../assets/AcademicSection.jpg";
 import {
   FaFacebookF,
