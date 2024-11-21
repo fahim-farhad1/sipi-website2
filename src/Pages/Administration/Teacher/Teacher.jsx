@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../Shared/Loader/Loader";
 import Default from "../../../assets/Default.png";
 import DepartmentBanner from "../../../Components/Banners/DepartmentBanner";
-import bannerImage from  "../../../assets/TeachersBanner.jpg";
+import bannerImage from "../../../assets/TeachersBanner.jpg";
 const Teacher = () => {
   const axiosPublic = useAxiosPublic();
   const [selectedTeacher, setSelectedTeacher] = useState(null);
@@ -77,7 +77,7 @@ const Teacher = () => {
       <DepartmentBanner Image={bannerImage} />
       <div className="mt-10">
         <h1 className="text-center font-bold text-4xl text-blue-600 mb-12">
-          Meet Our Teachers 
+          Meet Our Teachers
         </h1>
         <div className="max-w-[1200px] mx-auto">
           {Object.entries(groupedTeachers).map(([department, teachers]) => (
@@ -87,10 +87,7 @@ const Teacher = () => {
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-5">
                 {teachers.map((teacher) => (
-                  <div
-                    key={teacher._id}
-                    className="rounded-lg bg-white border"
-                  >
+                  <div key={teacher._id} className="rounded-lg bg-white border">
                     <img
                       src={teacher.image || Default}
                       alt={teacher.name}
@@ -138,7 +135,7 @@ const Teacher = () => {
       </div>
 
       {/* Modal */}
-      {/* {selectedTeacher && (
+      {selectedTeacher && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
           <div className="bg-white rounded-lg max-w-[800px] p-5 mt-[234px]">
             <img
@@ -195,7 +192,7 @@ const Teacher = () => {
             </button>
           </div>
         </div>
-      )} */}
+      )}
     </div>
   );
 };
