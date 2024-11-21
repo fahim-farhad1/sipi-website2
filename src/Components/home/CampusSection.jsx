@@ -16,7 +16,7 @@ export default function CampusSecton() {
         <MiddleSectionTitle title="Check Out Our Campuses!" badge="OUR CAMPUSES" />
         {/* Campuses */}
         <div className="grid gap-6 grid-cols-1 md:grid-cols-2 py-5">
-        {campuses?.map((campus) => <CampusCard key={campus._id} campus={campus}/>)}
+        {campuses?.map((campusdata) => <CampusCard key={campusdata._id} campusData={campusdata}/>)}
       </div>
     </div>
   )

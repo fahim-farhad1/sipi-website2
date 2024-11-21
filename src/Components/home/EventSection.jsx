@@ -1,5 +1,7 @@
 import React from 'react'
 import MiddleSectionTitle from '../ReuseableTitle/MiddleSectionTitle';
+import { FaLongArrowAltRight } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const events = [
     {
@@ -44,9 +46,9 @@ const events = [
 export default function EventSection() {
   return (
     <section className="py-12 bg-gray-100">
-      <div className="container mx-auto px-6 lg:px-8">
+      <div className=" mx-auto px-6 lg:px-8">
         <MiddleSectionTitle badge="Events" title="Great Moments Of Campus Life." />
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
           {events.map((event) => (
             <div 
               key={event.id} 
@@ -57,17 +59,21 @@ export default function EventSection() {
                 <img 
                   src={event.image} 
                   alt={event.title} 
-                  className="w-full h-64 object-cover"
+                  className="w-[90%] mx-auto h-64 object-cover rounded-2xl my-3 border-4 border-primary/60"
                 />
                 {/* Event Date Overlay */}
-                <div className="absolute top-2 left-2 bg-blue-500 text-white text-xs font-semibold px-3 py-1 rounded">
+                <div className="absolute top-2 left-2 bg-primary text-white text-xs font-semibold px-3 py-1 rounded">
                   {event.date}
                 </div>
               </div>
 
               {/* Event Details */}
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">{event.title}</h3>
+              <div className="px-6">
+                <h3 className="text-xl font-semibold mb-2 text-primary">{event.title}</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis quisquam, veritatis dolorum in vitae quam quibusdam maiores n</p>
+                <Link className="text-primary py-2  rounded transition-colors flex items-center">
+                  Read More <FaLongArrowAltRight className='ml-2 my-5' />
+                </Link>
               </div>
             </div>
           ))}

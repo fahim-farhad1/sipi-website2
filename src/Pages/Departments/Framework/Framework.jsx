@@ -66,7 +66,7 @@ const Banner = () => {
   if (DepartmentDataError || RoutineDataError || TuitionFeeDataError) {
     return (
       <div className="h-screen flex flex-col justify-center items-center bg-gradient-to-br from-blue-300 to-white">
-        <p className="text-center text-red-500 font-bold text-3xl mb-8">
+        <p className="text-center text-primary font-bold text-3xl mb-8">
           Something went wrong. Please reload the page.
         </p>
         <button
@@ -206,7 +206,7 @@ const Banner = () => {
 
               {/* Apply Now Button */}
               <div className="mt-8 flex justify-center">
-                <button className="bg-red-600 hover:bg-red-700 text-white text-lg font-semibold px-16 py-3 rounded-lg shadow-md transition-all">
+                <button className="bg-primary hover:bg-secondary text-white text-lg font-semibold px-16 py-3 rounded-lg shadow-md transition-all">
                   Apply Now
                 </button>
               </div>
@@ -348,7 +348,7 @@ const Banner = () => {
                     <h4 className="text-md font-semibold">
                       {semester.semester}
                     </h4>
-                    <p className="text-xl font-bold text-green-600">
+                    <p className="text-xl font-bold text-primary">
                       {scholarshipMoney}
                     </p>
                   </div>

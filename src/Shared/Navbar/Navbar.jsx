@@ -101,7 +101,7 @@ const Navbar = () => {
   return (
     <div className="w-full bg-white fixed z-50 border border-gray-200">
       {/* Top navbar */}
-      <div className="bg-red-700 h-12 md:h-10 flex items-center">
+      <div className="bg-primary h-12 md:h-10 flex items-center">
         <div className="mx-auto w-full flex items-center justify-between">
           <div className="flex items-center md:h-10 px-1 md:px-5">
             <div className="flex items-center gap-3 text-sm">
@@ -216,7 +216,7 @@ const Navbar = () => {
               <div key={link.name} className="relative group">
                 <span
                   onClick={(e) => e.preventDefault()}
-                  className="hover:text-blue-500 cursor-default flex items-center"
+                  className="hover:text-primary cursor-default flex items-center"
                 >
                   {link.name} <FaChevronDown className="ml-2" />
                 </span>
@@ -226,7 +226,7 @@ const Navbar = () => {
                     <li key={subLink.name} className="w-full">
                       <NavLink
                         to={subLink.path}
-                        className="block w-full px-4 py-2 hover:text-blue-500 hover:bg-gray-100"
+                        className="block w-full px-4 py-2 hover:text-primary hover:bg-gray-100"
                       >
                         {subLink.name}
                       </NavLink>
@@ -238,7 +238,7 @@ const Navbar = () => {
               <NavLink
                 key={link.name}
                 to={link.path}
-                className="hover:text-blue-500"
+                className="hover:text-primary"
               >
                 {link.name}
               </NavLink>
@@ -247,7 +247,7 @@ const Navbar = () => {
         </div>
 
         <Link to={"/Admission"}>
-          <button className="bg-orange-700 py-3 px-3 text-white hover:bg-green-700 duration-500 hidden md:block">
+          <button className="bg-primary py-3 px-3 text-white hover:bg-green-700 duration-500 hidden md:block">
             ADMISSION OPEN
           </button>
         </Link>

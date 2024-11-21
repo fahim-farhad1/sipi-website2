@@ -1,6 +1,6 @@
 import school from "../../assets/school.png";
 import Default from "../../assets/Default.png";
-import BannerDefault from "../../assets/BannerDefault.png";
+import BannerDefault from "../../assets/AcademicSection.jpg";
 import {
   FaFacebookF,
   FaInstagram,
@@ -13,38 +13,19 @@ import DepartmentBanner from "../../Components/Banners/DepartmentBanner";
 import bannerImage from "../../assets/AcademicBanner.jpg"
 const Academic = () => {
   const GalleryImages = [
-    "https://i.ibb.co.com/P9Bn5dx/trainer10.jpg",
-    "https://i.ibb.co.com/4N0nmWk/trainer9.jpg",
-    "https://i.ibb.co.com/sFbg1GC/trainer8.jpg",
-    "https://i.ibb.co.com/vzT51NW/trainer7.jpg",
-    "https://i.ibb.co.com/wYMGHKh/trainer6.jpg",
-    "https://i.ibb.co.com/qW0fPCJ/trainer5.jpg",
-    "https://i.ibb.co.com/HptxfC4/trainer4.jpg",
-    "https://i.ibb.co.com/gJYxGRR/trainer3.jpg",
-    "https://i.ibb.co.com/c121D0Y/trainer1.jpg",
-    "https://i.ibb.co.com/gR4tqQ6/trainer2.jpg",
-    "https://i.ibb.co.com/2Y5tf5q/24.jpg",
-    "https://i.ibb.co.com/tJZPZgw/23.jpg",
-    "https://i.ibb.co.com/wQRQZVC/22.jpg",
-    "https://i.ibb.co.com/tD69DLG/21.jpg",
-    "https://i.ibb.co.com/phkgxpG/20.jpg",
-    "https://i.ibb.co.com/0JfVKGP/19.jpg",
-    "https://i.ibb.co.com/VCvZb0V/18.jpg",
-    "https://i.ibb.co.com/Rhhm3sT/16.jpg",
-    "https://i.ibb.co.com/7nr0MKb/17.jpg",
-    "https://i.ibb.co.com/HH7nxPN/15.jpg",
-    "https://i.ibb.co.com/mzJQ2KF/14.jpg",
-    "https://i.ibb.co.com/yy81dMj/13.jpg",
-    "https://i.ibb.co.com/GVft1yn/12.jpg",
-    "https://i.ibb.co.com/B294FP3/11.jpg",
-    "https://i.ibb.co.com/SR7rrn4/10.jpg",
-    "https://i.ibb.co.com/MV6h0zR/9.jpg",
-    "https://i.ibb.co.com/sK6c4Sg/8.jpg",
-    "https://i.ibb.co.com/gd52G1n/7.jpg",
-    "https://i.ibb.co.com/P6ZT3P6/6.jpg",
-    "https://i.ibb.co.com/1RsfBYJ/4.jpg",
-    "https://i.ibb.co.com/YNDv7GW/3.jpg",
-    "https://i.ibb.co.com/fv6ZRKG/1.jpg",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOukS7rHwuCWVpCLj6V-0mCxzrQiNiJ5XKmtOsl8ehQ0LRRcWmknrW2ZvB3UgbbS886M8&usqp=CAU",
+    "https://www.sipi.edu.bd/img/lab8.jpg",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2_NLUCtJlPgt-4rvdmXHdFufw04YLpsHpDw&s",
+    "https://scontent.fdac138-2.fna.fbcdn.net/v/t39.30808-6/336575992_2087873484751486_3808810988217926430_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeHAaq3DQ9Kq7VIElkPJvoK0636uM9zmwSPrfq4z3ObBI5x5gBi3wSFPV-nUZo2vlDw2RNiebyntV0AmBNgItw26&_nc_ohc=ZEsKSrZZ1MkQ7kNvgFkoNyX&_nc_zt=23&_nc_ht=scontent.fdac138-2.fna&_nc_gid=ACcXYytV2azgCqwORTYQFkI&oh=00_AYAZJV2SVgVADNvb5hFVPb67ka7PXEm-J81Y-ZKISWPH3Q&oe=67448140",
+    "https://scontent.fdac138-2.fna.fbcdn.net/v/t39.30808-6/336341567_196459423016120_5847679746308400938_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=f727a1&_nc_eui2=AeGveqYQTaG5X48svSfNM4ThHoShFG5y5GkehKEUbnLkaZNipJwgKRtpQGesg3Ygds-4vFgw0fX_2eHsxFh4eIuo&_nc_ohc=GWamlSHWUhcQ7kNvgE92jtG&_nc_zt=23&_nc_ht=scontent.fdac138-2.fna&_nc_gid=Ag4EaQMgr9_CKQL91OMuQsY&oh=00_AYBglWLWulmR39KR8GXrwtXns1LxqrIa5mtDiyKek88gxg&oe=6743FC47",
+    "https://scontent.fdac138-2.fna.fbcdn.net/v/t39.30808-6/336282932_1375660839923007_2921214220354574683_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=f727a1&_nc_eui2=AeHWFoDJ4AgK-n6zv7isjpVQPE7Ddv2aN3E8TsN2_Zo3cR4bRx5sDic9_tgvpdtCKrrhD6-gvigatmm6GhIDPxUJ&_nc_ohc=IqpMc3zndPwQ7kNvgFuaSOv&_nc_zt=23&_nc_ht=scontent.fdac138-2.fna&_nc_gid=AyrGH96i5f4fwXsTa4XWhR-&oh=00_AYBtlXB9rg5ecYBuooQ0paWlosZEIxoWFdpXepDKJm4wHw&oe=67446BE7",
+    "https://scontent.fdac138-1.fna.fbcdn.net/v/t39.30808-6/335439588_556599282939132_6267332709305874580_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=f727a1&_nc_eui2=AeE8xUQsmLuG184iGzryGOQHHPsI5pOiEv0c-wjmk6IS_VgLdc1pnMEUsPHBGE5HVR3ROmNHxg-keNI8F5noCA1w&_nc_ohc=wAVRerSloJgQ7kNvgHb-Pgh&_nc_zt=23&_nc_ht=scontent.fdac138-1.fna&_nc_gid=AOGkpbBjQbVThIv7Cmwb5mc&oh=00_AYCwitFACDmpuohJWlv0iMcV0Tsfkxn9c9WTCiGXr9YRww&oe=674403D0",
+    "https://www.sipi.edu.bd/img/lab2.jpg",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXaTA4FE24FzTmM5O0SIuw02jUw6C4vZeh2TBsrMTox-JkNj_GuT1FwNBX3ZNZX10t0c4&usqp=CAU",
+    "https://scontent.fdac138-1.fna.fbcdn.net/v/t39.30808-6/335439588_556599282939132_6267332709305874580_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=f727a1&_nc_eui2=AeE8xUQsmLuG184iGzryGOQHHPsI5pOiEv0c-wjmk6IS_VgLdc1pnMEUsPHBGE5HVR3ROmNHxg-keNI8F5noCA1w&_nc_ohc=wAVRerSloJgQ7kNvgHb-Pgh&_nc_zt=23&_nc_ht=scontent.fdac138-1.fna&_nc_gid=AOGkpbBjQbVThIv7Cmwb5mc&oh=00_AYCwitFACDmpuohJWlv0iMcV0Tsfkxn9c9WTCiGXr9YRww&oe=674403D0",
+    "https://www.sipi.edu.bd/img/lab7.jpg",
+  
+    
   ];
 
   return (
@@ -124,14 +105,12 @@ const Academic = () => {
         <div className="pt-[400px] relative flex flex-col md:flex-row items-center md:items-start max-w-[1200px] mx-auto px-5">
           <div className="bg-[#F2F8F1] px-6 py-16 md:px-11 md:py-28 w-full md:w-[600px] rounded-lg text-center md:text-left">
             <p className="text-2xl md:text-3xl font-bold">Mission & Values</p>
-            <p className="text-[#272424] text-base md:text-lg font-semibold mt-4 md:w-[300px] mx-auto md:mx-0">
-              Lorem ipsum dolor sit amet consec teturac magna aliqua. Ut enim ad
-              minim veniamqisit amet consectet adipis...
+            <p className="text-[#272424] text-base md:text-lg font-semibold mt-4 md:w-[500px] mx-auto md:mx-0">
+            The mission of Shyamoli Ideal Polytechnic Institute, SIPI is to produce highly skilled manpower. This mission is achieved by imparting high quality professional education and training so that individuals can achieve their intellectual, social and personal potentials.SIPI is committed to developing human capital by sharpening creative thinking. In addition to creation and dissemination of technical knowledge, its mission includes promotion of humanism and peace through education. As a social institution, SIPI endeavors to induce changes for betterment of the society as a whole through public services, and through promotion of ethical behavior and social justice.
             </p>
-            <p className="text-[#7A7A7A] text-base md:text-lg font-semibold mt-4 md:w-[300px] mx-auto md:mx-0">
-              Lorem ipsum dolor sit amet consec teturac magna aliqua. Ut enim ad
-              minim veniamqisit amet consectet adipis...
-            </p>
+            {/* <p className="text-[#7A7A7A] text-base md:text-lg font-semibold mt-4 md:w-[300px] mx-auto md:mx-0">
+            Our vision at Shyamoli Ideal Polytechnic Institute (SIPI) is to become a nationally and internationally recognized center of excellence in technical education. We aspire to be a leading institution that produces graduates who are sought after by employers and esteemed for their contributions to society. SIPI will continually adapt to emerging technologies and industry trends, ensuring our students are well-prepared for the challenges and opportunities of the future. We envision a future where SIPI is a symbol of innovation, integrity, and excellence in technical education, fostering the growth of individuals and the prosperity of the communities we serve.
+            </p> */}
             <p className="text-green-500 text-base md:text-lg font-semibold pt-5 cursor-pointer">
               Read More
             </p>
@@ -139,7 +118,7 @@ const Academic = () => {
           <img
             src={Default}
             alt="Default Image"
-            className="mt-8 md:mt-0 md:absolute md:left-[480px] md:bottom-14 w-[280px] md:w-[400px] h-[250px] md:h-[380px] object-cover rounded-lg"
+            className="mt-8 md:-mt-20 md:absolute md:left-[480px] md:bottom-14 w-[280px] md:w-[400px] h-[250px] md:h-[400px] object-cover rounded-lg"
           />
         </div>
       </div>
